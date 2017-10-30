@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import sugang.dao.EnrollmentDao;
 import sugang.dao.SubjectDao;
 import sugang.dao.impl.EnrollmentDaoImpl;
+import sugang.dao.impl.SubjectDaoImpl;
 import sugang.service.EnrollmentService;
 import sugang.util.SqlSessionFactoryManager;
 import sugang.vo.Enrollment;
@@ -23,7 +24,7 @@ public class EnrollmentServiceImpl implements EnrollmentService{
    private EnrollmentServiceImpl() throws IOException{
       factory = SqlSessionFactoryManager.getInstance().getSqlSessionFactory();
       dao = EnrollmentDaoImpl.getInstance();
-      //subjectdao = subjectdao.getInstance();
+      subjectdao = SubjectDaoImpl.getInstance();
    }
 
    public static EnrollmentServiceImpl getInstance() throws IOException {
