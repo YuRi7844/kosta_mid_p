@@ -7,9 +7,10 @@
 
 	<!-- VO 클래스 이름 별칭 설정 -->
 	<typeAliases>
-		<package name="sugang.vo" />
+		<package name="sugang.vo"/>
 	</typeAliases>
-
+	
+	
 	<!-- 환경설정 : DB 연결관련 설정 -->
 	<environments default="local">
 		<environment id="local">
@@ -17,7 +18,7 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
-				<property name="username" value="scott" />
+				<property name="username" value="scot" />
 				<property name="password" value="tiger" />
 				<property name="poolMaximumActiveConnections" value="100" />
 			</dataSource>
@@ -27,5 +28,8 @@
 	<!-- Mapper 등록 -->
 	<mappers>
 		<mapper resource="sugang/config/mapper/studentMapper.xml" />
+		<mapper resource="sugang/config/mapper/enrollmentMapper.xml"/>
+		<mapper resource="sugang/config/mapper/subjectMapper.xml"/>
 	</mappers>
+
 </configuration>

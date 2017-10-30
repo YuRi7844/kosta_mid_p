@@ -1,3 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="sugang.config.mapper.studentMapper"></mapper>
+
+<mapper namespace="sugang.config.mapper.studentMapper">
+   <sql id="select-sql">
+      SELECT   student_id,
+            student_name,
+            major,
+            student_pw,
+            grade,
+            max_credit
+      FROM   student
+   </sql>
+   
+   <resultMap type="student" id="student-resultmap">
+      <id column ="student_id" property="studentId"/>
+      <result column="student_name" property="studentName"/>
+      <result column="major" property="major"/>
+      <result column="student_pw" property="studentPw"/>
+      <result column="grade" property="grade"/>
+      <result column="max_credit" property="maxCredit"/>
+   </resultMap>
+   <!-- insert SQL문 설정 -->
+   <insert id="insertStudent" parameterType="student">
+      INSERT INTO student 
+      VALUES(
+            #{studentId},
+            #{studentName},
+            #{major},
+            #{studentPw},
+            #{grade},
+            #{maxCredit}
+      )
+   </insert>
+   
+   <!-- delete SQL문 작성 -->
+   <delete id="deleteStudentById" parameterType="int">
+      DELETE    FROM student
+      WHERE   student_id = #{value}
+   </delete>
+   
+   <!-- 
+      update SQl문 작성
+      student_id가 일치하는 학생 정보를 수정한다.
+    -->
+   <update id="updateStudentById" parameterType="student">
+      UPDATE   student
+      SET   student_name=#{studentName},
+         major=#{major},
+         student_pw=#{studentPw},
+         grade=#{grade},
+         max_credit = #{maxCredit}
+      WHERE   student_id = #{studentId}
+            
+   </update>
+   
+   <!-- 모든 학생을 조회하는 sql묹 -->
+   <select id="selectAllStudent" resultMap="student-resultmap">
+      <include refid="select-sql"></include>
+   </select>
+   
+   <!-- 매개변수로 받은 학번과 일치하는 학생을 조회하는 sql -->
+   <select id="selectStudentById" parameterType="_int" resultMap="student-resultmap">
+      <include refid="select-sql"></include>
+      WHERE student_id = #{value}
+   </select>
+   
+   <!-- 매개변수로 받은 이름으로 (부분)일치하는 학생을 조회하는 sql-->   
+   <select id="selectStudentByName" parameterType="string" resultMap="student-resultmap">
+      <include refid="select-sql"/>
+      WHERE   student_name = '%'||#{value}||'%'
+   </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
