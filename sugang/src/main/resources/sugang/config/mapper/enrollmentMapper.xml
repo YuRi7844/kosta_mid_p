@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sugang.config.mapper.enrollmentMapper">
+	
+	<sql id="select-sql-enrollment">
+		select student_id studentId, subject_id subjectId 
+		from enrollment
+	</sql>
+	
+	<!-- insertEnrollment -->
+	<insert id="insertEnrollment" parameterType="Enrollment">
+		insert into enrollment values(#{studentId},#{subjectId})
+	</insert>
+   
+	<!-- deleteEnrollmentByStudentId -->
+	<delete id="deleteEnrollmentByStudentId" parameterType="int">
+		delete from enrollment
+		where studentId = #{value}
+	</delete>
+
+	<!-- deleteEnrollmentBySubjectId -->
+	<delete id="deleteEnrollmentBySubjectId" parameterType="int">
+		delete from enrollment
+		where subjectId = #{value}
+	</delete>
+
+
+	<!-- selectEnrollment -->
+	<select id="selectEnrollment" resultType="Enrollment">
+		<include refid="select-sql-enrollment"/>
+	</select>
+
+	<!-- selectEnrollmentBySubjectId -->
+	<select id="selectEnrollmentBySubjectIdCount" parameterType="int" resultType="int">
+		select count(student_id)
+		from enrollment
+		where subjectId = #{value}
+	</select>
+</mapper>
