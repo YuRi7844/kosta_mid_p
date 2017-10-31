@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Enrollment</h1>
+<h1>로그인 후 페이지</h1>
 </body>
 </html>
