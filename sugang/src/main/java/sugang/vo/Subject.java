@@ -10,4 +10,5 @@ public class Subject implements Serializable{
 	private int maxStudent; //수강최대인원
 	private String day; // 요일
 	private String subjectTime; // 시간
+	
 }

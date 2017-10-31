@@ -2,9 +2,10 @@ package sugang.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSession;
 
 import sugang.vo.Subject;
+
 
 public interface SubjectDao {
 	/**
@@ -12,7 +13,7 @@ public interface SubjectDao {
 	 * @param session
 	 * @return
 	 */
-	List<Subject> selectAllSubject(SqlSessionFactory session);
+	List<Subject> selectAllSubject(SqlSession session);
 	
 	/**
 	 * 강좌 과목코드조회
@@ -20,7 +21,7 @@ public interface SubjectDao {
 	 * @param subjectId
 	 * @return
 	 */
-	Subject selectSubjectById(SqlSessionFactory session, int subjectId);
+	Subject selectSubjectById(SqlSession session, int subjectId);
 	
 	/**
 	 * 강좌 과목이름조회
@@ -28,7 +29,7 @@ public interface SubjectDao {
 	 * @param subjectName
 	 * @return
 	 */
-	List<Subject> selectSubjectByName(SqlSessionFactory session, String subjectName);
+	List<Subject> selectSubjectByName(SqlSession session, String subjectName);
 
 	/**
 	 * 강좌 요일로 조회
@@ -36,7 +37,7 @@ public interface SubjectDao {
 	 * @param day
 	 * @return
 	 */
-	List<Subject> selectSubjectByDay(SqlSessionFactory session, String day);
+	List<Subject> selectSubjectByDay(SqlSession session, String day);
 	
 	/**
 	 * 강좌 이수구분으로 조회
@@ -44,5 +45,13 @@ public interface SubjectDao {
 	 * @param completion
 	 * @return
 	 */
-	List<Subject> selectSubjectByCompletion(SqlSessionFactory session, String completion);
+	List<Subject> selectSubjectByCompletion(SqlSession session, String completion);
+	
+	/**
+	 * 과목코드에 해당하는 강좌를 찾아서 해당 강좌의 최대 수강인원을 return
+	 * @param session
+	 * @param subjectId
+	 * @return
+	 */
+	int selectSubjectMaxStudent(SqlSession session, int subjectId);
 }

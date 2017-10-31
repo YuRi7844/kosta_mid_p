@@ -2,7 +2,7 @@ package sugang.dao.impl;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSession;
 
 import sugang.dao.SubjectDao;
 import sugang.vo.Subject;
@@ -20,34 +20,38 @@ public class SubjectDaoImpl implements SubjectDao{
 			instance = new SubjectDaoImpl();
 		return instance;
 	}
-
-	@Override
-	public List<Subject> selectAllSubject(SqlSessionFactory session) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public String makeSqlId(String id) {
+		return "sugang.config.mapper.subjectMapper." + id;
 	}
 
 	@Override
-	public Subject selectSubjectById(SqlSessionFactory session, int subjectId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Subject> selectAllSubject(SqlSession session) {
+		return session.selectList(makeSqlId("selectAllSubject"));
 	}
 
 	@Override
-	public List<Subject> selectSubjectByName(SqlSessionFactory session, String subjectName) {
-		// TODO Auto-generated method stub
-		return null;
+	public Subject selectSubjectById(SqlSession session, int subjectId) {
+		return session.selectOne(makeSqlId("selectSubjectById"), subjectId);
 	}
 
 	@Override
-	public List<Subject> selectSubjectByDay(SqlSessionFactory session, String day) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Subject> selectSubjectByName(SqlSession session, String subjectName) {
+		return session.selectList(makeSqlId("selectSubjectByName"), subjectName);
 	}
 
 	@Override
-	public List<Subject> selectSubjectByCompletion(SqlSessionFactory session, String completion) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Subject> selectSubjectByDay(SqlSession session, String day) {
+		return session.selectList(makeSqlId("selectSubjectByDay"), day);
+	}
+
+	@Override
+	public List<Subject> selectSubjectByCompletion(SqlSession session, String completion) {
+		return session.selectList(makeSqlId("selectSubjectByCompletion"), completion);
+	}
+
+	@Override
+	public int selectSubjectMaxStudent(SqlSession session, int subjectId) {
+		return session.selectOne(makeSqlId("selectSubjectMaxStudent"), subjectId);
 	}
 }
