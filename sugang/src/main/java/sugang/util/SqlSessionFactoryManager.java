@@ -19,7 +19,7 @@ public class SqlSessionFactoryManager {
 	}
 	
 	private SqlSessionFactoryManager() throws IOException{
-		InputStream in = Resources.getResourceAsStream("sugang/config/mybatis-config.xml");
+		InputStream in = Resources.getResourceAsStream("com/domain/config/mybatis-config.xml");
 		factory = new SqlSessionFactoryBuilder().build(in);
 	}
 	
