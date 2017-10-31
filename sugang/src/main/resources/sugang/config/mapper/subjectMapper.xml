@@ -2,42 +2,57 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sugang.config.mapper.subjectMapper">
 	<sql id="select-sql">
-		SELECT	subject_id,
-				subject_name,
-				subject_credit,
-				completion,
-				max_student,
-				day,
-				subject_time
-		FROM	subject
+		SELECT subject_id,
+		subject_name,
+		subject_credit,
+		completion,
+		max_student,
+		day,
+		subject_time
+		FROM subject
 	</sql>
-	
+
 	<resultMap type="subject" id="subject-resultmap">
-		<id column="subject_id" property="subjectId"/>
-		<result column="subject_name" property="subjectName"/>
-		<result column="subject_credit" property="subjectCredit"/>
-		<result column="completion" property="completion"/>
-		<result column="max_student" property="maxStudent"/>
-		<result column="day" property="day"/>
-		<result column="subject_time" property="subjectTime"/>
+		<id column="subject_id" property="subjectId" />
+		<result column="subject_name" property="subjectName" />
+		<result column="subject_credit" property="subjectCredit" />
+		<result column="completion" property="completion" />
+		<result column="max_student" property="maxStudent" />
+		<result column="day" property="day" />
+		<result column="subject_time" property="subjectTime" />
 	</resultMap>
+
+	<!-- 전체조회 -->
+	<select id="selectAllSubject" resultMap="subject-resultmap">
+		<include refid="select-sql" />
+	</select>
+
+	<!-- 강좌 번호로 조회 -->
+	<select id="selectSubjectById" parameterType="_int" resultMap="subject-resultmap">
+		<include refid="select-sql" />
+		WHERE	subject_id = #{value}
+	</select>
 	
-	<!-- insert SQL -->
-	<!-- <insert id="insertSubject" parameterType="Subject">
-		INSERT INTO subject
-		VALUES(
-				#{subjectId},
-				#{subjectName},
-				#{subjectCredit},
-				#{completion},
-				#{maxStudent},
-				#{day},
-				#{subjectTime}
-		)
-	</insert> -->
+	<!-- 강좌이름으로 조회 -->
+	<select id="selectSubjectByName" parameterType="string" resultMap="subject-resultmap">
+		<include refid="select-sql" />
+		WHERE subject_name = '%'||#{value}||'%'
+	</select>
 	
+	<!-- 요일로 조회 -->
+	<select id="selectSubjectByDay" parameterType="string" resultMap="subject-resultmap">
+		<include refid="select-sql" />
+		WHERE day = #{value}
+	</select>
+	
+	<!-- 이수구분으로 조회 -->
+	<select id="selectSubjectByCompletion" parameterType="string" resultMap="subject-resultmap">
+		<include refid="select-sql" />
+		WHERE completion = #{value}
+	</select>
+	<!-- 수강최대인원 조회 -->
 	<select id="selectSubjectMaxStudent" parameterType="_int" resultType="_int">
-		<include refid="select-sql"/>
-		WHERE	subject_id = #{value}	
+		<include refid="select-sql"></include>
+		WHERE subject_id = #{value}
 	</select>
 </mapper>

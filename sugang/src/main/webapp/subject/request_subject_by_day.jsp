@@ -6,8 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/sugang/getSubjectList" method="post">
-	<h2>강좌 전체 조회</h2>
+<form action="/sugang/findSubjectByDay" method="post">
+	<h2>요일별 조회</h2>
+	<input type="text" name="day"/>
 	<button type="submit">조회</button>
 </form>
 </body>

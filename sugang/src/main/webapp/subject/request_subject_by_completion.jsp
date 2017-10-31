@@ -6,8 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/sugang/getSubjectList" method="post">
-	<h2>강좌 전체 조회</h2>
+<form action="/sugang/findSubjectByCompletion" method="post">
+	<h2>이수구분으로 조회</h2>
+	<input type="text" name="completion"/>
 	<button type="submit">조회</button>
 </form>
 </body>
