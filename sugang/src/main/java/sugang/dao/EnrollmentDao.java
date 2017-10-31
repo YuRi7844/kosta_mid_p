@@ -8,7 +8,6 @@ import sugang.vo.Enrollment;
 
 public interface EnrollmentDao {
 
-		
 		/**
 		 * 수강신청 → StudentClass에 Subject 삽입
 		 * @param session
