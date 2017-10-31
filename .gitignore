@@ -1,6 +1,24 @@
+<<<<<<< HEAD
 *.class
 *.bak
 *.exe
 bin/
 target/
 build/
+=======
+<<<<<<< HEAD
+*.class
+*.bak
+*.exe
+bin/
+target/
+build/
+=======
+*.class
+*.bak
+*.exe
+bin/
+target/
+build/
+>>>>>>> 236187360fbe53de41236ea3cd0222fc2e365ddf
+>>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git

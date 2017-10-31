@@ -59,6 +59,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao{
 	}
 	
 	@Override
+
 	public Enrollment selectEnrollmentBySubjectIdAndStudentId(SqlSession session, int subjectId, int studnetId) {
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("subjectId", subjectId);

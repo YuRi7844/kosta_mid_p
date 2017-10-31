@@ -1,7 +1,6 @@
 package sugang.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import sugang.service.EnrollmentService;
 import sugang.service.impl.EnrollmentServiceImpl;
-import sugang.vo.Enrollment;
 
 /**
  * Servlet implementation class EnrollmentFindServlet
@@ -31,19 +29,19 @@ public class FindEnrollmentServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 요청파라미터 조회
+		/*//1. 요청파라미터 조회
 		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
-/*		int studentId = (int)request.getAttribute("studentId");*/
+		int studentId = (int)request.getAttribute("studentId");
 		
 		EnrollmentServiceImpl service = EnrollmentServiceImpl.getInstance();
-		List<Enrollment> list = service.getEnrollmentList();
+		int result = service.findEnrollmentByStudentId(studentId);
 		
 		//2. 응답
 		//처리결과를 requestScope에 저장
-		request.setAttribute("result", list);
-		
-		//요청디스패치방식 - /enrollment/findbystudentId.jsp
-		request.getRequestDispatcher("/enrollment/findEnrollment.jsp").forward(request, response);
+		request.setAttribute("result", result);
+		//요청디스패치방식
+		request.getRequestDispatcher("").forward(request, response);*/
+
 	}
 
 }

@@ -76,6 +76,7 @@ public interface EnrollmentDao {
 		 * @return
 		 */
 		Enrollment selectEnrollmentBySubjectIdAndStudentId(SqlSession session, int sujectId, int studnetId);
+
 		
 
 }
