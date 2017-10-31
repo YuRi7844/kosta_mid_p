@@ -2,7 +2,8 @@ package sugang.service;
 
 import java.util.List;
 
-
+import sugang.exception.DuplicatedStudentException;
+import sugang.exception.DuplicatedSubjectException;
 import sugang.vo.Enrollment;
 
 public interface EnrollmentService {
@@ -15,25 +16,28 @@ public interface EnrollmentService {
     * 예외흐름
     *    2a. 기존 저장된 enrollment와 같은 값이 있으면 추가하지 않는다.
     * @param enrollment 
+ * @throws DuplicatedSubjectException 
     */
-   void addEnrollment(Enrollment enrollment);
+   void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException;
    
    /**
     * enrollment 정보를 강좌 id로 삭제하는 메소드
     * 
     * @param id
+ * @throws DuplicatedSubjectException 
     */
    
-   void removeEnrollmentBySubjectId(int id);
+   void removeEnrollmentBySubjectId(int id) throws DuplicatedSubjectException;
    
    
    /**
     * enrollment 정보를 학생 id로 삭제하는 메소드
     * 
     * @param id
+ * @throws DuplicatedStudentException 
     */
    
-   void removeEnrollmentByStudentId(int id);
+   void removeEnrollmentByStudentId(int id) throws DuplicatedStudentException;
    
    
    
@@ -44,4 +48,3 @@ public interface EnrollmentService {
    int findEnrollmentBySubjectCount(int id);
    
 }
-
