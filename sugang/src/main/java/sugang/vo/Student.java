@@ -1,6 +1,8 @@
 package sugang.vo;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable{
    private int studentId;
    private String studentName;
    private String major;
@@ -8,7 +10,13 @@ public class Student {
    private int grade;
    private int maxCredit;
    
-   public Student() {}
+   public Student(int studentId, String studentPw) {
+	super();
+	this.studentId = studentId;
+	this.studentPw = studentPw;
+}
+
+public Student() {}
 
    public Student(int studentId, String studentName, String major, String studentPw, int grade, int maxCredit) {
       this.studentId = studentId;

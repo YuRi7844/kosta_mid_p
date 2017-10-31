@@ -1,6 +1,8 @@
 package sugang.vo;
 
-public class Enrollment {
+import java.io.Serializable;
+
+public class Enrollment implements Serializable{
 	private int studentId; // 학생 id
 	private int subjectId; // 과목 코드
 	
