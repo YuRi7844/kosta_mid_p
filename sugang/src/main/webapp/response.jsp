@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>response.jsp</h1>
 </body>
 </html>

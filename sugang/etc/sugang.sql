@@ -79,6 +79,9 @@ insert into student values(20120008,'장철수','물리학과','20120008',2,19);
 insert into student values(20120009,'박기동','화학과','20120009',4,19);
 insert into student values(20120010,'도다리','사회학과','20120010',3,19);
 
+insert into student(STUDENT_ID,STUDENT_NAME,MAJOR,STUDENT_PW,GRADE) 
+values(1000,'관리자','교무처','admin',1);
+
 -- 강좌 등록
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0001,'자바의정석',3,'전공선택');
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0002,'집에',3,'전공필수');
