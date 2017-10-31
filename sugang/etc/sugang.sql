@@ -78,7 +78,7 @@ insert into student values(20120007,'최영희','신소재학과','20120007',3,1
 insert into student values(20120008,'장철수','물리학과','20120008',2,19);
 insert into student values(20120009,'박기동','화학과','20120009',4,19);
 insert into student values(20120010,'도다리','사회학과','20120010',3,19);
-
+insert into student values(20120011,'김호규','사회학과','20120010',3,19);
 insert into student(STUDENT_ID,STUDENT_NAME,MAJOR,STUDENT_PW,GRADE) 
 values(1000,'관리자','교무처','admin',1);
 

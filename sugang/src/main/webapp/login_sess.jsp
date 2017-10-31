@@ -101,32 +101,22 @@ p {
 			<h1 class="title">
 				<strong>수강신청</strong>
 			</h1>
-			<p class="studentinfo"></p>
+			<p class="studentinfo"> 
+			 아이디 : <c:out value="${sessionScope.loginStudent.studentId}"/> ,
+			 이름 : <c:out value="${sessionScope.loginStudent.studentName}"/> ,
+			 담당 부서 : <c:out value="${sessionScope.loginStudent.major}"/> 
+			</p>
 		</header>
 		<nav id="topMenu">
 			<ul>
 				<li class="topMenuLi"><a class="menuLink" href="">메인으로</a></li>
-				<li class="topMenuLi"><a class="menuLink" href="">공지사항</a></li>
-				<li class="topMenuLi"><a class="menuLink" href="">수강신청</a></li>
-				<li class="topMenuLi"><a class="menuLink" href="">수강신청조회</a></li>
+				<li class="topMenuLi"><a class="menuLink" href="">학생정보</a></li>
+				<li class="topMenuLi"><a class="menuLink" href="">강좌정보</a></li>
+				<li class="topMenuLi"><a class="menuLink" href="">수강신청결과</a></li>
 			</ul>
 		</nav>
 		<article>
-			<div class="loginArea">
-			Login
-				<form action="/sugang/login" method="POST">
-					<div class="loginform">
-						<p>
-							학번: <input type="number" name="Id" size="25" autofocus>
-						</p>
-						<p>
-							비밀번호: <input type="password" name="Password" size="25">
-						</p>
-					</div>
-					<button type="submit">로그인</button>
-
-				</form>
-			</div>
+			
 		</article>
 	</div>
 </body>

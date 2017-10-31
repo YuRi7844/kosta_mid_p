@@ -41,11 +41,11 @@ public class LoginServlet extends HttpServlet {
 				if (studentPw.equals("admin")) {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginStudent", student);
-					request.getRequestDispatcher("/index.jsp").forward(request, response);
+					request.getRequestDispatcher("/login_sess.jsp").forward(request, response);
 				} else {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginStudent", student);
-					request.getRequestDispatcher("/enrollment.jsp").forward(request, response);
+					request.getRequestDispatcher("/login_student.jsp").forward(request, response);
 				}
 			} else {
 				request.setAttribute("errorMessage", "Password Error");

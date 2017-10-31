@@ -101,7 +101,14 @@ p {
 			<h1 class="title">
 				<strong>수강신청</strong>
 			</h1>
-			<p class="studentinfo"></p>
+			<p class="studentinfo"> 
+			 아이디 : <c:out value="${sessionScope.loginStudent.studentId}"/> ,
+			 이름 : <c:out value="${sessionScope.loginStudent.studentName}"/> ,
+			 학과 : <c:out value="${sessionScope.loginStudent.major}"/> ,
+			 학년 : <c:out value="${sessionScope.loginStudent.grade}"/> ,
+			 최대학점 : <c:out value="${sessionScope.loginStudent.maxCredit}"/>   
+			</p>
+
 		</header>
 		<nav id="topMenu">
 			<ul>
@@ -112,21 +119,7 @@ p {
 			</ul>
 		</nav>
 		<article>
-			<div class="loginArea">
-			Login
-				<form action="/sugang/login" method="POST">
-					<div class="loginform">
-						<p>
-							학번: <input type="number" name="Id" size="25" autofocus>
-						</p>
-						<p>
-							비밀번호: <input type="password" name="Password" size="25">
-						</p>
-					</div>
-					<button type="submit">로그인</button>
-
-				</form>
-			</div>
+			
 		</article>
 	</div>
 </body>
