@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import sugang.dao.StudentDao;
 import sugang.dao.impl.StudentDaoImpl;
+import sugang.exception.DuplicatedStudentException;
+import sugang.exception.StudentNotFoundException;
 import sugang.service.StudentService;
 import sugang.util.SqlSessionFactoryManager;
 import sugang.vo.Student;
@@ -29,7 +31,7 @@ public class StudentServiceImpl implements StudentService{
    }
 
    @Override
-   public void addStudent(Student student) {
+   public void addStudent(Student student) throws DuplicatedStudentException{
       //TODO: Exception 만들이지면 수정.
       SqlSession session = null;
       try {
@@ -45,7 +47,7 @@ public class StudentServiceImpl implements StudentService{
    }
 
    @Override
-   public void removeStudentById(int studentId){
+   public void removeStudentById(int studentId) throws StudentNotFoundException{
       SqlSession session = null;
       try {
          session = factory.openSession();
@@ -59,7 +61,7 @@ public class StudentServiceImpl implements StudentService{
    }
 
    @Override
-   public void updateStudent(Student student) {
+   public void updateStudent(Student student) throws StudentNotFoundException{
       //TODO: Exception 정해지면 바꾸기
       
       SqlSession session = null;

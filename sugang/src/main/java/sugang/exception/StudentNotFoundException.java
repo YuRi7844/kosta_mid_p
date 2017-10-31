@@ -3,7 +3,6 @@ package sugang.exception;
 public class StudentNotFoundException extends Exception{
 	
 	//학생 찾을 수 없는
-	
 	private static final long serialVersionUID = 1L;
 	
 	private int failStudentId;

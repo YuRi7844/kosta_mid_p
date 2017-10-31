@@ -3,7 +3,6 @@ package sugang.exception;
 public class DuplicatedStudentException extends Exception{
 
 	//수강신청시 학생 중복
-	
 	private static final long serialVersionUID = 1L;
 	
 	private int duplicatedStudentId; 

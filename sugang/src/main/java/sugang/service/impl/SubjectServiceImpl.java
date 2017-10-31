@@ -30,8 +30,13 @@ public class SubjectServiceImpl implements SubjectService{
 
 	@Override
 	public List<Subject> getSubjectList() {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			return dao.selectAllSubject(session);
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
@@ -47,20 +52,35 @@ public class SubjectServiceImpl implements SubjectService{
 
 	@Override
 	public List<Subject> findSubjectByName(String subjectName) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			return dao.selectSubjectByName(session, subjectName);
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public List<Subject> findSubjectByDay(String day) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			return dao.selectSubjectByDay(session, day);
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public List<Subject> findSubjectByCompletion(String completion) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			return dao.selectSubjectByCompletion(session, completion);
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override

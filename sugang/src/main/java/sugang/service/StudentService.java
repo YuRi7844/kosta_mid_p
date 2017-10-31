@@ -2,6 +2,8 @@ package sugang.service;
 
 import java.util.List;
 
+import sugang.exception.DuplicatedStudentException;
+import sugang.exception.StudentNotFoundException;
 import sugang.vo.Student;
 
 public interface StudentService {
@@ -15,7 +17,7 @@ public interface StudentService {
     *    2-a. studentId 중복(Duplicated)
     * @param student
     */
-   void addStudent(Student student) ;
+   void addStudent(Student student) throws DuplicatedStudentException;
    //TODO: Exception이 결정되면 수정
    /**
     * studentId를 인자로 받아 해당 학생 삭제
@@ -26,7 +28,7 @@ public interface StudentService {
     *    2-a. 삭제하려는 학생이 없는경우 (NotFound)
     * @param id
     */
-   void removeStudentById(int studentId) ;
+   void removeStudentById(int studentId) throws StudentNotFoundException;
    //TODO: Exception이 결정되면 수정
    /**
     * 수정할 학생을 매개변수로 받는다.
@@ -38,7 +40,7 @@ public interface StudentService {
     *    2-a. 수정하려는 학생이 없는경우 (NotFound)
     * @param student
     */
-   void updateStudent(Student student);
+   void updateStudent(Student student) throws StudentNotFoundException;
    //TODO: Exception이 결정되면 수정
    /**
     * 학생 전체조회
