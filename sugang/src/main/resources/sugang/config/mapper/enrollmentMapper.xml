@@ -54,8 +54,8 @@
 	
 	
 	<!-- selectEnrollmentBySubjectIdANDStudentId -->
-	<select id="selectEnrollmentBySubjectIdAndStudentId" parameterType="Enrollment">
+	<select id="selectEnrollmentBySubjectIdANDStudentId" parameterType="java.util.HashMap" resultType="Enrollment">
 		<include refid="select-sql-enrollment"/>
-		where subject_id = #{subjectId} , student_id = #{studentId}
+		where subject_id = #{subjectId} and student_id = #{studentId}
 	</select>
 </mapper>

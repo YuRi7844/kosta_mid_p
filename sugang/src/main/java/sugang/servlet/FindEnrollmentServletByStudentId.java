@@ -16,8 +16,8 @@ import sugang.vo.Enrollment;
 /**
  * Servlet implementation class EnrollmentFindServlet
  */
-@WebServlet("/findEnrollment")
-public class FindEnrollmentServlet extends HttpServlet {
+@WebServlet("/findEnrollmentByStudent")
+public class FindEnrollmentServletByStudentId extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -31,19 +31,19 @@ public class FindEnrollmentServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 요청파라미터 조회
 		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
-/*		int studentId = (int)request.getAttribute("studentId");*/
+		String studentId = request.getParameter("studentId");
+		int studentid = Integer.parseInt(studentId);
 		
 		EnrollmentServiceImpl service = EnrollmentServiceImpl.getInstance();
-		List<Enrollment> list = service.getEnrollmentList();
+		List<Enrollment> list = service.findEnrollmentByStudentId(studentid);
 		
 		//2. 응답
 		//처리결과를 requestScope에 저장
 		request.setAttribute("result", list);
 		
 		//요청디스패치방식 - /enrollment/findbystudentId.jsp
-		request.getRequestDispatcher("/enrollment/findEnrollment.jsp").forward(request, response);
+		request.getRequestDispatcher("/enrollment/findEnrollmentbyStudentId.jsp").forward(request, response);
 	}
 
 }

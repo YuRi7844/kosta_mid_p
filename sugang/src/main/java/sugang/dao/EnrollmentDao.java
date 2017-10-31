@@ -8,6 +8,7 @@ import sugang.vo.Enrollment;
 
 public interface EnrollmentDao {
 
+		
 		/**
 		 * 수강신청 → StudentClass에 Subject 삽입
 		 * @param session
@@ -51,15 +52,30 @@ public interface EnrollmentDao {
 		 */
 		int selectEnrollmentBySubjectIdCount(SqlSession session, int sujectId);
 
-		//전체
-		//강의Id
-		//강의이름
-		
+		/**
+		 * 강의 id로 조회
+		 * @param session
+		 * @param subjectId
+		 * @return
+		 */
 		public List<Enrollment> selectEnrollmentBySubjectId(SqlSession session, int subjectId);
 		
+		/**
+		 * 학생 id로 조회
+		 * @param session
+		 * @param studentId
+		 * @return
+		 */
 		public List<Enrollment> selectEnrollmentByStudentId(SqlSession session, int studentId);
 		
-		List<Enrollment> selectEnrollmentBySubjectIdAndStudentId(SqlSession session, int sujectId, int studnetId);
+		/**
+		 * 학생id, 강의id로 조회
+		 * @param session
+		 * @param sujectId
+		 * @param studnetId
+		 * @return
+		 */
+		Enrollment selectEnrollmentBySubjectIdAndStudentId(SqlSession session, int sujectId, int studnetId);
 		
 
 }
