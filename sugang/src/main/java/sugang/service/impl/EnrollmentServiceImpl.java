@@ -35,19 +35,6 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 		return instance;
 	}
 
-	/*
-	 * @Override public void addEnrollment(Enrollment enrollment) { SqlSession
-	 * session = null; try { session = factory.openSession(); // TODO 전체 수강인원 체크 if
-	 * (dao.selectEnrollmentByStudentId(session, enrollment.getStudentId()) != null)
-	 * { if (dao.selectEnrollmentBySubjectId(session, enrollment.getSubjectId()) !=
-	 * null) { // 익셉션!!! } else { dao.insertEnrollment(session, enrollment); } }
-	 * else { dao.insertEnrollment(session, enrollment); }
-	 * 
-	 * session.commit(); } finally { session.close(); }
-	 * 
-	 * }
-	 */
-
 	/**
 	 * 저기 list에서 나온 두개의 값이 studentId == enrollment.studentid && subjectId =
 	 * enrollment.subjectId
@@ -57,10 +44,12 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 		SqlSession session = null;
 		try {
 			session = factory.openSession();
-			Enrollment eno = dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),enrollment.getStudentId());
+			Enrollment eno = dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
+					enrollment.getStudentId());
 
 			if (eno != null) {
-				if (enrollment.getSubjectId() == eno.getSubjectId() && enrollment.getStudentId() == eno.getStudentId()) {
+				if (enrollment.getSubjectId() == eno.getSubjectId()
+						&& enrollment.getStudentId() == eno.getStudentId()) {
 					throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
 				} else {
 					dao.insertEnrollment(session, enrollment);
