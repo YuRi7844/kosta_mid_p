@@ -1,7 +1,6 @@
 package sugang.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import sugang.exception.DuplicatedSubjectException;
 import sugang.service.impl.EnrollmentServiceImpl;
-import sugang.vo.Enrollment;
 
 /**
  * Servlet implementation class EnrollmentRemoveServlet
