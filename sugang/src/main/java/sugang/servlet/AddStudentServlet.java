@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sugang.exception.DuplicatedStudentException;
 import sugang.service.impl.StudentServiceImpl;
@@ -31,24 +32,40 @@ public class AddStudentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1. 요청파라미터 조회
-		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
-		Student result;
+//		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
+		StudentServiceImpl service = StudentServiceImpl.getInstance();
+		HttpSession session = request.getSession();
 		try {
-			Student student = (Student)request.getAttribute("student");
-			int studentId = (int)request.getAttribute("studentId");
+			// 요청 파라미터로 넘어온 학생의 정보 요청 받기
+			int studentId = Integer.parseInt(request.getParameter("studentId"));
+			String studentName = request.getParameter("studentName");
+			String major = request.getParameter("major");
+			String studentPw = request.getParameter("studentPw");
+			int grade = Integer.parseInt(request.getParameter("grade"));
+			int maxCredit = Integer.parseInt(request.getParameter("maxCredit"));
 			
-			StudentServiceImpl service = StudentServiceImpl.getInstance();
-			service.addStudent(student);
-			result = service.findStudentById(studentId);
+			//Student 객체 생성 후 서비스 호출
+			Student student = new Student(studentId, studentName, major, studentPw, grade, maxCredit);
+			System.out.println(student);
+			
+			//요청 파라미터로 넘어온 학번으로 DB에서 조회
+			if(service.findStudentById(studentId) != null) {
+				System.out.println("중복");
+				throw new DuplicatedStudentException(String.format("%d학번의 학생이 존재하여 등록할 수 없습니다.", service.findStudentById(studentId).getStudentId()));
+			}else {
+				//DB에 학번 존재하는 학번 없음 -> 학생 등록 진행
+				service.addStudent(student);
+				//DB에 등록된 해당 학생의 id를 다시 조회하여 이름으로 결과 호출(requestScope에 저장)
+				String result = String.format("%s 학생이 등록되었습니다.", service.findStudentById(student.getStudentId()).getStudentName());
+				session.setAttribute("result", result);
+			}
 			
 		//2. 응답
-			//처리결과를 requestScope에 저장
-			request.setAttribute("result", result);
 			//Redirect방식으로 xxx.jsp로 이동
-			response.sendRedirect("");//TODO 이동할 url - xxx.jsp
+			response.sendRedirect("/sugang/student/addstudentresult.jsp");//TODO 이동할 url - xxx.jsp
 		}catch(DuplicatedStudentException e){
-			request.setAttribute("error_message", "등록불가 : 해당 학번의 학생이 이미 존재합니다.");
-			
+			session.setAttribute("errorMessage", e.getMessage());
+			request.getRequestDispatcher("/student/testaddstudent.jsp").forward(request, response);
 		}
 		
 		

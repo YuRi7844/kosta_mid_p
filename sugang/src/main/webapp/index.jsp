@@ -116,7 +116,7 @@ p {
 				<form action="" method="POST">
 					<div class="loginform">
 						<p>
-							학번: <input type="number" name="id" size="25" autofocus>
+							학번: <input type="number" name="studentId" size="25" autofocus>
 						</p>
 						<p>
 							비밀번호: <input type="password" name="password" size="25">

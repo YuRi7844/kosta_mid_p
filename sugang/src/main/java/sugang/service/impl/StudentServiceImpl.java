@@ -32,12 +32,10 @@ public class StudentServiceImpl implements StudentService{
 
    @Override
    public void addStudent(Student student) throws DuplicatedStudentException{
-      //TODO: Exception 만들이지면 수정.
       SqlSession session = null;
       try {
          session = factory.openSession();
          if (dao.selectStudentById(session, student.getStudentId()) != null) {
-            //TODO: 예외 던지기(Duplicated)
          }
          dao.insertStudent(session, student);
          session.commit();
@@ -52,7 +50,6 @@ public class StudentServiceImpl implements StudentService{
       try {
          session = factory.openSession();
          if(dao.selectStudentById(session, studentId) != null) {
-            //TODO: 예외 던지기(NotFound)
          }
          dao.deleteStudentById(session, studentId);
       }finally {
@@ -62,13 +59,11 @@ public class StudentServiceImpl implements StudentService{
 
    @Override
    public void updateStudent(Student student) throws StudentNotFoundException{
-      //TODO: Exception 정해지면 바꾸기
       
       SqlSession session = null;
       try {
          session = factory.openSession();
          if(dao.selectStudentById(session, student.getStudentId()) != null) {
-            //TODO: 예외 던지기(NotFound)
          }
          dao.updateStudentById(session, student);
       }finally {
