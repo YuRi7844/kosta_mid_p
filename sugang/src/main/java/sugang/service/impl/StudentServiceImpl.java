@@ -36,6 +36,7 @@ public class StudentServiceImpl implements StudentService{
       try {
          session = factory.openSession();
          if (dao.selectStudentById(session, student.getStudentId()) != null) {
+        	 throw new DuplicatedStudentException("해당 학번의 학생이 이미 존재합니다.");
          }
          dao.insertStudent(session, student);
          session.commit();
@@ -49,9 +50,11 @@ public class StudentServiceImpl implements StudentService{
       SqlSession session = null;
       try {
          session = factory.openSession();
-         if(dao.selectStudentById(session, studentId) != null) {
+         if(dao.selectStudentById(session, studentId) == null) {
+        	 throw new StudentNotFoundException("해당 학번의 학생은 존재하지 않습니다.");
          }
-         dao.deleteStudentById(session, studentId);
+        dao.deleteStudentById(session, studentId);
+        session.commit();
       }finally {
          session.close();
       }
@@ -63,9 +66,11 @@ public class StudentServiceImpl implements StudentService{
       SqlSession session = null;
       try {
          session = factory.openSession();
-         if(dao.selectStudentById(session, student.getStudentId()) != null) {
+         if(dao.selectStudentById(session, student.getStudentId()) == null) {
+        	 throw new StudentNotFoundException("수정할 학생이 존재하지 않습니다.");
          }
          dao.updateStudentById(session, student);
+         session.commit();
       }finally {
          session.close();
       }

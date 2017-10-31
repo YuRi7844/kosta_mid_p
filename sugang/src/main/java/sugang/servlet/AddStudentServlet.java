@@ -46,19 +46,12 @@ public class AddStudentServlet extends HttpServlet {
 			
 			//Student 객체 생성 후 서비스 호출
 			Student student = new Student(studentId, studentName, major, studentPw, grade, maxCredit);
-			System.out.println(student);
+			service.addStudent(student);
 			
-			//요청 파라미터로 넘어온 학번으로 DB에서 조회
-			if(service.findStudentById(studentId) != null) {
-				System.out.println("중복");
-				throw new DuplicatedStudentException(String.format("%d학번의 학생이 존재하여 등록할 수 없습니다.", service.findStudentById(studentId).getStudentId()));
-			}else {
-				//DB에 학번 존재하는 학번 없음 -> 학생 등록 진행
-				service.addStudent(student);
-				//DB에 등록된 해당 학생의 id를 다시 조회하여 이름으로 결과 호출(requestScope에 저장)
-				String result = String.format("%s 학생이 등록되었습니다.", service.findStudentById(student.getStudentId()).getStudentName());
-				session.setAttribute("result", result);
-			}
+			//DB에 등록된 해당 학생의 id를 다시 조회하여 이름으로 결과 호출(requestScope에 저장)
+			String result = String.format("%s 학생이 등록되었습니다.", service.findStudentById(student.getStudentId()).getStudentName());
+			session.setAttribute("result", result);
+			
 			
 		//2. 응답
 			//Redirect방식으로 xxx.jsp로 이동

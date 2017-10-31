@@ -36,7 +36,7 @@ public class testStudent {
 
 			System.out.println("=====조회====");
 			
-			Student newSd = new Student(20120001, "바꿨다", "이거", "매개변수시발", 3, 12);
+			Student newSd = new Student(20120001, "바꿨다", "이거", "매개변수", 3, 12);
 			int flag123 = dao.updateStudentById(session, newSd);
 			System.out.printf("%d명 바뀜", flag123);
 			
