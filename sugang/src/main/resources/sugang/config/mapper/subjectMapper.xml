@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sugang.config.mapper.subjectMapper">
+	<sql id="select-sql">
+		SELECT	subject_id,
+				subject_name,
+				subject_credit,
+				completion,
+				max_student,
+				day,
+				subject_time
+		FROM	subject
+	</sql>
+	
+	<resultMap type="subject" id="subject-resultmap">
+		<id column="subject_id" property="subjectId"/>
+		<result column="subject_name" property="subjectName"/>
+		<result column="subject_credit" property="subjectCredit"/>
+		<result column="completion" property="completion"/>
+		<result column="max_student" property="maxStudent"/>
+		<result column="day" property="day"/>
+		<result column="subject_time" property="subjectTime"/>
+	</resultMap>
+	
+	<!-- insert SQL -->
+	<!-- <insert id="insertSubject" parameterType="Subject">
+		INSERT INTO subject
+		VALUES(
+				#{subjectId},
+				#{subjectName},
+				#{subjectCredit},
+				#{completion},
+				#{maxStudent},
+				#{day},
+				#{subjectTime}
+		)
+	</insert> -->
+	
+	<select id="selectSubjectMaxStudent" parameterType="_int" resultType="_int">
+		<include refid="select-sql"/>
+		WHERE	subject_id = #{value}	
+	</select>
+</mapper>

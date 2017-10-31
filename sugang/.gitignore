@@ -1,0 +1,15 @@
+<<<<<<< HEAD
+*.class
+*.bak
+*.exe
+bin/
+target/
+build/
+=======
+*.class
+*.bak
+*.exe
+bin/
+target/
+build/
+>>>>>>> 236187360fbe53de41236ea3cd0222fc2e365ddf
