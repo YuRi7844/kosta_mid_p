@@ -26,9 +26,8 @@ public class testEnrollment {
 			//Enrollment enrollment = new Enrollment(20120010,0010);
 		/*	int flag = dao.insertEnrollment(session,new Enrollment(20120010,6));
 			System.out.println(flag);*/
-			
-			int a = dao.selectEnrollmentStudentBySubjectDay(session, new Enrollment(20120001, 12));
-			System.out.println(a);
+	
+			System.out.println(dao.selectEnrollmentStudentByNowCredit(session, 20170001));
 /*			System.out.println("===== 학생 삭제 조회=====");
 			int flag2 = dao.deleteEnrollmentByStudentId(session, 20120010);
 			System.out.println(flag2);

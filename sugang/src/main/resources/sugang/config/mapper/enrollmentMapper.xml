@@ -72,7 +72,7 @@
 	</select>
 	
 	<select id="selectEnrollmentStudentBySubjectTime"  parameterType="Enrollment" resultType="int">
-	  select count(ENROLLMENT.SUBJECT_id)
+	  select nvl(sum(SUBJECT.SUBJECT_CREDIT),0)
 	  from enrollment, SUBJECT
 	  where ENROLLMENT.student_id =  #{studentId}  
 			 and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID
@@ -82,10 +82,10 @@
 										where SUBJECT.SUBJECT_ID = #{subjectId})
 	</select>
 	
-	<select id="selectEnrollmentStudentByNowCredit" parameterType="Enrollment" resultType="int">
+	<select id="selectEnrollmentStudentByNowCredit" parameterType="int" resultType="int">
 	select 	sum(SUBJECT.SUBJECT_CREDIT)
 	from 	ENROLLMENT, SUBJECT
-	where 	ENROLLMENT.STUDENT_ID = #{subjectId} 
-      		and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID;
+	where 	ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID
+			and ENROLLMENT.STUDENT_ID = #{subjectId} 
     </select>
 </mapper>

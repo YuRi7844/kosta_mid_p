@@ -62,15 +62,14 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 			session = factory.openSession();
 			SubjectDaoImpl sub = SubjectDaoImpl.getInstance();
 			StudentDaoImpl stu = StudentDaoImpl.getInstance();
-			
+
 			if (sub.selectSubjectMaxStudent(session,
 					enrollment.getSubjectId()) > findEnrollmentBySubjectCount(enrollment.getSubjectId())) {
-				if (dao.selectEnrollmentStudentByNowCredit(session, enrollment) <= stu
-						.selectStudentById(session, enrollment.getStudentId()).getMaxCredit()) {
-					if (dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
-							enrollment.getStudentId()) != null) {
-						throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
-					} else {
+				if (dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
+						enrollment.getStudentId()) != null) {
+					throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
+				} else {
+					if (dao.selectEnrollmentStudentByNowCredit(session, enrollment.getStudentId()) == 0) {
 						if (dao.selectEnrollmentStudentBySubjectDay(session, enrollment) != 0) {
 							if (dao.selectEnrollmentStudentBySubjectTime(session, enrollment) != 0) {
 								throw new TimeLimitExceededException("시간표중복입니다.");
@@ -80,12 +79,26 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 						} else {
 							dao.insertEnrollment(session, enrollment);
 						}
+					}else {
+						if(dao.selectEnrollmentStudentByNowCredit(session, enrollment.getStudentId()) < stu.selectStudentById(session, enrollment.getStudentId()).getMaxCredit()) {
+							if (dao.selectEnrollmentByStudentId(session, enrollment.getStudentId()) == null) {
+								if (dao.selectEnrollmentStudentBySubjectDay(session, enrollment) != 0) {
+									if (dao.selectEnrollmentStudentBySubjectTime(session, enrollment) != 0) {
+										throw new TimeLimitExceededException("시간표중복입니다.");
+									} else {
+										dao.insertEnrollment(session, enrollment);
+									}
+								} else {
+									dao.insertEnrollment(session, enrollment);
+								}
+							}else {
+								throw new MaxSubjectEnrollmentException("수강최대학점 초과입니다.");
+							}
+						}
 					}
-				} else {
-					throw new MaxSubjectEnrollmentException("수강 최대 인원 초과입니다.");
 				}
 			} else {
-				throw new MaxSubjectEnrollmentException("최종학점 초과입니다.");
+				throw new MaxSubjectEnrollmentException("수강 인원 초과입니다.");
 			}
 
 			session.commit();

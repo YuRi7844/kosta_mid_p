@@ -78,8 +78,8 @@ public class EnrollmentDaoImpl implements EnrollmentDao{
 	}
 
 	@Override
-	public int selectEnrollmentStudentByNowCredit(SqlSession session, Enrollment enrollment) {
-		return session.selectOne(makeSqlId("selectEnrollmentStudentByNowCredit"), enrollment);
+	public int selectEnrollmentStudentByNowCredit(SqlSession session, int studentId) {
+		return session.selectOne(makeSqlId("selectEnrollmentStudentByNowCredit"), studentId);
 	}
 
 }

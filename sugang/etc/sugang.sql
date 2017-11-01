@@ -16,7 +16,7 @@ CREATE TABLE STUDENT (
    MAJOR VARCHAR2(30) not null, /* 학과 */
    STUDENT_PW VARCHAR2(30) not null, /* 비밀번호 */
    GRADE NUMBER(1) not null, /* 학년 */
-   MAX_CREDIT NUMBER(2),  /* 제한학점 */
+   MAX_CREDIT NUMBER(2) DEFAULT 0,  /* 제한학점 */
    constraint pk_student_STUDENT_ID primary key(STUDENT_ID)
 );
 
@@ -124,7 +124,10 @@ select count(ENROLLMENT.SUBJECT_id)
 		  								from SUBJECT
 										where SUBJECT.SUBJECT_ID = 0030);
 
-select sum(SUBJECT.SUBJECT_CREDIT)
+select sum(SUBJECT.SUBJECT_CREDIT) 
 from ENROLLMENT, SUBJECT
-where ENROLLMENT.STUDENT_ID = '20120001' 
+where ENROLLMENT.STUDENT_ID = '20140001' 
       and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID;
+      
+      
+insert into student values(20140001,'김호규','경영학과','20140001',4,4);

@@ -96,6 +96,6 @@ public interface EnrollmentDao {
 		/** 
 		 * 현재학점 조회
 		 */
-		int selectEnrollmentStudentByNowCredit(SqlSession session, Enrollment enrollment);
+		int selectEnrollmentStudentByNowCredit(SqlSession session, int studentId);
 
 }
