@@ -36,9 +36,8 @@
 	<!-- 강좌이름으로 조회 -->
 	<select id="selectSubjectByName" parameterType="string" resultMap="subject-resultmap">
 		<include refid="select-sql" />
-		WHERE subject_name = '%'||#{value}||'%'
+		WHERE subject_name LIKE '%'||#{value}||'%'
 	</select>
-	
 	<!-- 요일로 조회 -->
 	<select id="selectSubjectByDay" parameterType="string" resultMap="subject-resultmap">
 		<include refid="select-sql" />
