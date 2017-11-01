@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import sugang.dao.EnrollmentDao;
+import sugang.dao.StudentDao;
 import sugang.dao.SubjectDao;
 import sugang.dao.impl.EnrollmentDaoImpl;
 import sugang.dao.impl.SubjectDaoImpl;
@@ -27,6 +28,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	private SqlSessionFactory factory;
 	private EnrollmentDao dao;
 	private SubjectDao dao2;
+	private StudentDao dao3;
 
 	private EnrollmentServiceImpl() throws IOException {
 		factory = SqlSessionFactoryManager.getInstance().getSqlSessionFactory();
@@ -41,48 +43,49 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	}
 
 	/**
-	 * 기본흐름.
-	 * 1. 신청한 강좌의 최대 수강인원 체크
-	 *  - 1) max미만이면 2번으로
-	 *  - 2) max이상이면 에러메세지 set
-	 * 2. 중복수강신청 체크
-	 *  - 1) 중복이 아니면 3번으로
-	 *  - 2) 예외흐름
-	 * 3. 중복 요일&&시간 체크
-	 *  - 1) 중복이 아니면 수강신청 ok
-	 *  - 2) 중복이면 에러메세지 set
-	 * @throws IOException 
-	 * @throws MaxSubjectEnrollmentException 
-	 * @throws LoginException 
-	 * @throws TimeLimitExceededException 
+	 * 기본흐름. 1. 신청한 강좌의 최대 수강인원 체크 - 1) max미만이면 2번으로 - 2) max이상이면 에러메세지 set 2.
+	 * 중복수강신청 체크 - 1) 중복이 아니면 3번으로 - 2) 예외흐름 3. 중복 요일&&시간 체크 - 1) 중복이 아니면 수강신청 ok -
+	 * 2) 중복이면 에러메세지 set
+	 * 
+	 * @throws IOException
+	 * @throws MaxSubjectEnrollmentException
+	 * @throws LoginException
+	 * @throws TimeLimitExceededException
 	 */
 	@Override
-	public void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException,TimeLimitExceededException {
+	public void addEnrollment(Enrollment enrollment)
+			throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException, TimeLimitExceededException {
 		SqlSession session = null;
 		String errorMessage = null;
 		try {
 			session = factory.openSession();
 			SubjectDaoImpl sub = SubjectDaoImpl.getInstance();
-	
-			if(sub.selectSubjectMaxStudent(session, enrollment.getSubjectId()) > findEnrollmentBySubjectCount(enrollment.getSubjectId())) {
-				if (dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
-						enrollment.getStudentId()) != null) {
+
+			if (sub.selectSubjectMaxStudent(session,
+					enrollment.getSubjectId()) > findEnrollmentBySubjectCount(enrollment.getSubjectId())) {
+				if (dao.selectEnrollmentStudentByNowCredit(session, enrollment) <= dao3
+						.selectStudentById(session, enrollment.getStudentId()).getMaxCredit()) {
+					if (dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
+							enrollment.getStudentId()) != null) {
 						throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
-				}else{
-					if(dao.selectEnrollmentStudentBySubjectDay(session, enrollment) != 0) {
-						if(dao.selectEnrollmentStudentBySubjectTime(session, enrollment) !=0) {
-							throw new TimeLimitExceededException("시간표중복입니다.");
-						}else {
+					} else {
+						if (dao.selectEnrollmentStudentBySubjectDay(session, enrollment) != 0) {
+							if (dao.selectEnrollmentStudentBySubjectTime(session, enrollment) != 0) {
+								throw new TimeLimitExceededException("시간표중복입니다.");
+							} else {
+								dao.insertEnrollment(session, enrollment);
+							}
+						} else {
 							dao.insertEnrollment(session, enrollment);
 						}
-					}else {
-						dao.insertEnrollment(session, enrollment);
 					}
+				} else {
+					throw new MaxSubjectEnrollmentException("수강 최대 인원 초과입니다.");
 				}
-			}else {
-				throw new MaxSubjectEnrollmentException("수강 최대 인원 초과입니다.");
+			} else {
+				throw new MaxSubjectEnrollmentException("최종학점 초과입니다.");
 			}
-			
+
 			session.commit();
 		} finally {
 			session.close();

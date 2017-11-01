@@ -81,4 +81,11 @@
 		  								from SUBJECT
 										where SUBJECT.SUBJECT_ID = #{subjectId})
 	</select>
+	
+	<select id="selectEnrollmentStudentByNowCredit" parameterType="Enrollment" resultType="int">
+	select 	sum(SUBJECT.SUBJECT_CREDIT)
+	from 	ENROLLMENT, SUBJECT
+	where 	ENROLLMENT.STUDENT_ID = #{subjectId} 
+      		and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID;
+    </select>
 </mapper>

@@ -92,5 +92,10 @@ public interface EnrollmentDao {
 		 * @return
 		 */
 		int selectEnrollmentStudentBySubjectTime(SqlSession session, Enrollment enrollment);
+		
+		/** 
+		 * 현재학점 조회
+		 */
+		int selectEnrollmentStudentByNowCredit(SqlSession session, Enrollment enrollment);
 
 }
