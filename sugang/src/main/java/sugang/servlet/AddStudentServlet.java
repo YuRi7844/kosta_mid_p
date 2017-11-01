@@ -55,10 +55,10 @@ public class AddStudentServlet extends HttpServlet {
 			
 		//2. 응답
 			//Redirect방식으로 xxx.jsp로 이동
-			response.sendRedirect("/sugang/student/addstudentresult.jsp");//TODO 이동할 url - xxx.jsp
+			response.sendRedirect("/sugang/student/studenttest/addstudentresult.jsp");//TODO 이동할 url - xxx.jsp
 		}catch(DuplicatedStudentException e){
 			session.setAttribute("errorMessage", e.getMessage());
-			request.getRequestDispatcher("/student/testaddstudent.jsp").forward(request, response);
+			request.getRequestDispatcher("/student/studenttest/testaddstudent.jsp").forward(request, response);
 		}
 		
 		

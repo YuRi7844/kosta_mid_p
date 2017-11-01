@@ -30,13 +30,13 @@ public class FindStudentByNameServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 요청파라미터 조회
-		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
-		String studentName = (String)request.getAttribute("studentName");
-		
 		StudentServiceImpl service = StudentServiceImpl.getInstance();
+		//1. 요청파라미터 조회
+//		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
+		String studentName = request.getParameter("studentName");
+		
+		
 		List<Student> result = service.findStudentByName(studentName);
-		System.out.println(result);
 		
 		//2. 응답
 		//처리결과를 requestScope에 저장
