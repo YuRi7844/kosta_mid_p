@@ -28,22 +28,15 @@ CREATE TABLE SUBJECT (
    SUBJECT_ID NUMBER(6), /* 과목코드 */
    SUBJECT_NAME VARCHAR2(30) not null, /* 과목이름 */
    SUBJECT_CREDIT NUMBER(1) not null, /* 학점수 */
-   COMPLETION VARCHAR2(12), /*이수구분*/
-   MAX_STUDENT NUMBER(2), /*수강최대인원*/
+   COMPLETION VARCHAR2(12) not null, /*이수구분*/
+   MAX_STUDENT NUMBER(2) not null, /*수강최대인원*/
    DAY VARCHAR2(3), /* 요일 */
    SUBJECT_TIME VARCHAR2(3), /* 시간 */
    constraint pk_subject_subject_id primary key(subject_id)
 );
 
-DROP TABLE CODE CASCADE CONSTRAINTS;
+select * from subject;
 
-/* 코드 */
-CREATE TABLE CODE (
-   CODE VARCHAR2(3), /* 코드 */
-   CODE_VALUE VARCHAR2(3), /* 코드값 */
-   DIV VARCHAR2(6), /* 구분 */
-   constraint pk_code_code primary key(code)
-);
 
 ALTER TABLE ENROLLMENT
    ADD
@@ -67,89 +60,6 @@ ALTER TABLE ENROLLMENT
 
 --create sequence student_class_id_seq;
 
--- 학생등록
-insert into student values(20120001,'홍길동','컴퓨터공학과','20120001',1,19);
-insert into student values(20120002,'김명희','경영학과','20120002',2,19);
-insert into student values(20120003,'박병호','무역학과','20120003',3,19);
-insert into student values(20120004,'박보검','심리학과','20120004',4,19);
-insert into student values(20120005,'박명희','경제학과','20120005',2,19);
-insert into student values(20120006,'김철수','소프트웨어과','20120006',2,19);
-insert into student values(20120007,'최영희','신소재학과','20120007',3,19);
-insert into student values(20120008,'장철수','물리학과','20120008',2,19);
-insert into student values(20120009,'박기동','화학과','20120009',4,19);
-insert into student values(20120010,'도다리','사회학과','20120010',3,19);
-insert into student values(20120011,'김호규','사회학과','20120010',3,19);
-insert into student(STUDENT_ID,STUDENT_NAME,MAJOR,STUDENT_PW,GRADE) 
-values(1000,'관리자','교무처','admin',1);
-
--- 강좌 등록
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0011,'자바의정석',3,'전공선택',2,'월');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0012,'자바의정석',3,'전공선택',2,'화');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0013,'자바의정석',3,'전공선택',2,'수');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0014,'자바의정석',3,'전공선택',2,'목');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0015,'자바의정석',3,'전공선택',2,'금');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0016,'자바의정석',3,'전공선택',2,'월');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0017,'자바의정석',3,'전공선택',2,'화');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0018,'자바의정석',3,'전공선택',2,'수');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0019,'자바의정석',3,'전공선택',2,'목');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0020,'자바의정석',3,'전공선택',2,'금');
-
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0002,'집에',3,'전공필수');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0003,'가고싶다',3,'전공선택');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0004,'이딴거',3,'전공필수');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0005,'졸라',3,'교양필수');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0006,'시러',3,'교양필수');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0007,'아아아아아아',3,'전공선택');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0008,'오라클',3,'전공선택');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0009,'언제까지',3,'전공필수');
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0010,'해야하나',3,'교양선택');
-
-insert into subject values(0021,'자바의정석',3,'전공선택',2,'금',1);
-insert into subject values(0022,'자바의정석',3,'전공선택',2,'금',2);
-insert into subject values(0023,'자바의정석',3,'전공선택',2,'금',3);
-insert into subject values(0024,'자바의정석',3,'전공선택',2,'금',4);
-insert into subject values(0025,'자바의정석',3,'전공선택',2,'금',5);
-insert into subject values(0026,'자바의정석',3,'전공선택',2,'금',6);
-insert into subject values(0027,'자바의정석',3,'전공선택',2,'금',7);
-insert into subject values(0028,'자바의정석',3,'전공선택',2,'금',8);
-insert into subject values(0029,'자바의정석',3,'전공선택',2,'금',9);
-insert into subject values(0030,'자바의정석',3,'전공선택',2,'금',1);
-insert into subject values(0031,'자바의정석',3,'전공선택',2,'금',1);
-insert into subject values(0032,'자바의정석',3,'전공선택',2,'금',2);
-insert into subject values(0033,'자바의정석',3,'전공선택',2,'금',3);
-insert into subject values(0034,'자바의정석',3,'전공선택',2,'금',4);
-insert into subject values(0035,'자바의정석',3,'전공선택',2,'금',5);
-insert into subject values(0036,'자바의정석',3,'전공선택',2,'금',6);
-insert into subject values(0037,'자바의정석',3,'전공선택',2,'금',7);
-insert into subject values(0038,'자바의정석',3,'전공선택',2,'금',8);
-insert into subject values(0039,'자바의정석',3,'전공선택',2,'금',9);
--- 학생이 수강신청을 등록한다. values('학생','과목코드')
-insert into ENROLLMENT values(20120001, 0001);
-insert into ENROLLMENT values(20120001, 0002);
-insert into ENROLLMENT values(20120001, 0003);
-insert into ENROLLMENT values(20120001, 0004);
-insert into ENROLLMENT values(20120001, 0005);
-insert into ENROLLMENT values(20120002, 0001);
-insert into ENROLLMENT values(20120002, 0002);
-insert into ENROLLMENT values(20120003, 0009);
-insert into ENROLLMENT values(20120003, 0008);
-insert into ENROLLMENT values(20120003, 0004);
-insert into ENROLLMENT values(20120004, 0005);
-insert into ENROLLMENT values(20120004, 0001);
-insert into ENROLLMENT values(20120008, 0002);
-insert into ENROLLMENT values(20120008, 0009);
-insert into ENROLLMENT values(20120007, 0008);
-insert into ENROLLMENT values(20120007, 0004);
-insert into ENROLLMENT values(20120008, 0004);
-insert into ENROLLMENT values(20120001, 0012);
-insert into ENROLLMENT values(20120001, 0013);
-insert into ENROLLMENT values(20120001, 0014);
-insert into ENROLLMENT values(20120001, 0015);
-insert into ENROLLMENT values(20120001, 0016);
-insert into ENROLLMENT values(20120001, 0017);
-insert into ENROLLMENT values(20120001, 0018);
-insert into ENROLLMENT values(20120001, 0021);
-insert into ENROLLMENT values(20120001, 0031);
 -- 20120001번 학생이 수강신청 한 강좌 모두 조회
 select *
 from ENROLLMENT, SUBJECT
