@@ -48,14 +48,10 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 					enrollment.getStudentId());
 
 			if (eno != null) {
-				if (enrollment.getSubjectId() == eno.getSubjectId()
-						&& enrollment.getStudentId() == eno.getStudentId()) {
 					throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
-				} else {
-					dao.insertEnrollment(session, enrollment);
-				}
+			}else{
+						dao.insertEnrollment(session, enrollment);
 			}
-			dao.insertEnrollment(session, enrollment);
 			session.commit();
 		} finally {
 			session.close();
