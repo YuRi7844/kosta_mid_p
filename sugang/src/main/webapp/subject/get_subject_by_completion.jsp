@@ -15,7 +15,7 @@
 		</thead>
 		<tbody>
 			<c:choose>
-				<c:when test="${requestScope.result !=null }">
+				<c:when test="${!empty requestScope.result }">
 					<c:forEach items="${requestScope.result }" var="result">
 						<tr>
 							<td>${result }</td>
