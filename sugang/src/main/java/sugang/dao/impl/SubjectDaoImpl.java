@@ -54,4 +54,14 @@ public class SubjectDaoImpl implements SubjectDao{
 	public int selectSubjectMaxStudent(SqlSession session, int subjectId) {
 		return session.selectOne(makeSqlId("selectSubjectMaxStudent"), subjectId);
 	}
+
+	@Override
+	public String selectSubjectDay(SqlSession session, int subjectId) {
+		return session.selectOne(makeSqlId("selectSubjectDay"), subjectId);
+	}
+	
+	@Override
+	public String selectSubjectTime(SqlSession session, int subjectId) {
+		return session.selectOne(makeSqlId("selectSubjectTime"), subjectId);
+	}
 }

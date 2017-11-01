@@ -56,4 +56,16 @@
 		FROM subject
 		WHERE subject_id = #{value}
 	</select>
+	<select id="selectSubjectDay" parameterType="_int" resultType="string">
+		SELECT 
+			day
+		FROM subject
+		WHERE subject_id = #{value}
+	</select>
+	<select id="selectSubjectTime" parameterType="_int" resultType="string">
+		SELECT 
+			subject_time
+		FROM subject
+		WHERE subject_id = #{value}
+	</select>
 </mapper>

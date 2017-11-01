@@ -54,4 +54,15 @@ public interface SubjectDao {
 	 * @return
 	 */
 	int selectSubjectMaxStudent(SqlSession session, int subjectId);
+	
+	/**
+	 * 과목코드에 해당하는 강좌를 찾아서 해당 강좌의 요일과 시간을 return
+	 * @param session
+	 * @param subjectId
+	 * @return
+	 */
+	String selectSubjectDay(SqlSession session, int subjectId);
+	
+	
+	String selectSubjectTime(SqlSession session, int subjectId);
 }
