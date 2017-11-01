@@ -40,7 +40,7 @@ public class FindStudentByIdServlet extends HttpServlet {
 		//처리결과를 requestScope에 저장
 		request.setAttribute("result", result);
 		//요청디스패치방식
-		request.getRequestDispatcher("").forward(request, response);
+		request.getRequestDispatcher("/student/studenttest/findStudentByIdResult.jsp").forward(request, response);
 	}
 
 }

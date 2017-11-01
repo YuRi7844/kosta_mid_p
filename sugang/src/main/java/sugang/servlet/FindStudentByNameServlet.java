@@ -36,12 +36,13 @@ public class FindStudentByNameServlet extends HttpServlet {
 		
 		StudentServiceImpl service = StudentServiceImpl.getInstance();
 		List<Student> result = service.findStudentByName(studentName);
+		System.out.println(result);
 		
 		//2. 응답
 		//처리결과를 requestScope에 저장
 		request.setAttribute("result", result);
 		//요청디스패치방식
-		request.getRequestDispatcher("").forward(request, response);
+		request.getRequestDispatcher("/student/studenttest/findStudentByNameResult.jsp").forward(request, response);
 	}
 
 }

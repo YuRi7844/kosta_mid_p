@@ -6,7 +6,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>findStudentById</h3>
-
+<h2>findStudentById</h2>
+<form action="/sugang/findStudentById" method="post">
+	<h2>학번으로 조회</h2>
+	<input type="number" name="studentId"/>
+	<button type="submit">조회</button>
+</form>
 </body>
 </html>

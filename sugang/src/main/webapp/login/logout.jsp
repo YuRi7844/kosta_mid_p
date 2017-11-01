@@ -6,6 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="/index.jsp">메인페이지</a>
+<a href="/sugang/login/login.jsp">로그아웃</a>
+
 
 </body>
 </html>
