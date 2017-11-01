@@ -14,6 +14,7 @@ import sugang.dao.EnrollmentDao;
 import sugang.dao.StudentDao;
 import sugang.dao.SubjectDao;
 import sugang.dao.impl.EnrollmentDaoImpl;
+import sugang.dao.impl.StudentDaoImpl;
 import sugang.dao.impl.SubjectDaoImpl;
 import sugang.exception.DuplicatedStudentException;
 import sugang.exception.DuplicatedSubjectException;
@@ -60,10 +61,11 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 		try {
 			session = factory.openSession();
 			SubjectDaoImpl sub = SubjectDaoImpl.getInstance();
-
+			StudentDaoImpl stu = StudentDaoImpl.getInstance();
+			
 			if (sub.selectSubjectMaxStudent(session,
 					enrollment.getSubjectId()) > findEnrollmentBySubjectCount(enrollment.getSubjectId())) {
-				if (dao.selectEnrollmentStudentByNowCredit(session, enrollment) <= dao3
+				if (dao.selectEnrollmentStudentByNowCredit(session, enrollment) <= stu
 						.selectStudentById(session, enrollment.getStudentId()).getMaxCredit()) {
 					if (dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
 							enrollment.getStudentId()) != null) {
