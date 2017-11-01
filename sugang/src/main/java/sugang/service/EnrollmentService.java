@@ -3,6 +3,7 @@ package sugang.service;
 import java.io.IOException;
 import java.util.List;
 
+import javax.naming.TimeLimitExceededException;
 import javax.security.auth.login.LoginException;
 
 import sugang.exception.DuplicatedStudentException;
@@ -24,8 +25,9 @@ public interface EnrollmentService {
  * @throws IOException 
  * @throws MaxSubjectEnrollmentException 
  * @throws LoginException 
+ * @throws TimeLimitExceededException 
     */
-   void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException, LoginException;
+   void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException, TimeLimitExceededException;
    
    /**
     * enrollment 정보를 강좌 id로 삭제하는 메소드

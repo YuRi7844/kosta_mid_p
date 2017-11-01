@@ -2,6 +2,7 @@ package sugang.servlet;
 
 import java.io.IOException;
 
+import javax.naming.TimeLimitExceededException;
 import javax.security.auth.login.LoginException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,7 +55,7 @@ public class AddEnrollmentServlet extends HttpServlet {
 		} catch (MaxSubjectEnrollmentException e) {
 			e.printStackTrace();
 			request.setAttribute("message", e.getMessage());
-		} catch (LoginException e) {
+		} catch (TimeLimitExceededException e) {
 			request.setAttribute("message", e.getMessage());
 			e.printStackTrace();
 		} 

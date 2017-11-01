@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import javax.naming.TimeLimitExceededException;
 import javax.security.auth.login.LoginException;
 
 import org.apache.ibatis.session.SqlSession;
@@ -53,9 +54,10 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	 * @throws IOException 
 	 * @throws MaxSubjectEnrollmentException 
 	 * @throws LoginException 
+	 * @throws TimeLimitExceededException 
 	 */
 	@Override
-	public void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException, LoginException {
+	public void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException,TimeLimitExceededException {
 		SqlSession session = null;
 		String errorMessage = null;
 		try {
@@ -69,7 +71,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 				}else{
 					if(dao.selectEnrollmentStudentBySubjectDay(session, enrollment) != 0) {
 						if(dao.selectEnrollmentStudentBySubjectTime(session, enrollment) !=0) {
-							//익셉션
+							throw new TimeLimitExceededException("시간표중복입니다.");
 						}else {
 							dao.insertEnrollment(session, enrollment);
 						}
