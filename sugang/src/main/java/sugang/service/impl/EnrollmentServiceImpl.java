@@ -60,25 +60,20 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 		String errorMessage = null;
 		try {
 			session = factory.openSession();
-			Enrollment eno = dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
-					enrollment.getStudentId());
 			SubjectDaoImpl sub = SubjectDaoImpl.getInstance();
-			System.out.println(eno+" "+sub);
-			int maxCount = sub.selectSubjectMaxStudent(session, enrollment.getSubjectId());
-			System.out.println("max : "+maxCount);
-			int curr = findEnrollmentBySubjectCount(enrollment.getSubjectId());
-			System.out.println("max : "+maxCount+"curr : "+curr);
-			System.out.println(curr);
-			if(maxCount > curr) {
-				if (eno != null) {
+	
+			if(sub.selectSubjectMaxStudent(session, enrollment.getSubjectId()) > findEnrollmentBySubjectCount(enrollment.getSubjectId())) {
+				if (dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
+						enrollment.getStudentId()) != null) {
 						throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
 				}else{
 					if(dao.selectEnrollmentStudentBySubjectDay(session, enrollment) != 0) {
-						throw new LoginException("같은 요일에 이미 수강했다");
-					}else {
 						if(dao.selectEnrollmentStudentBySubjectTime(session, enrollment) !=0) {
 							//익셉션
+						}else {
+							dao.insertEnrollment(session, enrollment);
 						}
+					}else {
 						dao.insertEnrollment(session, enrollment);
 					}
 				}
