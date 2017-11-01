@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>findStudentByName</h2>
-<form action="/sugang/findStudentByName" method="post">
+<form action="/sugang/findStudentByName" method="POST">
 <input type="text" name="studentName" />
 <button type="submit">조회</button>
 </form>	
