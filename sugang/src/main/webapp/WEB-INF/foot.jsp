@@ -1,0 +1,20 @@
+<%@ page contentType="text/html;charset=utf-8"%>
+<footer style="margin-top: 10%;">
+<hr>
+	<div style="max-width:100%; height: 0 auto;">
+			<p style="font-size: 14px; text-align: left;">주소 : 경기도 성남시 분당구 삼평동 대왕판교로 670길 유스페이스2 B동 8층 7 강의실<br> 
+			판교교육장 컨소시엄   TEL : 070-5039-5803,5805<br>
+			FAX : 070-4009-0075
+			</p>
+	
+			||&nbsp;<a href="http://www.kosta.or.kr/" style="text-decoration: none;">Kosta홈</a>
+			||
+			<a href="http://edu.kosta.or.kr/index.action" style="text-decoration: none;">edu Kosta(교육훈련 사이트)홈</a>
+			||
+			<a href="http://www.snu.ac.kr/index.html" style="text-decoration: none;">서울대학교</a>
+			||
+			<a href="http://www.korea.ac.kr/mbshome/mbs/university/index.do" style="text-decoration: none">고려대학교</a>
+			||
+			<a href="http://www.yonsei.ac.kr/sc/index.jsp" style="text-decoration: none">연세대학교</a>&nbsp;||
+	</div>
+</footer>
