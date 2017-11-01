@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import sugang.exception.DuplicatedStudentException;
 import sugang.exception.DuplicatedSubjectException;
+import sugang.exception.MaxSubjectEnrollmentException;
 import sugang.service.EnrollmentService;
 import sugang.service.impl.EnrollmentServiceImpl;
 import sugang.vo.Enrollment;
@@ -45,6 +46,9 @@ public class AddEnrollmentServlet extends HttpServlet {
 		try {
 			service.addEnrollment(enrollment);
 		} catch (DuplicatedSubjectException e) {
+			e.printStackTrace();
+			request.setAttribute("message", e.getMessage());
+		} catch (MaxSubjectEnrollmentException e) {
 			e.printStackTrace();
 			request.setAttribute("message", e.getMessage());
 		}

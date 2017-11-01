@@ -13,6 +13,7 @@ import sugang.dao.impl.EnrollmentDaoImpl;
 import sugang.dao.impl.SubjectDaoImpl;
 import sugang.exception.DuplicatedStudentException;
 import sugang.exception.DuplicatedSubjectException;
+import sugang.exception.MaxSubjectEnrollmentException;
 import sugang.service.EnrollmentService;
 import sugang.util.SqlSessionFactoryManager;
 import sugang.vo.Enrollment;
@@ -48,9 +49,10 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	 *  - 1) 중복이 아니면 수강신청 ok
 	 *  - 2) 중복이면 에러메세지 set
 	 * @throws IOException 
+	 * @throws MaxSubjectEnrollmentException 
 	 */
 	@Override
-	public void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException {
+	public void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException {
 		SqlSession session = null;
 		String errorMessage = null;
 		try {
@@ -71,7 +73,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 							dao.insertEnrollment(session, enrollment);
 				}
 			}else {
-				errorMessage = "최대 수강인원을 초과하였습니다.";
+				throw new MaxSubjectEnrollmentException("수강 최대 인원 초과입니다.");
 			}
 			
 			session.commit();

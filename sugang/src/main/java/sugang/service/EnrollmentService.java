@@ -5,6 +5,7 @@ import java.util.List;
 
 import sugang.exception.DuplicatedStudentException;
 import sugang.exception.DuplicatedSubjectException;
+import sugang.exception.MaxSubjectEnrollmentException;
 import sugang.vo.Enrollment;
 
 public interface EnrollmentService {
@@ -19,8 +20,9 @@ public interface EnrollmentService {
     * @param enrollment 
  * @throws DuplicatedSubjectException 
  * @throws IOException 
+ * @throws MaxSubjectEnrollmentException 
     */
-   void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException;
+   void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException;
    
    /**
     * enrollment 정보를 강좌 id로 삭제하는 메소드

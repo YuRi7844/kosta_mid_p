@@ -83,7 +83,7 @@ insert into student(STUDENT_ID,STUDENT_NAME,MAJOR,STUDENT_PW,GRADE)
 values(1000,'관리자','교무처','admin',1);
 
 -- 강좌 등록
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0001,'자바의정석',3,'전공선택');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT) values(0011,'자바의정석',3,'전공선택',2);
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0002,'집에',3,'전공필수');
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0003,'가고싶다',3,'전공선택');
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0004,'이딴거',3,'전공필수');
