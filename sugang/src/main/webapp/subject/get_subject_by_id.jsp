@@ -16,7 +16,7 @@
 	<tbody>
 		<tr>
 			<c:choose>
-				<c:when test="${requestScope.result !=null }">
+				<c:when test="${!empty requestScope.result }">
 					<td>${requestScope.result }</td>
 				</c:when>
 				<c:otherwise>

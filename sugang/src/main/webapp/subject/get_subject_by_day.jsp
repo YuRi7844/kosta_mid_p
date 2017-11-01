@@ -15,7 +15,7 @@
 		</thead>
 		<tbody>
 			<c:choose>
-				<c:when test="${requestScope.result !=null }">
+				<c:when test="${!empty requestScope.result }">
 					<c:forEach items="${requestScope.result }" var="result">
 						<tr>
 							<td>${result }</td>
@@ -24,7 +24,9 @@
 				</c:when>
 				<c:otherwise>
 					<tr>
-						<td>조회된 과목이 없습니다.</td>
+						<td>
+							조회된 과목이 없습니다.
+						</td>
 					</tr>
 				</c:otherwise>
 			</c:choose>
