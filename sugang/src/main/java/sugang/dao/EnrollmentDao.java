@@ -77,6 +77,20 @@ public interface EnrollmentDao {
 		 */
 		Enrollment selectEnrollmentBySubjectIdAndStudentId(SqlSession session, int sujectId, int studnetId);
 
+		/**
+		 * 과목 요일 표시!
+		 * @param session
+		 * @param enrollment
+		 * @return
+		 */
+		int selectEnrollmentStudentBySubjectDay(SqlSession session, Enrollment enrollment);
 		
+		/**
+		 * 과목 시간 표시!
+		 * @param session
+		 * @param enrollment
+		 * @return
+		 */
+		int selectEnrollmentStudentBySubjectTime(SqlSession session, Enrollment enrollment);
 
 }

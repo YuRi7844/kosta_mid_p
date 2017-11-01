@@ -3,6 +3,8 @@ package sugang.service;
 import java.io.IOException;
 import java.util.List;
 
+import javax.security.auth.login.LoginException;
+
 import sugang.exception.DuplicatedStudentException;
 import sugang.exception.DuplicatedSubjectException;
 import sugang.exception.MaxSubjectEnrollmentException;
@@ -21,8 +23,9 @@ public interface EnrollmentService {
  * @throws DuplicatedSubjectException 
  * @throws IOException 
  * @throws MaxSubjectEnrollmentException 
+ * @throws LoginException 
     */
-   void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException;
+   void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException, LoginException;
    
    /**
     * enrollment 정보를 강좌 id로 삭제하는 메소드

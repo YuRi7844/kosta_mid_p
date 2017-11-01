@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%=request.getAttribute("message") %>
 
 등록성공
 

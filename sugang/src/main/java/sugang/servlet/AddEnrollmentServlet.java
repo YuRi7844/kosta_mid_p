@@ -1,6 +1,8 @@
 package sugang.servlet;
 
 import java.io.IOException;
+
+import javax.security.auth.login.LoginException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,13 +47,17 @@ public class AddEnrollmentServlet extends HttpServlet {
 
 		try {
 			service.addEnrollment(enrollment);
+		
 		} catch (DuplicatedSubjectException e) {
 			e.printStackTrace();
 			request.setAttribute("message", e.getMessage());
 		} catch (MaxSubjectEnrollmentException e) {
 			e.printStackTrace();
 			request.setAttribute("message", e.getMessage());
-		}
+		} catch (LoginException e) {
+			request.setAttribute("message", e.getMessage());
+			e.printStackTrace();
+		} 
 		
 		request.getRequestDispatcher("/enrollment/addEnrollment.jsp").forward(request, response);
 

@@ -24,10 +24,12 @@ public class testEnrollment {
 			EnrollmentDao dao = EnrollmentDaoImpl.getInstance();
 			System.out.println("=====학생 등록 조회===");
 			//Enrollment enrollment = new Enrollment(20120010,0010);
-			int flag = dao.insertEnrollment(session,new Enrollment(20120010,6));
-			System.out.println(flag);
+		/*	int flag = dao.insertEnrollment(session,new Enrollment(20120010,6));
+			System.out.println(flag);*/
 			
-			System.out.println("===== 학생 삭제 조회=====");
+			int a = dao.selectEnrollmentStudentBySubjectDay(session, new Enrollment(20120001, 12));
+			System.out.println(a);
+/*			System.out.println("===== 학생 삭제 조회=====");
 			int flag2 = dao.deleteEnrollmentByStudentId(session, 20120010);
 			System.out.println(flag2);
 			
@@ -55,7 +57,7 @@ public class testEnrollment {
 			List<Enrollment>list3 = dao.selectEnrollmentByStudentId(session, 20120001);
 			for(Enrollment enro : list3) {
 				System.out.printf("%d, %d %n", enro.getStudentId(), enro.getSubjectId());
-			}
+			}*/
 			
 			
 			session.commit();

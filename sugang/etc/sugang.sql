@@ -83,7 +83,17 @@ insert into student(STUDENT_ID,STUDENT_NAME,MAJOR,STUDENT_PW,GRADE)
 values(1000,'관리자','교무처','admin',1);
 
 -- 강좌 등록
-insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT) values(0011,'자바의정석',3,'전공선택',2);
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0011,'자바의정석',3,'전공선택',2,'월');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0012,'자바의정석',3,'전공선택',2,'화');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0013,'자바의정석',3,'전공선택',2,'수');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0014,'자바의정석',3,'전공선택',2,'목');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0015,'자바의정석',3,'전공선택',2,'금');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0016,'자바의정석',3,'전공선택',2,'월');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0017,'자바의정석',3,'전공선택',2,'화');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0018,'자바의정석',3,'전공선택',2,'수');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0019,'자바의정석',3,'전공선택',2,'목');
+insert into subject(subject_id,subject_name,subject_credit,COMPLETION,MAX_STUDENT,DAY) values(0020,'자바의정석',3,'전공선택',2,'금');
+
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0002,'집에',3,'전공필수');
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0003,'가고싶다',3,'전공선택');
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0004,'이딴거',3,'전공필수');
@@ -94,6 +104,25 @@ insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(00
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0009,'언제까지',3,'전공필수');
 insert into subject(subject_id,subject_name,subject_credit,COMPLETION) values(0010,'해야하나',3,'교양선택');
 
+insert into subject values(0021,'자바의정석',3,'전공선택',2,'금',1);
+insert into subject values(0022,'자바의정석',3,'전공선택',2,'금',2);
+insert into subject values(0023,'자바의정석',3,'전공선택',2,'금',3);
+insert into subject values(0024,'자바의정석',3,'전공선택',2,'금',4);
+insert into subject values(0025,'자바의정석',3,'전공선택',2,'금',5);
+insert into subject values(0026,'자바의정석',3,'전공선택',2,'금',6);
+insert into subject values(0027,'자바의정석',3,'전공선택',2,'금',7);
+insert into subject values(0028,'자바의정석',3,'전공선택',2,'금',8);
+insert into subject values(0029,'자바의정석',3,'전공선택',2,'금',9);
+insert into subject values(0030,'자바의정석',3,'전공선택',2,'금',1);
+insert into subject values(0031,'자바의정석',3,'전공선택',2,'금',1);
+insert into subject values(0032,'자바의정석',3,'전공선택',2,'금',2);
+insert into subject values(0033,'자바의정석',3,'전공선택',2,'금',3);
+insert into subject values(0034,'자바의정석',3,'전공선택',2,'금',4);
+insert into subject values(0035,'자바의정석',3,'전공선택',2,'금',5);
+insert into subject values(0036,'자바의정석',3,'전공선택',2,'금',6);
+insert into subject values(0037,'자바의정석',3,'전공선택',2,'금',7);
+insert into subject values(0038,'자바의정석',3,'전공선택',2,'금',8);
+insert into subject values(0039,'자바의정석',3,'전공선택',2,'금',9);
 -- 학생이 수강신청을 등록한다. values('학생','과목코드')
 insert into ENROLLMENT values(20120001, 0001);
 insert into ENROLLMENT values(20120001, 0002);
@@ -112,7 +141,15 @@ insert into ENROLLMENT values(20120008, 0009);
 insert into ENROLLMENT values(20120007, 0008);
 insert into ENROLLMENT values(20120007, 0004);
 insert into ENROLLMENT values(20120008, 0004);
-
+insert into ENROLLMENT values(20120001, 0012);
+insert into ENROLLMENT values(20120001, 0013);
+insert into ENROLLMENT values(20120001, 0014);
+insert into ENROLLMENT values(20120001, 0015);
+insert into ENROLLMENT values(20120001, 0016);
+insert into ENROLLMENT values(20120001, 0017);
+insert into ENROLLMENT values(20120001, 0018);
+insert into ENROLLMENT values(20120001, 0021);
+insert into ENROLLMENT values(20120001, 0031);
 -- 20120001번 학생이 수강신청 한 강좌 모두 조회
 select *
 from ENROLLMENT, SUBJECT
@@ -158,3 +195,21 @@ select SUBJECT_id,STUDENT_ID
 from enrollment
 where    SUBJECT_id = '0001'
       AND STUDENT_ID='20120001';
+      
+select count(ENROLLMENT.SUBJECT_id)
+	  from enrollment, SUBJECT
+	  where ENROLLMENT.student_id = 20120001 
+			 and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID
+			 and not subject.subject_id = 12
+			 and SUBJECT.DAY = (select SUBJECT.DAY
+		  						from SUBJECT
+								where SUBJECT.SUBJECT_ID = 0012);
+
+	select count(ENROLLMENT.SUBJECT_id)
+	  from enrollment, SUBJECT
+	  where ENROLLMENT.student_id = 20120001 
+			 and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID
+			 and not subject.subject_id = 30
+			 and SUBJECT.SUBJECT_TIME = (select SUBJECT.SUBJECT_TIME
+		  								from SUBJECT
+										where SUBJECT.SUBJECT_ID = 0030);

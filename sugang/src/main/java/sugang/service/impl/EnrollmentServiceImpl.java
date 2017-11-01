@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import javax.security.auth.login.LoginException;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -50,9 +52,10 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	 *  - 2) 중복이면 에러메세지 set
 	 * @throws IOException 
 	 * @throws MaxSubjectEnrollmentException 
+	 * @throws LoginException 
 	 */
 	@Override
-	public void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException {
+	public void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException, MaxSubjectEnrollmentException, LoginException {
 		SqlSession session = null;
 		String errorMessage = null;
 		try {
@@ -70,7 +73,14 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 				if (eno != null) {
 						throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
 				}else{
-							dao.insertEnrollment(session, enrollment);
+					if(dao.selectEnrollmentStudentBySubjectDay(session, enrollment) != 0) {
+						throw new LoginException("같은 요일에 이미 수강했다");
+					}else {
+						if(dao.selectEnrollmentStudentBySubjectTime(session, enrollment) !=0) {
+							//익셉션
+						}
+						dao.insertEnrollment(session, enrollment);
+					}
 				}
 			}else {
 				throw new MaxSubjectEnrollmentException("수강 최대 인원 초과입니다.");

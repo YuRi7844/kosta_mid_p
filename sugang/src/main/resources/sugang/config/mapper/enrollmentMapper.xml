@@ -28,6 +28,7 @@
 	<!-- selectEnrollment -->
 	<select id="selectEnrollment" resultType="Enrollment">
 		<include refid="select-sql-enrollment"/>
+		order by student_id
 	</select>
 
 
@@ -57,5 +58,27 @@
 	<select id="selectEnrollmentBySubjectIdANDStudentId" parameterType="java.util.HashMap" resultType="Enrollment">
 		<include refid="select-sql-enrollment"/>
 		where subject_id = #{subjectId} and student_id = #{studentId}
+	</select>
+	
+	<select id="selectEnrollmentStudentBySubjectDay" parameterType="Enrollment" resultType="int">
+	  select count(ENROLLMENT.SUBJECT_id)
+	  from enrollment, SUBJECT
+	  where ENROLLMENT.student_id = #{studentId} 
+			 and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID
+			 and not subject.subject_id = #{subjectId}
+			 and SUBJECT.DAY = (select SUBJECT.DAY
+		  						from SUBJECT
+								where SUBJECT.SUBJECT_ID = #{subjectId})
+	</select>
+	
+	<select id="selectEnrollmentStudentBySubjectTime"  parameterType="Enrollment" resultType="int">
+	  select count(ENROLLMENT.SUBJECT_id)
+	  from enrollment, SUBJECT
+	  where ENROLLMENT.student_id =  #{studentId}  
+			 and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID
+			 and not subject.subject_id = #{subjectId}
+			 and SUBJECT.SUBJECT_TIME = (select SUBJECT.SUBJECT_TIME
+		  								from SUBJECT
+										where SUBJECT.SUBJECT_ID = #{subjectId})
 	</select>
 </mapper>
