@@ -46,5 +46,5 @@ public interface SubjectService {
 	 * @param studentId
 	 * @return
 	 */
-	int findSubjectMaxStudent(int studentId);
+	int findSubjectMaxStudent(int subjectId);
 }

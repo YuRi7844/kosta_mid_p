@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import sugang.dao.EnrollmentDao;
 import sugang.dao.SubjectDao;
 import sugang.dao.impl.EnrollmentDaoImpl;
+import sugang.dao.impl.SubjectDaoImpl;
 import sugang.exception.DuplicatedStudentException;
 import sugang.exception.DuplicatedSubjectException;
 import sugang.service.EnrollmentService;
@@ -36,22 +37,39 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	}
 
 	/**
-	 * 저기 list에서 나온 두개의 값이 studentId == enrollment.studentid && subjectId =
-	 * enrollment.subjectId
+	 * 기본흐름.
+	 * 1. 신청한 강좌의 최대 수강인원 체크
+	 *  - 1) max미만이면 2번으로
+	 *  - 2) max이상이면 에러메세지 set
+	 * 2. 중복수강신청 체크
+	 *  - 1) 중복이 아니면 3번으로
+	 *  - 2) 예외흐름
+	 * 3. 중복 요일&&시간 체크
+	 *  - 1) 중복이 아니면 수강신청 ok
+	 *  - 2) 중복이면 에러메세지 set
+	 * @throws IOException 
 	 */
 	@Override
-	public void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException {
+	public void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException {
 		SqlSession session = null;
+		String errorMessage = null;
 		try {
 			session = factory.openSession();
 			Enrollment eno = dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
 					enrollment.getStudentId());
-
-			if (eno != null) {
-					throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
-			}else{
-						dao.insertEnrollment(session, enrollment);
+			SubjectDaoImpl sub = SubjectDaoImpl.getInstance();
+			int maxCount = sub.selectSubjectMaxStudent(session, eno.getSubjectId());
+			
+			if(maxCount > findEnrollmentBySubjectCount(eno.getStudentId())) {
+				if (eno != null) {
+						throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
+				}else{
+							dao.insertEnrollment(session, enrollment);
+				}
+			}else {
+				errorMessage = "최대 수강인원을 초과하였습니다.";
 			}
+			
 			session.commit();
 		} finally {
 			session.close();
