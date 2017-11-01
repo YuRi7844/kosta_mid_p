@@ -30,6 +30,7 @@
 				</c:otherwise>
 			</c:choose>
 	</tbody>
+	<a href="/sugang/enrollment/view.jsp">초기화면으로
 </table>
 </body>
 </html>

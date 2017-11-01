@@ -25,6 +25,6 @@
  %>
  죄송하네요.
  <%} %>
-
+<a href="/sugang/enrollment/view.jsp">초기화면으로
 </body>
 </html>

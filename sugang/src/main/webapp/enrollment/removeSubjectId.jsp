@@ -7,5 +7,7 @@
 </head>
 <body>
 삭제완료
+
+<a href="/sugang/enrollment/view.jsp">초기화면으로
 </body>
 </html>

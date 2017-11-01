@@ -6,6 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%=request.getAttribute("message") %>
+
+등록성공
+
+<a href="/sugang/enrollment/view.jsp">초기화면으로
 </body>
 </html>
