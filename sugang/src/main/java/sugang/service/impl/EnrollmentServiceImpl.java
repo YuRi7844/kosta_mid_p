@@ -58,9 +58,13 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 			Enrollment eno = dao.selectEnrollmentBySubjectIdAndStudentId(session, enrollment.getSubjectId(),
 					enrollment.getStudentId());
 			SubjectDaoImpl sub = SubjectDaoImpl.getInstance();
-			int maxCount = sub.selectSubjectMaxStudent(session, eno.getSubjectId());
-			
-			if(maxCount > findEnrollmentBySubjectCount(eno.getStudentId())) {
+			System.out.println(eno+" "+sub);
+			int maxCount = sub.selectSubjectMaxStudent(session, enrollment.getSubjectId());
+			System.out.println("max : "+maxCount);
+			int curr = findEnrollmentBySubjectCount(enrollment.getSubjectId());
+			System.out.println("max : "+maxCount+"curr : "+curr);
+			System.out.println(curr);
+			if(maxCount > curr) {
 				if (eno != null) {
 						throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
 				}else{

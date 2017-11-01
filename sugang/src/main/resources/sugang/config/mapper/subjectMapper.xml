@@ -51,7 +51,9 @@
 	</select>
 	<!-- 수강최대인원 조회 -->
 	<select id="selectSubjectMaxStudent" parameterType="_int" resultType="_int">
-		<include refid="select-sql"></include>
+		SELECT 
+			max_student
+		FROM subject
 		WHERE subject_id = #{value}
 	</select>
 </mapper>

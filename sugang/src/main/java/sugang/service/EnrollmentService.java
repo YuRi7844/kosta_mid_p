@@ -1,5 +1,6 @@
 package sugang.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import sugang.exception.DuplicatedStudentException;
@@ -17,8 +18,9 @@ public interface EnrollmentService {
     *    2a. 기존 저장된 enrollment와 같은 값이 있으면 추가하지 않는다.
     * @param enrollment 
  * @throws DuplicatedSubjectException 
+ * @throws IOException 
     */
-   void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException;
+   void addEnrollment(Enrollment enrollment) throws DuplicatedSubjectException, IOException;
    
    /**
     * enrollment 정보를 강좌 id로 삭제하는 메소드
