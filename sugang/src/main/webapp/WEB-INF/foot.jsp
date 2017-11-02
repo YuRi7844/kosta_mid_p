@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8"%>
- <footer style="margin-top: 10%;">
+<footer style="margin-top: 10%; position:fixed; bottom:0; width:100%;">
 <hr>
 <table>
 <tr>

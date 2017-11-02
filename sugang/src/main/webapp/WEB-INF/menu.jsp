@@ -6,17 +6,20 @@
 		<nav>
 			<ul class="mainmenu">
 				<li class="mainmenuList">
-					<a class="mainmenulink" href="">수강신청조회</a>
+				<a class="mainmenulink" href="/sugang/login_student.jsp">메인으로</a>
+				</li>
+				<li class="mainmenuList">
+				<a class="mainmenulink" href="/sugang/notice.jsp">공지사항</a>
 				</li>
 				<li class="mainmenuList">
 				<a class="mainmenulink" href="">수강신청</a>
 				</li>
 				<li class="mainmenuList">
-				<a class="mainmenulink" href="">공지사항</a>
+					<a class="mainmenulink" href="">수강신청조회</a>
 				</li>
-				<li class="mainmenuList">
-				<a class="mainmenulink" href="/sugang/login_student.jsp">메인으로</a>
-			</li>
+				
+				
+				
 			</ul>
 		</nav>
 	</c:when>
@@ -25,14 +28,13 @@
 		<nav>
 			<ul class="mainmenu">
 				<li class="mainmenuList">
+					<a class="mainmenulink" href="/sugang/notice.jsp">공지사항</a>
+				</li>
+				<li class="mainmenuList">
 					<a class="mainmenulink" href="">학생관리</a>
 				</li>
-				<li class="mainmenuList">
-					<a class="mainmenulink" href="">공지사항</a>
-				</li>
-				<li class="mainmenuList">
-					<a class="mainmenulink" href="/sugang/login_sess.jsp">메인으로</a>
-				</li>
+				
+				
 			</ul>
 		</nav>
 	</c:otherwise>
