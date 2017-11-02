@@ -29,7 +29,7 @@ footer{
 table {
 	border: 1px solid #bcbcbc;
     width: 80%;
-    height: 15em;
+    height: 4em;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -41,13 +41,13 @@ table {
 }
 .th {
 	border: 1px solid #bcbcbc;
-    width: 90%;
+    width: 50%;
     height: 1.5em;
 }
 .td {
 	border: 1px solid #bcbcbc;
 	text-align: center;
-	font-size: 0.5em;
+	font-size: 1em;
 }
 
 .find{
@@ -63,12 +63,12 @@ table {
 .topscroll{
 	overflow-y: scroll;
 	overflow-x: scroll;
-	height: 30em
+	height: 15em
 }
 .scroll{
 	overflow-y: scroll;
 	overflow-x: scroll;
-	height: 30em
+	height: 22em
 }
 .subtitle{
 	font-size:2em;

@@ -100,7 +100,7 @@
 								List<Subject> subList = (List<Subject>)request.getAttribute("subAllList");
 								for(int i = 0; i < subList.size(); i++){
 						%>
-							<tr class="tr">
+							<tr>
 								<%-- <td class="td">
 									${result } <button class="loginbutton" type="submit">신청</button>
 								</td> --%>
