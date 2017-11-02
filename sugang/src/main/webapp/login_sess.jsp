@@ -119,5 +119,7 @@ p {
 			
 		</article>
 	</div>
+	
+			<a href="/sugang/logout">로그아웃</a>
 </body>
 </html>
