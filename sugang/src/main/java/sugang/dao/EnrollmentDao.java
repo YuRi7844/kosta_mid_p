@@ -104,5 +104,9 @@ public interface EnrollmentDao {
 		 * 현재학점 조회
 		 */
 		int selectEnrollmentStudentByNowCredit(SqlSession session, int studentId);
-
+		
+		/**
+		 * 
+		 */
+		List<Integer> selectEnrollmentByStudentIdInt(SqlSession session, int studentId); 
 }

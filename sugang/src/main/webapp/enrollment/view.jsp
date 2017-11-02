@@ -6,6 +6,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
+
+
 	<h1>enrollment 전체조회</h1>
 	<form action="/sugang/findEnrollment">
 		<input type="submit" value="enrollment전체조회">
