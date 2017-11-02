@@ -19,37 +19,62 @@
 			<option>교양선택</option>
 		</select>
 		<button type="submit">조회</button>
-	<table class="table">
-		<thead>
-			<tr>
-				<th class="th">이수구분으로 조회</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:choose>
-				<c:when test="${!empty requestScope.result }">
-					<c:forEach items="${requestScope.result }" var="result">
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="th">이수구분으로 조회</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:choose>
+					<c:when test="${!empty requestScope.result }">
+						<c:forEach items="${requestScope.result }" var="result">
+							<tr>
+								<td class="td">
+									${result } <button class="loginbutton" type="submit">신청</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
 						<tr>
-							<td class="td">
-								${result } <button class="loginbutton" type="submit">신청</button>
-							</td>
+							<td class="td">조회된 과목이 없습니다.</td>
 						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<tr>
-						<td class="td">조회된 과목이 없습니다.</td>
-					</tr>
-				</c:otherwise>
-			</c:choose>
-		</tbody>
-	</table>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
 	</div>
 </form>
-<form action="/sugang/removeEnrollment">
-<div class="scroll">
-
-</div>
+<form action="/sugang/getSubjectEnrollmentList">
+	<div class="scroll">
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="th">이수구분으로 조회</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:choose>
+					<c:when test="${!empty requestScope.list }">
+						<c:forEach items="${requestScope.list }" var="result">
+							<tr>
+								<td class="td">
+									${result } <button class="loginbutton" type="submit">신청</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td class="td">조회된 과목이 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
+	
+	</div>
 </form>
 <jsp:include page="/WEB-INF/foot.jsp"></jsp:include>
 </body>
