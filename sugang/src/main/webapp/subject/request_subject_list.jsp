@@ -13,8 +13,7 @@
 
 <form action="/sugang/getSubjectList" method="post">
 	<div class="find">
-		<h2>강좌 전체 조회</h2>
-	<button type="submit" name="studentId">조회</button>
+		<h4>강좌 전체 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">조회</button></h4>
 	</div>
 	<table class="table">
 		<thead>
@@ -31,6 +30,5 @@
 		</tbody>
 	</table>
 </form>
-<jsp:include page="/WEB-INF/foot.jsp"></jsp:include>
 </body>
 </html>

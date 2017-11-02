@@ -12,7 +12,7 @@
 				<a class="mainmenulink" href="/sugang/notice.jsp">공지사항</a>
 				</li>
 				<li class="mainmenuList">
-				<a class="mainmenulink" href="">수강신청</a>
+				<a class="mainmenulink" href="/sugang/subject/request_subject_list.jsp">수강신청</a>
 				</li>
 				<li class="mainmenuList">
 					<a class="mainmenulink" href="">수강신청조회</a>
