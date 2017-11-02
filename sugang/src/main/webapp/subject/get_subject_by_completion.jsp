@@ -12,16 +12,13 @@
 <jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 <form action="/sugang/findSubjectByCompletion" method="post">
 	<div class="scroll">
-	<div class="find"
-		<h2>이수구분으로 조회</h2>
-		<select name="completion">
+		<select  name="completion">
 			<option>전공필수</option>
 			<option>전공선택</option>
 			<option>교양필수</option>
 			<option>교양선택</option>
 		</select>
-	<button type="submit">조회</button>
-	</div>
+		<button type="submit">조회</button>
 	<table class="table">
 		<thead>
 			<tr>
@@ -48,6 +45,11 @@
 		</tbody>
 	</table>
 	</div>
+</form>
+<form action="/sugang/removeEnrollment">
+<div class="scroll">
+
+</div>
 </form>
 <jsp:include page="/WEB-INF/foot.jsp"></jsp:include>
 </body>

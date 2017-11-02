@@ -11,7 +11,7 @@
 <jsp:include page="/WEB-INF/top.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 <form action="/sugang/findSubjectByCompletion" method="post">
-	<div class="find"
+	<div class="find">
 		<h2>이수구분으로 조회</h2>
 		<select name="completion">
 			<option>전공필수</option>
