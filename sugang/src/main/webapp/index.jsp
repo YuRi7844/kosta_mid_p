@@ -4,7 +4,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/sugang/css/framestyle.css">
 <meta charset="UTF-8">
-<title>수강신청 메인</title>
+
+<title>수강신청</title>
 
 </head>
 <body>
@@ -23,8 +24,9 @@
 		</p>
 		<form action="/sugang/login" method="POST" style="padding: 14px;border: 1px solid black;
    		 height: 120px;    height: 150px;">
-			<p style="text-align: left;">
-				학번: <input style="float: right; size: a4;height: 20px;width: 250px;" type="text" name="Id" autofocus>
+
+			<p style="text-align: left;">.
+				학번: <input style="float: right; size: a4;height: 20px;width: 250px;" type="number" name="Id" autofocus>
 			</p>
 			<p style="text-align: left;">
 				비밀번호: <input style="float: right; size: a4;height: 20px;width: 250px;" type="password" name="Password">
