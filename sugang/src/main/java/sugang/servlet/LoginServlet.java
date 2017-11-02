@@ -30,9 +30,9 @@ public class LoginServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		StudentService service = StudentServiceImpl.getInstance();
-		int studentId = Integer.parseInt(request.getParameter("Id"));
+		int studentId = Integer.parseInt(request.getParameter("studentId"));
 
-		String studentPw = request.getParameter("Password");
+		String studentPw = request.getParameter("studentPw");
 		Student student = service.findStudentById(studentId);
 
 		if (student != null) {
@@ -49,11 +49,11 @@ public class LoginServlet extends HttpServlet {
 				}
 			} else {
 				request.setAttribute("errorMessage", "Password Error");
-				request.getRequestDispatcher("/login/login.jsp").forward(request, response);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		} else if (student == null) {
 			request.setAttribute("errorMessage", "Id Error");
-			request.getRequestDispatcher("/login/login.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 	}
 }

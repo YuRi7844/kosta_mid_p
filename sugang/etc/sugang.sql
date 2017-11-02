@@ -134,4 +134,6 @@ where ENROLLMENT.STUDENT_ID = '20140001'
       
       
 insert into student values(20140001,'김호규','경영학과','20140001',4,4);
+insert into student values(1000,'관리자','행정','admin',4,2);
+
 
