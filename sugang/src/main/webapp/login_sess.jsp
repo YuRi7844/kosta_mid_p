@@ -11,7 +11,6 @@
 
 <jsp:include page="/WEB-INF/top.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
 <jsp:include page="/WEB-INF/foot.jsp"></jsp:include>
 
 </body>

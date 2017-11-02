@@ -19,6 +19,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 <body>
 
 	<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
+	<c:if test="${sessionScope.loginStudent != null }">
+		<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
+	</c:if>
 	<c:if test="${sessionScope.loginStudent == null }">
 		<section>
 
