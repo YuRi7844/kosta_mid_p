@@ -162,7 +162,86 @@ footer{
 }
 
 
+<!-- -->
 
+.submenu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: white;
+}
+
+.submenuList {
+	float: right;
+}
+
+.submenulink {
+	border-radius: 10px;
+	border: 1px solid tomato;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin:5px;
+    background-color: tomato;
+}
+
+.submenulink:hover {
+	background-color: #333;
+	border: 1px solid #333;
+	color: white;
+}
+
+
+<!-- -->
+
+
+
+
+.leftside{
+	background-color: #e0e0eb;
+	padding: 10px;
+	text-align: left;
+	float: left;
+	width: 25%;
+	height: 100%;
+	}
+
+
+.content{
+	background-color: #8BBDFF;
+	float: right;
+	width: 65%;
+	height: 100%;
+	}
+
+.footer {
+	clear: both;
+	height: 100px;
+	margin-top: 10%;
+	margin-bottom: 25px;
+	}
+
+.notice{
+	border: 2px solid #8383af;
+	width: 600px;
+	height: 500px;
+	
+}
+
+.center{
+	position: absolute;
+	left: auto;
+	right: auto;
+}
+
+.th2 {
+	padding: 10px;
+    width: auto;
+    height: 1.5em;
+}
 
 
 
