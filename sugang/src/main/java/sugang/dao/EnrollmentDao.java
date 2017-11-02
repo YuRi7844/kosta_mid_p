@@ -83,7 +83,7 @@ public interface EnrollmentDao {
 		 * @param enrollment
 		 * @return
 		 */
-		int selectEnrollmentStudentBySubjectDay(SqlSession session, Enrollment enrollment);
+		//int selectEnrollmentStudentBySubjectDay(SqlSession session, Enrollment enrollment);
 		
 		/**
 		 * 과목 시간 표시!

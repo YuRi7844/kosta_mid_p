@@ -70,30 +70,22 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 					throw new DuplicatedSubjectException("이미 등록된 강좌입니다.", enrollment.getSubjectId());
 				} else {
 					if (dao.selectEnrollmentStudentByNowCredit(session, enrollment.getStudentId()) == 0) {
-						if (dao.selectEnrollmentStudentBySubjectDay(session, enrollment) != 0) {
-							if (dao.selectEnrollmentStudentBySubjectTime(session, enrollment) != 0) {
-								throw new TimeLimitExceededException("시간표중복입니다.");
-							} else {
+						dao.insertEnrollment(session, enrollment);
+					} else {
+						if ((dao.selectEnrollmentStudentByNowCredit(session, enrollment.getStudentId())
+								+ sub.selectSubjectById(session, enrollment.getSubjectId()).getSubjectCredit()) < stu
+										.selectStudentById(session, enrollment.getStudentId()).getMaxCredit()) {
+							if (dao.selectEnrollmentByStudentId(session, enrollment.getStudentId()).isEmpty()) {
 								dao.insertEnrollment(session, enrollment);
+							} else {
+								if (dao.selectEnrollmentStudentBySubjectTime(session, enrollment) == 0) {
+									dao.insertEnrollment(session, enrollment);
+								} else {
+									throw new TimeLimitExceededException("시간중복입니다.");
+								}
 							}
 						} else {
-							dao.insertEnrollment(session, enrollment);
-						}
-					}else {
-						if(dao.selectEnrollmentStudentByNowCredit(session, enrollment.getStudentId()) < stu.selectStudentById(session, enrollment.getStudentId()).getMaxCredit()) {
-							if (dao.selectEnrollmentByStudentId(session, enrollment.getStudentId()) == null) {
-								if (dao.selectEnrollmentStudentBySubjectDay(session, enrollment) != 0) {
-									if (dao.selectEnrollmentStudentBySubjectTime(session, enrollment) != 0) {
-										throw new TimeLimitExceededException("시간표중복입니다.");
-									} else {
-										dao.insertEnrollment(session, enrollment);
-									}
-								} else {
-									dao.insertEnrollment(session, enrollment);
-								}
-							}else {
-								throw new MaxSubjectEnrollmentException("수강최대학점 초과입니다.");
-							}
+							throw new MaxSubjectEnrollmentException("수강최대학점 초과입니다.");
 						}
 					}
 				}
@@ -107,7 +99,6 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 		}
 
 	}
-
 	@Override
 	public void removeEnrollmentBySubjectId(int id) throws DuplicatedSubjectException {
 		SqlSession session = null;

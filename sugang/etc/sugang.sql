@@ -108,21 +108,24 @@ where    SUBJECT_id = '0001'
       
 select count(ENROLLMENT.SUBJECT_id)
 	  from enrollment, SUBJECT
-	  where ENROLLMENT.student_id = 20120001 
+	  where ENROLLMENT.student_id = 20170001 
 			 and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID
-			 and not subject.subject_id = 12
+			 and not subject.subject_id = 22
 			 and SUBJECT.DAY = (select SUBJECT.DAY
 		  						from SUBJECT
-								where SUBJECT.SUBJECT_ID = 0012);
+								where SUBJECT.SUBJECT_ID = 0022);
 
 	select count(ENROLLMENT.SUBJECT_id)
 	  from enrollment, SUBJECT
-	  where ENROLLMENT.student_id = 20120001 
+	  where ENROLLMENT.student_id = 20170001
 			 and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID
-			 and not subject.subject_id = 30
+			 and not subject.subject_id = 22
 			 and SUBJECT.SUBJECT_TIME = (select SUBJECT.SUBJECT_TIME
 		  								from SUBJECT
-										where SUBJECT.SUBJECT_ID = 0030);
+										where SUBJECT.SUBJECT_ID = 0022)
+			 and SUBJECT.DAY = (select SUBJECT.DAY
+		  						from SUBJECT
+								where SUBJECT.SUBJECT_ID = 0022);							
 
 select sum(SUBJECT.SUBJECT_CREDIT) 
 from ENROLLMENT, SUBJECT
@@ -131,3 +134,4 @@ where ENROLLMENT.STUDENT_ID = '20140001'
       
       
 insert into student values(20140001,'김호규','경영학과','20140001',4,4);
+

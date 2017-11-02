@@ -67,10 +67,10 @@ public class EnrollmentDaoImpl implements EnrollmentDao{
 		return session.selectOne(makeSqlId("selectEnrollmentBySubjectIdANDStudentId"), map);
 	}
 
-	@Override
+	/*@Override
 	public int selectEnrollmentStudentBySubjectDay(SqlSession session, Enrollment enrollment) {
 		return session.selectOne(makeSqlId("selectEnrollmentStudentBySubjectDay"), enrollment);
-	}
+	}*/
 
 	@Override
 	public int selectEnrollmentStudentBySubjectTime(SqlSession session, Enrollment enrollment) {
