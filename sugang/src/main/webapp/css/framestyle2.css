@@ -60,6 +60,11 @@ table {
 	font-size:2em;
 	text-align: center;
 }
+.topscroll{
+	overflow-y: scroll;
+	overflow-x: scroll;
+	height: 30em
+}
 .scroll{
 	overflow-y: scroll;
 	overflow-x: scroll;
