@@ -73,16 +73,12 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 						dao.insertEnrollment(session, enrollment);
 					} else {
 						if ((dao.selectEnrollmentStudentByNowCredit(session, enrollment.getStudentId())
-								+ sub.selectSubjectById(session, enrollment.getSubjectId()).getSubjectCredit()) < stu
+								+ sub.selectSubjectById(session, enrollment.getSubjectId()).getSubjectCredit()) <= stu
 										.selectStudentById(session, enrollment.getStudentId()).getMaxCredit()) {
-							if (dao.selectEnrollmentByStudentId(session, enrollment.getStudentId()).isEmpty()) {
+							if (dao.selectEnrollmentStudentBySubjectTime(session, enrollment) == 0) {
 								dao.insertEnrollment(session, enrollment);
 							} else {
-								if (dao.selectEnrollmentStudentBySubjectTime(session, enrollment) == 0) {
-									dao.insertEnrollment(session, enrollment);
-								} else {
-									throw new TimeLimitExceededException("시간중복입니다.");
-								}
+								throw new TimeLimitExceededException("시간중복입니다.");
 							}
 						} else {
 							throw new MaxSubjectEnrollmentException("수강최대학점 초과입니다.");
@@ -99,6 +95,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 		}
 
 	}
+
 	@Override
 	public void removeEnrollmentBySubjectId(int id) throws DuplicatedSubjectException {
 		SqlSession session = null;
