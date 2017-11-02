@@ -160,4 +160,16 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 		}
 	}
 
+	@Override
+	public void removeEnrollmentByEnrollment(Enrollment enrollment) {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			dao.deleteEnrollmentByEnrollment(session, enrollment);
+			session.commit();
+		} finally {
+			session.close();
+		}
+	}
+
 }
