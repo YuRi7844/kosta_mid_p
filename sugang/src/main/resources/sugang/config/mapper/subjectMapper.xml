@@ -68,4 +68,13 @@
 		FROM subject
 		WHERE subject_id = #{value}
 	</select>
+	
+	<select id="selectStudentNowEnrollment" parameterType="int" resultType="Subject">
+		 select 	SUBJECT.SUBJECT_ID subjectId, SUBJECT.SUBJECT_NAME subjectName,
+					SUBJECT.SUBJECT_CREDIT subjectCredit, SUBJECT.MAX_STUDENT maxStudent, 
+					SUBJECT.DAY day, SUBJECT.SUBJECT_TIME subject_time
+		 from SUBJECT, ENROLLMENT
+		 where ENROLLMENT.STUDENT_ID = #{value} 
+				and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID
+	</select>
 </mapper>

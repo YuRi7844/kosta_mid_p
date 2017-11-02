@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import sugang.service.impl.EnrollmentServiceImpl;
 import sugang.service.impl.SubjectServiceImpl;
+import sugang.vo.Enrollment;
 import sugang.vo.Subject;
 
 /**
@@ -30,8 +32,10 @@ public class GetSubjectListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. Business Service 호출
+		//1. Business Service 호출	
+		
 		SubjectServiceImpl service = SubjectServiceImpl.getInstance();
+	
 		List<Subject> list = service.getSubjectList();
 		
 		//2. 응답

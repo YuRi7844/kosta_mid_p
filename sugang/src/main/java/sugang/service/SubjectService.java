@@ -13,6 +13,11 @@ public interface SubjectService {
 	List<Subject> getSubjectList();
 	
 	/**
+	 * 수강완료된 강좌 조회
+	 * @return
+	 */
+	List<Subject> getStudentByEnrollmentSubjectList(int studentId);
+	/**
 	 * 과목코드로 강좌조회
 	 * @param studentId
 	 * @return
