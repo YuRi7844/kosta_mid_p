@@ -25,7 +25,7 @@ footer{
 	color: white;
 	border-radius: 8px;
 }
-<!-- -->
+/* <!-- --> */
 table {
 	border: 1px solid #bcbcbc;
     width: 80%;
@@ -115,7 +115,7 @@ table {
 	position:relative;
 	top:1px;
 }
-<!-- -->
+/* <!-- --> */
 #title {
 	font-size: 40px;
 	text-align: center;
@@ -126,7 +126,6 @@ table {
 #studentinfo {
 	font-size: 0.9em;
 	text-align: center;
-	letter-spacing: 1.2em;
 }
 
 
@@ -139,7 +138,7 @@ table {
 }
 
 .mainmenuList {
-	float: right;
+	float: left;
 }
 
 .mainmenulink {
@@ -175,8 +174,8 @@ table {
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:1em;
-	
+	font-size:15px;
+	font-weight:bold;
 	padding:11px 23px;
 	text-decoration:none;
 	text-shadow:0px -1px 0px #2b665e;
@@ -212,6 +211,45 @@ table {
 	text-decoration: none;
 }
 
+.logoutlink{
+	text-decoration: none;
+    padding: 11px;
+    background-color: #333;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+}
+.submenu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: white;
+}
+
+.submenuList {
+	float: right;
+}
+
+.submenulink {
+	border-radius: 10px;
+	border: 1px solid tomato;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin:5px;
+    background-color: tomato;
+}
+
+.submenulink:hover {
+	background-color: #333;
+	border: 1px solid #333;
+	color: white;
+}
 
 
 

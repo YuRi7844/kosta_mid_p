@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sugang.service.impl.SubjectServiceImpl;
+import sugang.vo.Student;
 import sugang.vo.Subject;
 
 /**
@@ -35,13 +37,17 @@ public class FindSubjectByDayServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 1. 요청파라미터 조회
+		HttpSession session = request.getSession();
+		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
 		String day = request.getParameter("day");
 
 		// 2. Business Service 호출
 		SubjectServiceImpl service = SubjectServiceImpl.getInstance();
-		List<Subject> result = service.findSubjectByDay(day);
+		List<Subject> subDay = service.findSubjectByDay(day);
+		List<Subject> enoList = service.getStudentByEnrollmentSubjectList(studentId);
 		// 3. 응답
-		request.setAttribute("result", result);
+		request.setAttribute("subDay", subDay);
+		request.setAttribute("enoList", enoList);
 		request.getRequestDispatcher("/subject/get_subject_by_day.jsp").forward(request, response);
 	}
 
