@@ -36,8 +36,7 @@ footer{
 
 #studentinfo {
 	font-size: 15px;
-	text-align: center;
-	letter-spacing: 20px;
+	text-align: right;
 }
 
 
@@ -122,8 +121,45 @@ footer{
 .footlint{
 	text-decoration: none;
 }
+.logoutlink{
+	text-decoration: none;
+    padding: 11px;
+    background-color: #333;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+}
+.submenu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: white;
+}
 
+.submenuList {
+	float: right;
+}
 
+.submenulink {
+	border-radius: 10px;
+	border: 1px solid tomato;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin:5px;
+    background-color: tomato;
+}
+
+.submenulink:hover {
+	background-color: #333;
+	border: 1px solid #333;
+	color: white;
+}
 
 
 

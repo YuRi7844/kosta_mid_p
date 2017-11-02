@@ -7,9 +7,18 @@
 			</p>
 		<c:if test="${sessionScope.loginStudent != null }">
 			<p id="studentinfo">
-				<strong>아이디: ${sessionScope.loginStudent.studentId }</strong>
-				<strong>이름: ${sessionScope.loginStudent.studentName }</strong>
-				<strong>담당 부서: ${sessionScope.loginStudent.major } </strong>
+				<strong>아이디: ${sessionScope.loginStudent.studentId } |</strong>
+				<strong>| 이름: ${sessionScope.loginStudent.studentName } |</strong>
+				<c:choose>
+					<c:when test="${sessionScope.loginStudent.studentPw != 'admin' }">
+						<strong>| 전공: ${sessionScope.loginStudent.major } </strong>
+					</c:when>
+					<c:otherwise>
+						<strong>| 담당 부서: ${sessionScope.loginStudent.major } </strong>
+					</c:otherwise>
+				</c:choose>
+				
+				<a class="logoutlink" href="/sugang/logout">로그아웃</a>
 			</p>
 			
 		</c:if>

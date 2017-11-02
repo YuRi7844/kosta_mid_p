@@ -32,6 +32,13 @@ public interface SubjectDao {
 	List<Subject> selectSubjectByName(SqlSession session, String subjectName);
 
 	/**
+	 * 수강신청 완료된 강좌 정보 // 학생 id당
+	 * @param session
+	 * @param subjectId
+	 * @return
+	 */
+	List<Subject> selectStudentNowEnrollment(SqlSession session, int studentId);
+	/**
 	 * 강좌 요일로 조회
 	 * @param session
 	 * @param day
