@@ -8,10 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
 
 import sugang.service.impl.EnrollmentServiceImpl;
 import sugang.service.impl.SubjectServiceImpl;
 import sugang.vo.Enrollment;
+import sugang.vo.Student;
 import sugang.vo.Subject;
 
 /**
@@ -32,14 +36,18 @@ public class GetSubjectListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. Business Service 호출	
+		//1. 요청파라미터 조회
+		HttpSession session = request.getSession();
+		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
+		//2. Business Service 호출	
 		
 		SubjectServiceImpl service = SubjectServiceImpl.getInstance();
-	
-		List<Subject> list = service.getSubjectList();
+		List<Subject> subAllList = service.getSubjectList();
+		List<Subject> enoList = service.getStudentByEnrollmentSubjectList(studentId);
 		
 		//2. 응답
-		request.setAttribute("result", list);
+		request.setAttribute("subAllList", subAllList);
+		request.setAttribute("enoList", enoList);
 		request.getRequestDispatcher("/subject/get_subject_list.jsp").forward(request, response);
 	}
 

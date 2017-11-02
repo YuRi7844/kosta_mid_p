@@ -3,33 +3,75 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>수강신청</title>
 </head>
 <body>
-	<table border="">
-		<thead>
-			<tr>
-				<th>강좌 번호로 조회</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:choose>
-				<c:when test="${!empty requestScope.result }">
-					<c:forEach items="${requestScope.result }" var="result">
+<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
+<form action="/sugang/findSubjectByCompletion" method="post">
+	<div class="scroll">
+		<h2>강좌 전체 조회</h2>
+		<button type="submit">조회</button>
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="th">강좌 전체 조회</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:choose>
+					<c:when test="${!empty requestScope.subAllList }">
+						<c:forEach items="${requestScope.subAllList }" var="result">
+							<tr>
+								<td class="td">
+									${result } <button class="loginbutton" type="submit">신청</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
 						<tr>
-							<td>${result }</td>
+							<td class="td">강좌 전체 조회</td>
 						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<tr>
-						<td>조회된 과목이 없습니다.</td>
-					</tr>
-				</c:otherwise>
-			</c:choose>
-		</tbody>
-	</table>
-	<a href="/sugang/enrollment/view.jsp">초기화면으로
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
+	</div>
+</form>
+<form action="/sugang/">
+	<div class="scroll">
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="th">신청강좌 전체 조회</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:choose>
+					<c:when test="${!empty requestScope.enoList }">
+						<c:forEach items="${requestScope.enoList }" var="result">
+							<tr>
+								<td class="td">
+									${result } <button class="loginbutton" type="submit">삭제</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td class="td">조회된 과목이 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
+	
+	</div>
+</form>
+<jsp:include page="/WEB-INF/foot.jsp"></jsp:include>
 </body>
 </html>
+
