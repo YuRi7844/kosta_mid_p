@@ -64,4 +64,9 @@ public class SubjectDaoImpl implements SubjectDao{
 	public String selectSubjectTime(SqlSession session, int subjectId) {
 		return session.selectOne(makeSqlId("selectSubjectTime"), subjectId);
 	}
+
+	@Override
+	public List<Subject> selectStudentNowEnrollment(SqlSession session, int studentId) {
+		return session.selectList(makeSqlId("selectStudentNowEnrollment"), studentId);
+	}
 }

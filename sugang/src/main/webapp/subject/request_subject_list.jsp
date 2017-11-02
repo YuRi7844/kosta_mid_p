@@ -6,8 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/sugang/getSubjectList" method="post">
+<form action="/sugang/getSubjectEnrollmentList" method="post">
 	<h2>강좌 전체 조회</h2>
+	<input type="text" name="studentId">
 	<button type="submit">조회</button>
 </form>
 </body>

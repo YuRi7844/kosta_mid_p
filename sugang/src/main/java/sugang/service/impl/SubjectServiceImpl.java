@@ -93,4 +93,15 @@ public class SubjectServiceImpl implements SubjectService{
 			session.close();
 		}
 	}
+
+	@Override
+	public List<Subject> getStudentByEnrollmentSubjectList(int studentId) {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			return dao.selectStudentNowEnrollment(session, studentId);
+		} finally {
+			session.close();
+		}
+	}
 }
