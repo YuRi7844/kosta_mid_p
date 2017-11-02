@@ -60,7 +60,11 @@ footer{
 	text-decoration: none;
 }
 
-.mainmenulink:hover {
+.mainmenulink:active {
+	background-color: white;
+	color: black;
+}
+.mainmenulink:hover:not(.active){
 	background-color: tomato;
 	color: black;
 }
