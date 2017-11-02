@@ -35,6 +35,8 @@ public interface EnrollmentService {
     * @param id
  * @throws DuplicatedSubjectException 
     */
+   void removeEnrollmentByEnrollment(Enrollment enrollment);
+   
    
    void removeEnrollmentBySubjectId(int id) throws DuplicatedSubjectException;
    

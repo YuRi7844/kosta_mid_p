@@ -23,7 +23,12 @@
 		delete from enrollment
 		where subject_id = #{value}
 	</delete>
-
+	
+	<!-- deleteEnrollmentByEnrollment -->
+	<delete id="deleteEnrollmentByEnrollment" parameterType="Enrollment">
+		delete from enrollment
+		where subject_id = #{subjectId} and student_id = #{studentId}
+	</delete>
 
 	<!-- selectEnrollment -->
 	<select id="selectEnrollment" resultType="Enrollment">

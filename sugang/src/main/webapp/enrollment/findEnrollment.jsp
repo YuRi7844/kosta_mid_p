@@ -14,12 +14,15 @@
  List<Enrollment> list = (List<Enrollment>)request.getAttribute("result");
  
  for(int i=0; i<list.size(); i++){
-	 
  %>
- <Input type='text' value='<%=list.get(i).getStudentId() %>'>
- <Input type='text' value='<%=list.get(i).getSubjectId() %>'><br>
+  <form method="Post" action="/sugang/removeEnrollment">
+ <Input type='text' value='<%=list.get(i).getStudentId() %>' name="studentId">
+ <Input type='text' value='<%=list.get(i).getSubjectId() %>' name="subjectId">
+ <button type="submit"> 삭제 </button><br>
+  </form>
  <%
  }
+
  %>
  <%
  if(list.isEmpty()){	

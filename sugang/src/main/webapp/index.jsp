@@ -16,13 +16,11 @@
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 100px;">
-		<p style="text-align: center; background-color: lightgrey;
-		font-size: 18px;border-left: 10px solid black;
+		<p style="text-align: center; background-color: lightgrey; font-size: 18px;border-left: 10px solid black;
 		margin-bottom: 2px;height: 40px;">
 		수강 신청 로그인
 		</p>
-		<form action="/sugang/login" method="POST" 
-		style="padding: 14px;border: 1px solid black;
+		<form action="/sugang/login" method="POST" style="padding: 14px;border: 1px solid black;
    		 height: 120px;    height: 150px;">
 			<p style="text-align: left;">
 				학번: <input style="float: right; size: a4;height: 20px;width: 250px;" type="number" name="Id" autofocus>

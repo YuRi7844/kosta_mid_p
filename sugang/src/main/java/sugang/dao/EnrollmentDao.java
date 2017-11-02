@@ -35,6 +35,13 @@ public interface EnrollmentDao {
 		
 		int deleteEnrollmentBySubjectId(SqlSession session, int subjectId);
 		
+		/**
+		 * 신청한 강좌 삭제!
+		 * @param session
+		 * @param enrollment
+		 * @return
+		 */
+		int deleteEnrollmentByEnrollment(SqlSession session, Enrollment enrollment);
 
 		/**
 		 * 수강신청 테이블 전체 조회
