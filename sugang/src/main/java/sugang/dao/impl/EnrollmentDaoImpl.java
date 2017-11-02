@@ -87,4 +87,9 @@ public class EnrollmentDaoImpl implements EnrollmentDao{
 		return session.delete(makeSqlId("deleteEnrollmentByEnrollment"), enrollment);
 	}
 
+	@Override
+	public List<Integer> selectEnrollmentByStudentIdInt(SqlSession session, int studentId) {
+		return session.selectList(makeSqlId("selectEnrollmentByStudentIdInt"), studentId);
+	}
+
 }

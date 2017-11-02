@@ -44,6 +44,13 @@
 		where subject_id = #{value}
 	</select>
 	
+		<!-- selectEnrollmentBySubjectId -->
+	<select id="selectEnrollmentByStudentIdInt" parameterType="_int" resultType="int">
+		select suject_id
+		from enrollment
+		where student_id = #{value}
+	</select>
+	
 	<!-- selectEnrollmentBySubjectId -->
 	<select id="selectEnrollmentBySubjectId" parameterType="_int" resultType="Enrollment">
 		<include refid="select-sql-enrollment"/>
