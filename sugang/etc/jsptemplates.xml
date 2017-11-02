@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="jsp_new" deleted="false" description="mini프로젝트 jsp(top, menu, foot include 및 스타일 적용" enabled="true" name="projectJsp">&lt;%@ page contentType="text/html;charset=utf-8"%&gt;&#13;
+&lt;!DOCTYPE html&gt;&#13;
+&lt;html&gt;&#13;
+&lt;head&gt;&#13;
+&lt;link rel="stylesheet" type="text/css" href="/sugang/css/framestyle.css"&gt;&#13;
+&lt;meta charset="UTF-8"&gt;&#13;
+&lt;title&gt;수강신청 메인&lt;/title&gt;&#13;
+&lt;/head&gt;&#13;
+&lt;body&gt;&#13;
+&lt;jsp:include page="/WEB-INF/top.jsp"&gt;&lt;/jsp:include&gt;&#13;
+&lt;jsp:include page="/WEB-INF/menu.jsp"&gt;&lt;/jsp:include&gt;&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&lt;jsp:include page="/WEB-INF/foot.jsp"&gt;&lt;/jsp:include&gt;&#13;
+&lt;/body&gt;&#13;
+&lt;/html&gt;</template></templates>
