@@ -40,6 +40,13 @@ public class FindSubjectByCompletionServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
 		String completion = request.getParameter("completion");
+		int addSubjectId = 0;
+		String reg = request.getParameter("addSubjectId");
+		if(reg != null) {
+				addSubjectId = Integer.parseInt(reg);
+				request.setAttribute("addSubjectId", addSubjectId);
+				System.out.println("add 0 아님  "+addSubjectId);
+		}
 
 		// 2. Business Service 호출
 		SubjectServiceImpl service = SubjectServiceImpl.getInstance();
@@ -48,7 +55,11 @@ public class FindSubjectByCompletionServlet extends HttpServlet {
 		// 3. 응답
 		request.setAttribute("subCompletion", subCompletion);
 		request.setAttribute("enoList", enoList);
-		request.getRequestDispatcher("/subject/get_subject_by_completion.jsp").forward(request, response);
-	}
+		if(addSubjectId != 0) {
+			request.setAttribute("sub","findSubCompletion");
+			request.getRequestDispatcher("/addEnrollment").forward(request, response);
+		}else {
+			request.getRequestDispatcher("/subject/get_subject_by_completion.jsp").forward(request, response);
+		}	}
 
 }

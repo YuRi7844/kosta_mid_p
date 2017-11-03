@@ -31,19 +31,18 @@ public class RemoveEnrollmentServletBySubjectId extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
-		String subjectId = request.getParameter("subjectId");
-		int subjectid = Integer.parseInt(subjectId);
+		int subjectId = Integer.parseInt(request.getParameter("removeSubjectId"));
 		
 		EnrollmentServiceImpl service = EnrollmentServiceImpl.getInstance();
 		try {
-			service.removeEnrollmentBySubjectId(subjectid);
+			service.removeEnrollmentBySubjectId(subjectId);
 		} catch (DuplicatedSubjectException e) {
 			e.printStackTrace();
 			request.setAttribute("message", e.getMessage());
 		}
 
 		
-		request.getRequestDispatcher("/enrollment/removeSubjectId.jsp").forward(request, response);
+		request.getRequestDispatcher("/subject/get_subject_list.jsp").forward(request, response);
 	
 	}
 

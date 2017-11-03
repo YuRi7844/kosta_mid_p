@@ -5,35 +5,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
+<link rel="stylesheet" type="text/css"
+	href="/sugang/css/framestyle2.css">
 <meta charset="UTF-8">
 <title>수강신청</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/top.jsp"/>
-<jsp:include page="/WEB-INF/menu.jsp"/>
-<jsp:include page="/WEB-INF/submenu(student).jsp"/>
-<form action="/sugang/addEnrollment" method="post">
-	<div class="topscroll">
+	<jsp:include page="/WEB-INF/sugangtop.jsp" />
+	<jsp:include page="/subject/subget_enrollment_list.jsp" />
+	<form action="/sugang/findSubjectByCompletion">
 		<div class="find">
-			<h4>신청강좌 전체 조회</h4>
+			<h4>
+				신청강좌 전체 조회 <select name="completion">
+					<option>전공필수</option>
+					<option>전공선택</option>
+					<option>교양필수</option>
+					<option>교양선택</option>
+				</select>
+				<button type="submit">조회</button>
+			</h4>
 		</div>
-		<jsp:include page="/subject/subget_enrollment_list.jsp"/>
-	</div>
-</form>
-<form action="/sugang/findSubjectByCompletion" method="post">
+	</form>
 	<div class="scroll">
-	<div class="find">
-		<h4>신청강좌 전체 조회
-			<select  name="completion">
-				<option>전공필수</option>
-				<option>전공선택</option>
-				<option>교양필수</option>
-				<option>교양선택</option>
-			</select>
-			<button type="submit">조회</button>
-		</h4>
-	</div>
+
 		<table class="table">
 			<thead>
 				<tr>
@@ -50,49 +44,45 @@
 				<c:choose>
 					<c:when test="${!empty requestScope.subCompletion }">
 						<%
-								List<Subject> subCompletion = (List<Subject>)request.getAttribute("subCompletion");
-								for(int i = 0; i < subCompletion.size(); i++){
+							List<Subject> subCompletion = (List<Subject>) request.getAttribute("subCompletion");
+									for (int i = 0; i < subCompletion.size(); i++) {
 						%>
-							<tr>
-								<td class="td">
-									<%=subCompletion.get(i).getSubjectId() %>
-								</td>		
-								<td class="td">
-									<%=subCompletion.get(i).getSubjectName() %>
-								</td>
-								<td class="td">
-									<%=subCompletion.get(i).getSubjectCredit() %>
-								</td>
-								<td class="td">
-									<%=subCompletion.get(i).getCompletion() %>
-								</td>
-								<td class="td">
-									<%=subCompletion.get(i).getMaxStudent() %>
-								</td>
-								<td class="td">
-									<%=subCompletion.get(i).getDay() %>
-								</td>
-								<td class="td">
-									<%=subCompletion.get(i).getSubjectTime() %>
-								</td>
-								<td >
+						<tr>
+							<td class="td"><%=subCompletion.get(i).getSubjectId()%></td>
+							<td class="td"><%=subCompletion.get(i).getSubjectName()%></td>
+							<td class="td"><%=subCompletion.get(i).getSubjectCredit()%>
+							</td>
+							<td class="td"><%=subCompletion.get(i).getCompletion()%></td>
+							<td class="td"><%=subCompletion.get(i).getMaxStudent()%></td>
+							<td class="td"><%=subCompletion.get(i).getDay()%></td>
+							<td class="td"><%=subCompletion.get(i).getSubjectTime()%></td>
+							<td>
+								<form action="/sugang/findSubjectByCompletion" method="post">
+									<input type="hidden" name="addSubjectId"
+										value="<%=subCompletion.get(i).getSubjectId()%>">
 									<button class="sugangbutton" type="submit">신청</button>
-								</td>
-							</tr>
-							<%} %>
+								</form>
+							</td>
+						</tr>
+						<%
+							}
+						%>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td></td><td></td><td></td>
-							<td >조회된 과목이 없습니다.</td>
-							<td></td><td></td><td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>조회된 과목이 없습니다.</td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
 			</tbody>
 		</table>
 	</div>
-</form>
 </body>
 </html>
 

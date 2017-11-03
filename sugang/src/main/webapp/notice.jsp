@@ -17,8 +17,7 @@
 <title>수강신청 메인</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/submenu(student).jsp"></jsp:include>
 	
 	<div id="notice-content">
 		<p style="text-align: center; font-weight: bold; font-size:30px;">※공지사항※</p>

@@ -3,6 +3,17 @@
 <link rel="stylesheet" type="text/css" href="/sugang/css/framestyle.css">
 <header>
 <style>
+.submenu{
+height: 30px;
+}
+.submenulink{
+height: 20px; 
+padding-right: 10px; 
+padding-left: 10px; 
+padding-bottom: 0px; 
+padding-top: 0px; 
+font-size: 13px;
+}
 .mainmenulink{
 padding-top: 5px; 
 padding-bottom: 0px;
@@ -19,6 +30,7 @@ border-radius: 4px;
 .logoutlink{
 padding-bottom: 3.5px; 
 padding-top: 3.5px}
+
 </style>
 	<div class="top">
 		<p style="margin-top: 5px; margin-bottom: 7px; text-align: right; padding-right: 50px">
@@ -44,5 +56,19 @@ padding-top: 3.5px}
 					</li>
 				</ul>
 			</nav>
+	<nav>
+		<ul class="submenu">
+			<li class="submenuList">
+				<a class="submenulink" href="/sugang/subject/get_subject_by_day.jsp">요일별조회</a></li>
+			<li class="submenuList">
+				<a class="submenulink" href="/sugang/subject/get_subject_by_completion.jsp">이수구분별조회</a></li>
+			<li class="submenuList">
+				<a class="submenulink" href="/sugang/subject/get_subject_by_name.jsp">강좌이름별조회</a></li>
+			<li class="submenuList">
+				<a class="submenulink" href="/sugang/subject/get_subject_by_id.jsp">강좌번호별조회</a></li>
+			<li class="submenuList">
+				<a class="submenulink" href="/sugang/subject/get_subject_list.jsp">강좌전체조회</a></li>
+		</ul>
+	</nav>
 
 </header>

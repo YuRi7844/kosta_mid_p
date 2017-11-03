@@ -5,27 +5,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
+<link rel="stylesheet" type="text/css"
+	href="/sugang/css/framestyle2.css">
 <meta charset="UTF-8">
 <title>수강신청</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/top.jsp"/>
-<jsp:include page="/WEB-INF/menu.jsp"/>
-<jsp:include page="/WEB-INF/submenu(student).jsp"/>
-<form action="/sugang/addEnrollment">
-	<div class="topscroll">
-		<div class="find">
-			<h4>신청강좌 전체 조회</h4>
+	<jsp:include page="/WEB-INF/sugangtop.jsp" />
+	<jsp:include page="/subject/subget_enrollment_list.jsp" />
+	<form action="/sugang/getSubjectList">
+		<div class="find" style="height: 25px">
+			<h6 style="margin-top: 0px; margin-bottom: 0px;">
+				강좌 전체 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="submit">조회</button>
+			</h6>
 		</div>
-		<jsp:include page="/subject/subget_enrollment_list.jsp"/>
-	</div>
-</form>
-<form action="/sugang/getSubjectList" method="post">
+	</form>
 	<div class="scroll">
-	<div class="find">
-		<h4>강좌 전체 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">조회</button></h4>
-	</div>
 		<table class="table">
 			<thead>
 				<tr>
@@ -42,49 +38,44 @@
 				<c:choose>
 					<c:when test="${!empty requestScope.subAllList }">
 						<%
-								List<Subject> subList = (List<Subject>)request.getAttribute("subAllList");
-								for(int i = 0; i < subList.size(); i++){
+							List<Subject> subList = (List<Subject>) request.getAttribute("subAllList");
+									for (int i = 0; i < subList.size(); i++) {
 						%>
-							<tr>
-								<td class="td">
-									<%=subList.get(i).getSubjectId() %>
-								</td>		
-								<td class="td">
-									<%=subList.get(i).getSubjectName() %>
-								</td>
-								<td class="td">
-									<%=subList.get(i).getSubjectCredit() %>
-								</td>
-								<td class="td">
-									<%=subList.get(i).getCompletion() %>
-								</td>
-								<td class="td">
-									<%=subList.get(i).getMaxStudent() %>
-								</td>
-								<td class="td">
-									<%=subList.get(i).getDay() %>
-								</td>
-								<td class="td">
-									<%=subList.get(i).getSubjectTime() %>
-								</td>
-								<td >
+						<tr>
+							<td class="td"><%=subList.get(i).getSubjectId()%></td>
+							<td class="td"><%=subList.get(i).getSubjectName()%></td>
+							<td class="td"><%=subList.get(i).getSubjectCredit()%></td>
+							<td class="td"><%=subList.get(i).getCompletion()%></td>
+							<td class="td"><%=subList.get(i).getMaxStudent()%></td>
+							<td class="td"><%=subList.get(i).getDay()%></td>
+							<td class="td"><%=subList.get(i).getSubjectTime()%></td>
+							<td>
+								<form action="/sugang/getSubjectList" method="post">
+									<input type="hidden" name="addSubjectId"
+										value="<%=subList.get(i).getSubjectId()%>">
 									<button class="sugangbutton" type="submit">신청</button>
-								</td>
-							</tr>
-							<%} %>
+								</form>
+							</td>
+						</tr>
+						<%
+							}
+						%>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td></td><td></td><td></td>
-							<td >조회된 과목이 없습니다.</td>
-							<td></td><td></td><td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>조회된 과목이 없습니다.</td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
 			</tbody>
 		</table>
 	</div>
-</form>
 </body>
 </html>
 

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sugang.exception.DuplicatedStudentException;
 import sugang.exception.DuplicatedSubjectException;
@@ -16,6 +17,7 @@ import sugang.exception.MaxSubjectEnrollmentException;
 import sugang.service.EnrollmentService;
 import sugang.service.impl.EnrollmentServiceImpl;
 import sugang.vo.Enrollment;
+import sugang.vo.Student;
 
 /**
  * Servlet implementation class EnrollmentInputServlet
@@ -37,13 +39,13 @@ public class AddEnrollmentServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// 1. 요청파라미터 조회
-		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
-		String studentId = request.getParameter("studentId");
-		int studentid = Integer.parseInt(studentId);
-		String subjectId = request.getParameter("subjectId");
-		int subjectid = Integer.parseInt(subjectId);
+		HttpSession session = request.getSession();
+		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
+		//int subjectId = Integer.parseInt(request.getParameter("subjectId"));
+		int subjectId = (Integer)request.getAttribute("addSubjectId");
 		
-		Enrollment enrollment = new Enrollment(studentid, subjectid);
+		
+		Enrollment enrollment = new Enrollment(studentId, subjectId);
 		EnrollmentServiceImpl service = EnrollmentServiceImpl.getInstance();
 
 		try {
@@ -59,9 +61,7 @@ public class AddEnrollmentServlet extends HttpServlet {
 			request.setAttribute("message", e.getMessage());
 			e.printStackTrace();
 		} 
-		
-		request.getRequestDispatcher("/enrollment/addEnrollment.jsp").forward(request, response);
-
+		request.getRequestDispatcher("/subject/checkEnrollment.jsp").forward(request, response);
 	}
 
 }
