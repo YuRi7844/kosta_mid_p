@@ -134,25 +134,6 @@ where ENROLLMENT.STUDENT_ID = '20140001'
       
       
 insert into student values(20140001,'김호규','경영학과','20140001',4,4);
-insert into student values(20170002,'김호현','사회학과','20170002',3,19);
-insert into student values(20170003,'박현준','신소재공학과','20170003',2,19);
-insert into student values(20170004,'정수찬','컴퓨터공학과','20170004',1,19);
-insert into student values(20170005,'장길웅','소프트웨어','20170005',4,19);
-insert into student values(20170006,'손경심','조선해양학과','20170006',3,19);
-insert into student values(20170007,'이수정','컴퓨터공학과','20170007',2,19);
-insert into student values(20170008,'최태은','컴퓨터공학과','20170008',1,19);
-insert into student values(20170009,'이효주','정보통신공학과','20170009',4,19);
-insert into student values(20170010,'엄태경','컴퓨터공학과','20170010',3,19);
-insert into student values(20170011,'윤규석','경영학과','20170011',2,19);
-insert into student values(20170012,'최윤규','컴퓨터공학과','20170012',1,19);
-insert into student values(20170013,'윤동웅','관광학과','20170013',4,19);
-insert into student values(20170014,'이유리','정보통신공학과','20170014',3,19);
-insert into student values(20170015,'이동엽','컴퓨터공학과','20170015',2,19);
-insert into student values(20170016,'윤한울','심리학과','20170016',1,19);
-insert into student values(20170017,'이수일','컴퓨터공학과','20170017',4,19);
-insert into student values(20170018,'장은정','정보통신공학과','20170018',3,19);
-insert into student values(20170019,'이지수','정보통신공학과','20170019',2,19);
-insert into student values(20170020,'이예진','컴퓨터공학과','20170020',1,19);
 insert into student values(1000,'관리자','행정','admin',4,2);
 
 
@@ -164,7 +145,4 @@ from SUBJECT,ENROLLMENT
 where ENROLLMENT.STUDENT_ID = 20170001 
 	and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID;
 	
-
-
-
 

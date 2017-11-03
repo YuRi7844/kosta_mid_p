@@ -49,8 +49,6 @@ public interface StudentDao {
     * @return
     */
    Student selectStudentById(SqlSession session, int studentId);
-   
-   
    /**
     * 매개변수로 받은 학생의 이름으로 조회
     * 
