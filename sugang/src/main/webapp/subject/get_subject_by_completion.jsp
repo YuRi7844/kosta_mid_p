@@ -1,3 +1,5 @@
+<%@page import="sugang.vo.Subject"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -8,37 +10,82 @@
 <title>수강신청</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/top.jsp"/>
+<jsp:include page="/WEB-INF/menu.jsp"/>
+<jsp:include page="/WEB-INF/submenu(student).jsp"/>
+<form action="/sugang/addEnrollment" method="post">
+	<div class="topscroll">
+		<div class="find">
+			<h4>신청강좌 전체 조회</h4>
+		</div>
+		<jsp:include page="/subject/subget_enrollment_list.jsp"/>
+	</div>
+</form>
 <form action="/sugang/findSubjectByCompletion" method="post">
 	<div class="scroll">
-		<select  name="completion">
-			<option>전공필수</option>
-			<option>전공선택</option>
-			<option>교양필수</option>
-			<option>교양선택</option>
-		</select>
-		<button type="submit">조회</button>
+	<div class="find">
+		<h4>신청강좌 전체 조회
+			<select  name="completion">
+				<option>전공필수</option>
+				<option>전공선택</option>
+				<option>교양필수</option>
+				<option>교양선택</option>
+			</select>
+			<button type="submit">조회</button>
+		</h4>
+	</div>
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="th">이수구분으로 조회</th>
+					<th>과목코드</th>
+					<th>과목이름</th>
+					<th>학점수</th>
+					<th>이수구분</th>
+					<th>수강최대인원</th>
+					<th>요일</th>
+					<th>시간</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${!empty requestScope.result }">
-						<c:forEach items="${requestScope.result }" var="result">
+					<c:when test="${!empty requestScope.subCompletion }">
+						<%
+								List<Subject> subCompletion = (List<Subject>)request.getAttribute("subCompletion");
+								for(int i = 0; i < subCompletion.size(); i++){
+						%>
 							<tr>
 								<td class="td">
-									${result } <button class="loginbutton" type="submit">신청</button>
+									<%=subCompletion.get(i).getSubjectId() %>
+								</td>		
+								<td class="td">
+									<%=subCompletion.get(i).getSubjectName() %>
+								</td>
+								<td class="td">
+									<%=subCompletion.get(i).getSubjectCredit() %>
+								</td>
+								<td class="td">
+									<%=subCompletion.get(i).getCompletion() %>
+								</td>
+								<td class="td">
+									<%=subCompletion.get(i).getMaxStudent() %>
+								</td>
+								<td class="td">
+									<%=subCompletion.get(i).getDay() %>
+								</td>
+								<td class="td">
+									<%=subCompletion.get(i).getSubjectTime() %>
+								</td>
+								<td >
+									<button class="sugangbutton" type="submit">신청</button>
 								</td>
 							</tr>
-						</c:forEach>
+							<%} %>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td class="td">조회된 과목이 없습니다.</td>
+							<td></td><td></td><td></td>
+							<td >조회된 과목이 없습니다.</td>
+							<td></td><td></td><td></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
@@ -46,37 +93,6 @@
 		</table>
 	</div>
 </form>
-<form action="/sugang/getSubjectEnrollmentList">
-	<div class="scroll">
-		<table class="table">
-			<thead>
-				<tr>
-					<th class="th">이수구분으로 조회</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:choose>
-					<c:when test="${!empty requestScope.list }">
-						<c:forEach items="${requestScope.list }" var="result">
-							<tr>
-								<td class="td">
-									${result } <button class="loginbutton" type="submit">신청</button>
-								</td>
-							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td class="td">조회된 과목이 없습니다.</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</tbody>
-		</table>
-	
-	</div>
-</form>
-<jsp:include page="/WEB-INF/foot.jsp"></jsp:include>
 </body>
 </html>
 

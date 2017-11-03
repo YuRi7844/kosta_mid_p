@@ -40,14 +40,24 @@ table {
    font-size: 0.5em;
 }
 .th {
+<<<<<<< HEAD
    border: 1px solid #bcbcbc;
+=======
+	border: 1px solid #bcbcbc;
+>>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
     width: 50%;
     height: 1.5em;
 }
 .td {
+<<<<<<< HEAD
    border: 1px solid #bcbcbc;
    text-align: center;
    font-size: 1em;
+=======
+	border: 1px solid #bcbcbc;
+	text-align: center;
+	font-size: 1em;
+>>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
 }
 
 .find{
@@ -65,10 +75,21 @@ table {
    overflow-x: scroll;
    height: 15em
 }
+.topscroll{
+	overflow-y: scroll;
+	overflow-x: scroll;
+	height: 15em
+}
 .scroll{
+<<<<<<< HEAD
    overflow-y: scroll;
    overflow-x: scroll;
    height: 22em
+=======
+	overflow-y: scroll;
+	overflow-x: scroll;
+	height: 22em
+>>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
 }
 .subtitle{
    font-size:2em;
@@ -124,8 +145,13 @@ table {
 }
 
 #studentinfo {
+<<<<<<< HEAD
    font-size: 0.9em;
    text-align: center;
+=======
+	font-size: 0.9em;
+	text-align: center;
+>>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
 }
 
 
@@ -138,7 +164,11 @@ table {
 }
 
 .mainmenuList {
+<<<<<<< HEAD
    float: left;
+=======
+	float: left;
+>>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
 }
 
 .mainmenulink {
@@ -154,6 +184,7 @@ table {
    color: black;
 }
 .loginbutton{
+<<<<<<< HEAD
    float: right;
    -moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
    -webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
@@ -179,6 +210,33 @@ table {
    padding:11px 23px;
    text-decoration:none;
    text-shadow:0px -1px 0px #2b665e;
+=======
+	float: right;
+	-moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+	background:-moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:-webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:-o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:-ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
+	background-color:#768d87;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+>>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
 }
 .loginbutton:hover {
    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
@@ -212,6 +270,7 @@ table {
 }
 
 .logoutlink{
+<<<<<<< HEAD
    text-decoration: none;
     padding: 11px;
     background-color: #333;
@@ -227,6 +286,45 @@ table {
    padding: 0;
    overflow: hidden;
    background-color: white;
+=======
+	text-decoration: none;
+    padding: 11px;
+    background-color: #333;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+}
+.submenu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: white;
+}
+
+.submenuList {
+	float: right;
+}
+
+.submenulink {
+	border-radius: 10px;
+	border: 1px solid tomato;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin:5px;
+    background-color: tomato;
+}
+
+.submenulink:hover {
+	background-color: #333;
+	border: 1px solid #333;
+	color: white;
+>>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
 }
 
 .submenuList {

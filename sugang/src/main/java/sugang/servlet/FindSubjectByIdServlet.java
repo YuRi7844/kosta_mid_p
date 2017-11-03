@@ -1,14 +1,17 @@
 package sugang.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sugang.service.impl.SubjectServiceImpl;
+import sugang.vo.Student;
 import sugang.vo.Subject;
 
 /**
@@ -32,15 +35,18 @@ public class FindSubjectByIdServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 요청파라미터 조회
+		HttpSession session = request.getSession();
+		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
 		int subjectId = Integer.parseInt(request.getParameter("subjectId"));
-//		System.out.println(subjectId);
 
 		// 2. Business Service 호출
 		SubjectServiceImpl service = SubjectServiceImpl.getInstance();
-		Subject result = service.findSubjectById(subjectId);
-//		System.out.println(result);
+		Subject subId = service.findSubjectById(subjectId);
+		List<Subject> enoList = service.getStudentByEnrollmentSubjectList(studentId);
+
 		// 3. 응답
-		request.setAttribute("result", result);
+		request.setAttribute("subId", subId);
+		request.setAttribute("enoList", enoList);
 		request.getRequestDispatcher("/subject/get_subject_by_id.jsp").forward(request, response);
 	}
 
