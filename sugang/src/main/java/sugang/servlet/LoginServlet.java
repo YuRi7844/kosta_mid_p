@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 				if (studentPw.equals("admin")) {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginStudent", student);
-					response.sendRedirect("/sugang/notice.jsp");
+					response.sendRedirect("/sugang/student/SMmain.jsp");
 				} else {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginStudent", student);

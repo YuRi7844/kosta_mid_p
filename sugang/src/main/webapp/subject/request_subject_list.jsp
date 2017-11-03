@@ -8,8 +8,6 @@
 <title>수강신청</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/submenu(student).jsp"></jsp:include>
 
 <form action="/sugang/getSubjectList" method="post">
