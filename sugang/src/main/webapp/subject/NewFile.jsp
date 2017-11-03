@@ -13,14 +13,7 @@
 <jsp:include page="/WEB-INF/top.jsp"/>
 <jsp:include page="/WEB-INF/menu.jsp"/>
 <jsp:include page="/WEB-INF/submenu(student).jsp"/>
-<form action="/sugang/addEnrollment">
-	<div class="topscroll">
-		<div class="find">
-			<h4>신청강좌 전체 조회</h4>
-		</div>
-		<jsp:include page="/subject/subget_enrollment_list.jsp"/>
-	</div>
-</form>
+<jsp:include page="/subject/subget_enrollment_list.jsp"/>
 <form action="/sugang/getSubjectList" method="post">
 	<div class="scroll">
 	<div class="find">
@@ -68,6 +61,7 @@
 									<%=subList.get(i).getSubjectTime() %>
 								</td>
 								<td >
+									<input type="hidden" name="addSubjectId" value="<%=subList.get(i).getSubjectId() %>">
 									<button class="sugangbutton" type="submit">신청</button>
 								</td>
 							</tr>

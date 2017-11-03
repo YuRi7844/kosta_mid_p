@@ -2,7 +2,12 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<table class="table">
+<form action="/sugang/removeEnrollmentbySubject">
+	<div class="topscroll">
+		<div class="find">
+			<h4>신청강좌 전체 조회</h4>
+		</div>
+		<table class="table">
 			<thead>
 				<tr>
 					<th>과목코드</th>
@@ -44,6 +49,7 @@
 									<%=enoList.get(i).getSubjectTime() %>
 								</td>
 								<td >
+									<input type="hidden" name="removeSubjectId" value="<%=enoList.get(i).getSubjectId() %>">
 									<button class="sugangbutton" type="submit">삭제</button>
 								</td>
 							</tr>
@@ -59,3 +65,5 @@
 				</c:choose>
 			</tbody>
 		</table>
+	</div>
+</form>
