@@ -52,11 +52,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	function formCheck(){
 		var grade = document.getElementById("grade").value;
 		var credit = document.getElementById("credit").value;
-		if(password = 'admin'){
+		var password = document.getElementById("password")
+		if(password == 'admin'){
 			alert("사용하실수 없는 비밀번호 입니다.")
 			return false;
-		}
-		if(grade > 0 && grade<=4){
+		}else if(grade > 0 && grade<=4){
 			if(credit > 0 && credit <= 30){
 				return true;
 			}else{

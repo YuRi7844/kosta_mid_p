@@ -29,14 +29,15 @@ padding-top: 3.5px}
 				전공 : <input type="text" name="major" size="10" value="&nbsp;${sessionScope.loginStudent.major }" readonly>
 				수강 가능 학점 : <input type="text" name="maxCredit" size="4.5" value="&nbsp;${sessionScope.loginStudent.maxCredit }" readonly>
 				<a class="logoutlink" href="/sugang/logout">로그아웃</a>
+			</strong>
 		</p>
 	</div>
 			<nav>
 				<ul class="mainmenu">
 					<li class="mainmenuList">
-						<a class="mainmenulink" href="/sugang/notice.jsp">메인으로</a></li>
+						<a class="mainmenulink" href="/sugang/notice(student).jsp">메인으로</a></li>
 					<li class="mainmenuList">
-						<a class="mainmenulink" href="/sugang/notice.jsp">공지사항</a></li>
+						<a class="mainmenulink" href="/sugang/notice(student).jsp">공지사항</a></li>
 					<li class="mainmenuList">
 						<a class="mainmenulink" href="/sugang/subject/request_subject_list.jsp">수강신청</a></li>
 					<li class="mainmenuList">
