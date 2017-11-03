@@ -61,9 +61,7 @@ public class AddEnrollmentServlet extends HttpServlet {
 			request.setAttribute("message", e.getMessage());
 			e.printStackTrace();
 		} 
-		
-		request.getRequestDispatcher("/subject/get_subject_list.jsp").forward(request, response);
-
+		request.getRequestDispatcher("/subject/checkEnrollment.jsp").forward(request, response);
 	}
 
 }
