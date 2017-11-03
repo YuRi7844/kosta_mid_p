@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +13,19 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/sugangtop.jsp" />
-	<form action="/sugang/getSubjectList">
-		<div class="scroll">
-			<h5>
-				수강신청 완료 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<button type="submit">확인</button>
-			</h5>
+	
+	<form action="/sugang/getSubjectList" style="padding-top: 180px">
+		<div class="find">
+			<c:choose>
+				<c:when test="${requestScope.message == null}"> 
+					수강신청 완료!
+			</c:when>
+				<c:otherwise>
+					${requestScope.message}
+				</c:otherwise>
+			</c:choose>
+			
+			<br><button type="submit">확인</button>
 		</div>
 	</form>
 </body>
