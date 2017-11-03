@@ -11,23 +11,10 @@
 <jsp:include page="/WEB-INF/submenu(student).jsp"></jsp:include>
 
 <form action="/sugang/getSubjectList" method="post">
-	<div class="find">
-		<h4>강좌 전체 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">조회</button></h4>
+	<div class="find" >
+		<h4 style="margin-bottom: 0px;">강좌 전체 조회</h4><br>
+		<button type="submit">조회</button>
 	</div>
-	<table class="table">
-		<thead>
-			<tr>
-				<th class="th">이수구분으로 조회</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:if test="true">
-				<tr>
-					<td style="text-align: center;class: td;">조회된 과목이 없습니다.</td>
-				</tr>
-			</c:if>
-		</tbody>
-	</table>
 </form>
 </body>
 </html>

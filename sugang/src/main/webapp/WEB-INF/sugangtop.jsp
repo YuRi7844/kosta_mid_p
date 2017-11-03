@@ -46,7 +46,7 @@ padding-top: 3.5px}
 			<nav>
 				<ul class="mainmenu">
 					<li class="mainmenuList">
-						<a class="mainmenulink" href="/sugang/login_student.jsp">메인으로</a></li>
+						<a class="mainmenulink" href="/sugang/notice.jsp">메인으로</a></li>
 					<li class="mainmenuList">
 						<a class="mainmenulink" href="/sugang/notice.jsp">공지사항</a></li>
 					<li class="mainmenuList">
