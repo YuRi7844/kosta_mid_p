@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
+<link rel="stylesheet" type="text/css" href="/sugang/css/framestyle.css">
 <style>
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
 	{

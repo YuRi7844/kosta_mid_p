@@ -65,8 +65,6 @@
       WHERE student_id = #{value}
    </select>
    
-   
-   
    <!-- 매개변수로 받은 이름으로 (부분)일치하는 학생을 조회하는 sql-->   
    <select id="selectStudentByName" parameterType="string" resultMap="student-resultmap">
       <include refid="select-sql"/>

@@ -1,8 +1,6 @@
 package sugang.servlet;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,21 +32,11 @@ public class FindStudentByIdServlet extends HttpServlet {
 		StudentServiceImpl service = StudentServiceImpl.getInstance();
 		//1. 요청파라미터 조회
 //		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
-		
-		String studentId = request.getParameter("studentId");
-		if(studentId == "") {
-			studentId = "1000000";
-			List<Student> result = (List<Student>)(service.getStudentList());
-			System.out.println(studentId);
-			request.setAttribute("result", result);
-			//요청디스패치방식
-			request.getRequestDispatcher("/student/studenttest/findStudentByIdResult.jsp").forward(request, response);
-		}
+		int studentId = Integer.parseInt(request.getParameter("studentId"));
 		
 		
-		System.out.println(studentId);
-		Student result = (Student)(service.findStudentById(Integer.parseInt(studentId)));
 		//2. 비즈니스 로직 처리
+		Student result = service.findStudentById(studentId);
 		
 		//3. 응답
 		//처리결과를 requestScope에 저장

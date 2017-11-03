@@ -12,8 +12,5 @@
 	<input type="number" name="studentId"/>
 	<button type="submit">조회</button>
 </form>
-
-
-
 </body>
 </html>

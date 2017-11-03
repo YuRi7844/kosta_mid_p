@@ -64,8 +64,6 @@ public interface StudentService {
     * @return
     */
    Student findStudentById(int studentId);
-   
-   
    //TODO: Exception이 결정되면 수정
    /**
     * studentName으로 학생 조회

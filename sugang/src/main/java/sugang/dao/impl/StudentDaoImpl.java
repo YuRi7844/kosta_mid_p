@@ -48,8 +48,6 @@ public class StudentDaoImpl implements StudentDao {
    public Student selectStudentById(SqlSession session, int studentId) {
       return session.selectOne(makeSqlId("selectStudentById"), studentId);
    }
-   
-   
 
    @Override
    public List<Student> selectStudentByName(SqlSession session, String studentName) {
