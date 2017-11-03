@@ -58,7 +58,7 @@ public class GetSubjectListServlet extends HttpServlet {
 		
 		request.setAttribute("enoList", enoList);
 		if(addSubjectId != 0) {
-			request.setAttribute("sub","getSuball");
+			request.setAttribute("sub","getSubAll");
 			request.getRequestDispatcher("/addEnrollment").forward(request, response);
 		}else {
 			request.getRequestDispatcher("/subject/get_subject_list.jsp").forward(request, response);

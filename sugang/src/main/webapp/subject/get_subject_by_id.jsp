@@ -6,30 +6,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
+<link rel="stylesheet" type="text/css"
+	href="/sugang/css/framestyle2.css">
 <meta charset="UTF-8">
 <title>수강신청</title>
 <script type="text/javascript">
-function addEnrollment(subjectId){
-	subjectId.submit();
-}
+	function addEnrollment(subjectId) {
+		subjectId.submit();
+	}
 </script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/sugangtop.jsp"/>
-<jsp:include page="/subject/subget_enrollment_list.jsp"/>
-<form action="/sugang/findSubjectById">
-	<div class="find">
-		<h4>과목 코드별 조회
-		<button>과목코드</button> 
-		<input type="number" name="subjectId"/>
-		<button type="submit">조회</button>
-		</h4>
-	</div>
-</form>
-<form action="/sugang/findSubjectById" method="post">
+	<jsp:include page="/WEB-INF/sugangtop.jsp" />
+	<jsp:include page="/subject/subget_enrollment_list.jsp" />
+	<form action="/sugang/findSubjectById">
+		<div class="find">
+			<h4>
+				과목 코드별 조회
+				<button>과목코드</button>
+				<input type="number" name="subjectId" />
+				<button type="submit">조회</button>
+			</h4>
+		</div>
+	</form>
 	<div class="scroll">
-	
+
 		<table class="table">
 			<thead>
 				<tr>
@@ -46,48 +47,40 @@ function addEnrollment(subjectId){
 				<c:choose>
 					<c:when test="${!empty requestScope.subId }">
 						<%
-								Subject subId = (Subject)request.getAttribute("subId");
+							Subject subId = (Subject) request.getAttribute("subId");
 						%>
-							<tr>
-								<td class="td">
-									<%=subId.getSubjectId() %>
-								</td>		
-								<td class="td">
-									<%=subId.getSubjectName() %>
-								</td>
-								<td class="td">
-									<%=subId.getSubjectCredit() %>
-								</td>
-								<td class="td">
-									<%=subId.getCompletion() %>
-								</td>
-								<td class="td">
-									<%=subId.getMaxStudent() %>
-								</td>
-								<td class="td">
-									<%=subId.getDay() %>
-								</td>
-								<td class="td">
-									<%=subId.getSubjectTime() %>
-								</td>
-								<td >
-									<input type="hidden" name="addSubjectId" value="<%=subId.getSubjectId() %>">
+						<tr>
+							<td class="td"><%=subId.getSubjectId()%></td>
+							<td class="td"><%=subId.getSubjectName()%></td>
+							<td class="td"><%=subId.getSubjectCredit()%></td>
+							<td class="td"><%=subId.getCompletion()%></td>
+							<td class="td"><%=subId.getMaxStudent()%></td>
+							<td class="td"><%=subId.getDay()%></td>
+							<td class="td"><%=subId.getSubjectTime()%></td>
+							<td>
+								<form action="/sugang/findSubjectById" method="post">
+									<input type="hidden" name="addSubjectId"
+										value="<%=subId.getSubjectId()%>">
 									<button class="sugangbutton" type="submit">신청</button>
-								</td>
-							</tr>
+								</form>
+							</td>
+						</tr>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td></td><td></td><td></td>
-							<td >조회된 과목이 없습니다.</td>
-							<td></td><td></td><td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>조회된 과목이 없습니다.</td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
 			</tbody>
 		</table>
 	</div>
-</form>
 </body>
 </html>
 
