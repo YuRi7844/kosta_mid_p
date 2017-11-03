@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="/WEB-INF/sugangtop.jsp"/>
 <jsp:include page="/subject/subget_enrollment_list.jsp"/>
-<form action="/sugang/getSubjectList">
+<form action="/sugang/findSubjectByName">
 	<div class="find">
 		<h4>과목 이름별 조회
 		<button>과목이름</button> 

@@ -18,7 +18,7 @@ function addEnrollment(subjectId){
 <body>
 <jsp:include page="/WEB-INF/sugangtop.jsp"/>
 <jsp:include page="/subject/subget_enrollment_list.jsp"/>
-<form action="/sugang/getSubjectList">
+<form action="/sugang/findSubjectById">
 	<div class="find">
 		<h4>과목 코드별 조회
 		<button>과목코드</button> 

@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="/WEB-INF/sugangtop.jsp"/>
 <jsp:include page="/subject/subget_enrollment_list.jsp"/>
-<form action="/sugang/getSubjectList">
+<form action="/sugang/findSubjectByDay">
 	<div class="find">
 		<h4>요일별 조회 : ${requestScope.day }요일 &ensp;
 			<select  name="day">

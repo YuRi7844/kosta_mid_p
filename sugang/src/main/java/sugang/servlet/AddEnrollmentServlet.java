@@ -61,8 +61,17 @@ public class AddEnrollmentServlet extends HttpServlet {
 			request.setAttribute("message", e.getMessage());
 			e.printStackTrace();
 		} 
-		
-		request.getRequestDispatcher("/subject/get_subject_list.jsp").forward(request, response);
+		if(request.getAttribute("sub") == "getSubAll") {
+			request.getRequestDispatcher("/subject/get_subject_list.jsp").forward(request, response);
+		}else if(request.getAttribute("sub") == "findSubCompletion") {
+			request.getRequestDispatcher("/subject/get_subject_by_completion.jsp").forward(request, response);
+		}else if(request.getAttribute("sub") == "findSubDay") {
+			request.getRequestDispatcher("/subject/get_subject_by_day.jsp").forward(request, response);
+		}else if(request.getAttribute("sub") == "findSubId") {
+			request.getRequestDispatcher("/subject/get_subject_by_id.jsp").forward(request, response);
+		}else if(request.getAttribute("sub") == "findSubName") {
+			request.getRequestDispatcher("/subject/get_subject_by_name.jsp").forward(request, response);
+		}
 
 	}
 
