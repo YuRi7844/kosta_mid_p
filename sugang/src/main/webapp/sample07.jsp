@@ -2,23 +2,14 @@
 <%@page import="java.util.List" %>
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
-<meta charset="UTF-8">
-<title>학생 조회</title>
-</head>
-<body>
 
-<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
-
-
-<br>
-<div class="stScroll">
-<jsp:include page="/studentSearch.jsp"></jsp:include>
+<form action="/sugang/findStudent" method="post">
+	<div class="scroll">
+	<div class="find">
+		<h4>학생 전체 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">조회</button></h4>
+		&nbsp;
+		
+	</div>
 		<table class="table">
 			<thead>
 				<tr>
@@ -38,6 +29,9 @@
 								for(int i = 0; i < list.size(); i++){
 						%>
 							<tr class="tr">
+								<%-- <td class="td">
+									${result } <button class="loginbutton" type="submit">신청</button>
+								</td> --%>
 								
 								<td class="td">
 									<%=list.get(i).getStudentId() %>
@@ -69,6 +63,4 @@
 	</div>
 </form>
 
-</body>
-</html>
 
