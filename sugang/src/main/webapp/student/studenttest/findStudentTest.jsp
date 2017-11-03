@@ -42,11 +42,6 @@
 </section>
 
 
-<div class="footer">
-<jsp:include page="/WEB-INF/foot.jsp"></jsp:include>
-</div>
-
-
 </body>
 </html>
 
