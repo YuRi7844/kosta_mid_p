@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8"%>
 
 <nav>
-
-			<ul class="submenu">
+		<ul class="submenu">
 
 				<li class="submenuList"><a class="submenulink" href="student_add.jsp">
 				학생등록</a></li>
