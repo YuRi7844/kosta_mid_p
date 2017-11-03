@@ -14,10 +14,10 @@
 <jsp:include page="/WEB-INF/top.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
-<jsp:include page="/studentSearch.jsp"></jsp:include>
 
 <br>
-<div class="scroll">
+<div class="stScroll">
+<jsp:include page="/studentSearch.jsp"></jsp:include>
 		<table class="table">
 			<thead>
 				<tr>
@@ -31,33 +31,31 @@
 			<tbody>
 				<c:choose>
 					<c:when test="${!empty requestScope.result }">
-					
-						<%
-								Student result = (Student)request.getAttribute("result");{
-						%>
+						<c:forEach var="result" items="${requestScope.result }" >
 					<tr class="tr">
 								<td class="td">
-									<%=result.getStudentId() %>
+									${result.studentId }
 								</td>
 								<td class="td">
-									<%=result.getStudentName() %>
+									${result.studentName }
 								</td>
 								<td class="td">
-									<%=result.getMajor() %>
+								${result.major }
 								</td>
 								<td class="td">
-									<%=result.getGrade() %>
+								${result.grade }
 								<td class="td">
-									<%=result.getMaxCredit() %>
+								${result.maxCredit }
 								</td>
 							</tr>
-							<%} %>
+							</c:forEach>
 					</c:when>
 					<c:otherwise>
 						<tr>
 							<td class="td">조회된 학생이 없습니다.</td>
 						</tr>
 					</c:otherwise>
+
 				</c:choose>
 			</tbody>
 		</table>

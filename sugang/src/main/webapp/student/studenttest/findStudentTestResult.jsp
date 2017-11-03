@@ -14,10 +14,11 @@
 <jsp:include page="/WEB-INF/top.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
-<jsp:include page="/studentSearch.jsp"></jsp:include>
+
 
 <br>
-<div class="scroll">
+<div class="stScroll">
+<jsp:include page="/studentSearch.jsp"></jsp:include>
 		<table class="table">
 			<thead>
 				<tr>
@@ -37,9 +38,6 @@
 								for(int i = 0; i < list.size(); i++){
 						%>
 							<tr class="tr">
-								<%-- <td class="td">
-									${result } <button class="loginbutton" type="submit">신청</button>
-								</td> --%>
 								
 								<td class="td">
 									<%=list.get(i).getStudentId() %>
