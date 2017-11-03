@@ -1,4 +1,13 @@
 @charset "UTF-8";
+h6 {
+    display: block;
+    font-size: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold; 
+    margin-top : 0px;
+    margin-bottom : 0px;
+}
 
 body {
 	max-width: 100%;

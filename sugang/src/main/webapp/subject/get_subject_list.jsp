@@ -14,11 +14,11 @@
 	<jsp:include page="/WEB-INF/sugangtop.jsp" />
 	<jsp:include page="/subject/subget_enrollment_list.jsp" />
 	<form action="/sugang/getSubjectList">
-		<div class="find">
-			<h5>
+		<div class="find" style="height: 25px">
+			<h6 style="margin-top: 0px; margin-bottom: 0px;">
 				강좌 전체 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="submit">조회</button>
-			</h5>
+			</h6>
 		</div>
 	</form>
 	<div class="scroll">

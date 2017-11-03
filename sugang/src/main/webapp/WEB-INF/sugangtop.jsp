@@ -4,11 +4,11 @@
 <header>
 
 	<div class="top">
-		<p style="font-size: 27px; padding-left: 20px; margin-top: 10px; margin-bottom: 10px; text-align: center;">
+<!-- 		<p style="font-size: 27px; padding-left: 20px; margin-top: 10px; margin-bottom: 10px; text-align: center;">
 			<strong>수강신청</strong>
-		</p>
-		<p
-			style="margin-top: 5px; margin-bottom: 7px; text-align: right; padding-right: 50px">
+		</p> -->
+		<p style="margin-top: 5px; margin-bottom: 7px; text-align: right; padding-right: 50px">
+			<strong style="font-size: 25px; padding-right: 400px; color: #ffff66">KOSTA 수강신청</strong> 
 			<strong> 아이디: <input type="text" name="studentId" size="10"
 				value="&nbsp;${sessionScope.loginStudent.studentId }" readonly
 				style="border: 0px; background-color: #e2e2e2; padding: 2px 0px 2px 30px; border-radius: 4px;">
