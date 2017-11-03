@@ -19,7 +19,6 @@ border-radius: 4px;
 .logoutlink{
 padding-bottom: 3.5px; 
 padding-top: 3.5px}
-
 </style>
 	<div class="top">
 		<p style="margin-top: 5px; margin-bottom: 7px; text-align: right; padding-right: 50px">
