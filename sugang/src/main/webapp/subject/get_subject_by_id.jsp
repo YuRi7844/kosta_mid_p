@@ -9,19 +9,17 @@
 <link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
 <meta charset="UTF-8">
 <title>수강신청</title>
+<script type="text/javascript">
+function addEnrollment(subjectId){
+	subjectId.submit();
+}
+</script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/top.jsp"/>
 <jsp:include page="/WEB-INF/menu.jsp"/>
 <jsp:include page="/WEB-INF/submenu(student).jsp"/>
-<form action="/sugang/addEnrollment">
-	<div class="topscroll">
-		<div class="find">
-			<h4>과목 코드별 조회</h4>
-		</div>
-		<jsp:include page="/subject/subget_enrollment_list.jsp"/>
-	</div>
-</form>
+<jsp:include page="/subject/subget_enrollment_list.jsp"/>
 <form action="/sugang/findSubjectById" method="post">
 	<div class="scroll">
 	<div class="find">
@@ -72,6 +70,7 @@
 									<%=subId.getSubjectTime() %>
 								</td>
 								<td >
+									<input type="hidden" name="addSubjectId" value="<%=subId.getSubjectId() %>">
 									<button class="sugangbutton" type="submit">신청</button>
 								</td>
 							</tr>

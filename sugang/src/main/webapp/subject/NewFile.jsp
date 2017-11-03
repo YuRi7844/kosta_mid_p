@@ -14,18 +14,10 @@
 <jsp:include page="/WEB-INF/menu.jsp"/>
 <jsp:include page="/WEB-INF/submenu(student).jsp"/>
 <jsp:include page="/subject/subget_enrollment_list.jsp"/>
-<form action="/sugang/findSubjectByCompletion" method="post">
+<form action="/sugang/getSubjectList" method="post">
 	<div class="scroll">
 	<div class="find">
-		<h4>신청강좌 전체 조회
-			<select  name="completion">
-				<option>전공필수</option>
-				<option>전공선택</option>
-				<option>교양필수</option>
-				<option>교양선택</option>
-			</select>
-			<button type="submit">조회</button>
-		</h4>
+		<h4>강좌 전체 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">조회</button></h4>
 	</div>
 		<table class="table">
 			<thead>
@@ -41,35 +33,35 @@
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${!empty requestScope.subCompletion }">
+					<c:when test="${!empty requestScope.subAllList }">
 						<%
-								List<Subject> subCompletion = (List<Subject>)request.getAttribute("subCompletion");
-								for(int i = 0; i < subCompletion.size(); i++){
+								List<Subject> subList = (List<Subject>)request.getAttribute("subAllList");
+								for(int i = 0; i < subList.size(); i++){
 						%>
 							<tr>
 								<td class="td">
-									<%=subCompletion.get(i).getSubjectId() %>
+									<%=subList.get(i).getSubjectId() %>
 								</td>		
 								<td class="td">
-									<%=subCompletion.get(i).getSubjectName() %>
+									<%=subList.get(i).getSubjectName() %>
 								</td>
 								<td class="td">
-									<%=subCompletion.get(i).getSubjectCredit() %>
+									<%=subList.get(i).getSubjectCredit() %>
 								</td>
 								<td class="td">
-									<%=subCompletion.get(i).getCompletion() %>
+									<%=subList.get(i).getCompletion() %>
 								</td>
 								<td class="td">
-									<%=subCompletion.get(i).getMaxStudent() %>
+									<%=subList.get(i).getMaxStudent() %>
 								</td>
 								<td class="td">
-									<%=subCompletion.get(i).getDay() %>
+									<%=subList.get(i).getDay() %>
 								</td>
 								<td class="td">
-									<%=subCompletion.get(i).getSubjectTime() %>
+									<%=subList.get(i).getSubjectTime() %>
 								</td>
 								<td >
-									<input type="hidden" name="addSubjectId" value="<%=subCompletion.get(i).getSubjectId() %>">
+									<input type="hidden" name="addSubjectId" value="<%=subList.get(i).getSubjectId() %>">
 									<button class="sugangbutton" type="submit">신청</button>
 								</td>
 							</tr>

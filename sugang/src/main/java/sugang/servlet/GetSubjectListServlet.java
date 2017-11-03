@@ -39,6 +39,14 @@ public class GetSubjectListServlet extends HttpServlet {
 		//1. 요청파라미터 조회
 		HttpSession session = request.getSession();
 		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
+		int addSubjectId = 0;
+		String reg = request.getParameter("addSubjectId");
+		if(reg != null) {
+				addSubjectId = Integer.parseInt(reg);
+				request.setAttribute("addSubjectId", addSubjectId);
+				System.out.println("add 0 아님  "+addSubjectId);
+		}
+
 		//2. Business Service 호출	
 		
 		SubjectServiceImpl service = SubjectServiceImpl.getInstance();
@@ -47,8 +55,13 @@ public class GetSubjectListServlet extends HttpServlet {
 		
 		//2. 응답
 		request.setAttribute("subAllList", subAllList);
+		
 		request.setAttribute("enoList", enoList);
-		request.getRequestDispatcher("/subject/get_subject_list.jsp").forward(request, response);
+		if(addSubjectId != 0) {
+			request.getRequestDispatcher("/addEnrollment").forward(request, response);
+		}else {
+			request.getRequestDispatcher("/subject/get_subject_list.jsp").forward(request, response);
+		}
 	}
 
 }

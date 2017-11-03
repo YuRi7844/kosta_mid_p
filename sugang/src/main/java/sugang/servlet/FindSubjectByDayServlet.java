@@ -40,13 +40,16 @@ public class FindSubjectByDayServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
 		String day = request.getParameter("day");
+		int addSubjectId = Integer.parseInt(request.getParameter("addSubjectId"));
 
 		// 2. Business Service 호출
 		SubjectServiceImpl service = SubjectServiceImpl.getInstance();
 		List<Subject> subDay = service.findSubjectByDay(day);
 		List<Subject> enoList = service.getStudentByEnrollmentSubjectList(studentId);
 		// 3. 응답
+		request.setAttribute("day", day);//사용자에게 자신이 선택한 요일을 보여주려고 저장.
 		request.setAttribute("subDay", subDay);
+		request.setAttribute("addSubjectId", addSubjectId);
 		request.setAttribute("enoList", enoList);
 		request.getRequestDispatcher("/subject/get_subject_by_day.jsp").forward(request, response);
 	}
