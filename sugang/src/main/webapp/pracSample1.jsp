@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
 <meta charset="UTF-8">
-<title>학생 조회</title>
+<title>Insert title here</title>
 </head>
 <body>
 
@@ -15,11 +15,40 @@
 <jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
 
-
-<br>
-<div class="stScroll">
-<jsp:include page="/studentSearch.jsp"></jsp:include>
-		<table class="table">
+	<section>
+			<p>
+			<center><h2>학생 정보 조회</h2></center>
+			</p>
+			<p>
+			<table style="border-collapse:collapse;" padding="10px;" align="center" >
+				<tr>
+				<th class="th2"><b>전체 학생</b></th>
+				<th class="th2"><b>학번 조회</b></th>
+				<th class="th2"><b>이름 조회</b></th>
+				</tr>
+				<tr>
+			<th class="th2"><form action="/sugang/findStudent" method="POST">
+				<button type="submit">전체 학생 조회</button>
+			</form></th>
+			<th class="th2"><form action="/sugang/findStudentById" method="post">
+				<input type="number" name="studentId" />
+				<button type="submit">학번 조회</button>
+			</form>
+			</th>
+			<th class="th2">
+			<form action="/sugang/findStudentByName" method="POST">
+				<input type="text" name="studentName"/>
+				<button type="submit">이름 조회</button>
+				</p></form>
+				</th>
+				</tr>
+				</table>
+	</section>
+	<p>
+	<p>
+	<p>
+	
+			<table class="table">
 			<thead>
 				<tr>
 					<th>학번</th>
@@ -66,8 +95,9 @@
 				</c:choose>
 			</tbody>
 		</table>
-		</div>
 	
+	</div>
+</form>
 
 
 </body>

@@ -1,24 +1,13 @@
 <%@page import="sugang.vo.Student"%>
-<%@page import="java.util.List" %>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
-<meta charset="UTF-8">
-<title>학생 조회</title>
-</head>
-<body>
-
-<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
-
-
-<br>
-<div class="stScroll">
-<jsp:include page="/studentSearch.jsp"></jsp:include>
+<form action="/sugang/findStudentByName" method="post">
+	<div class="scroll">
+	<div class="find">
+		<h4>이름 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="studentName"/>
+		<button type="submit">조회</button></h4>
+		</div>
 		<table class="table">
 			<thead>
 				<tr>
@@ -66,9 +55,6 @@
 				</c:choose>
 			</tbody>
 		</table>
-		</div>
 	
-
-
-</body>
-</html>
+	</div>
+</form>
