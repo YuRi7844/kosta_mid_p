@@ -31,7 +31,7 @@
 					<a class="mainmenulink" href="/sugang/notice.jsp">공지사항</a>
 				</li>
 				<li class="mainmenuList">
-					<a class="mainmenulink" href="">학생관리</a>
+					<a class="mainmenulink" href="/sugang/studentManagement.jsp">학생관리</a>
 				</li>
 				
 				

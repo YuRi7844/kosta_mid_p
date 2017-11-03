@@ -14,13 +14,10 @@
 <jsp:include page="/WEB-INF/top.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
+<jsp:include page="/studentSearch.jsp"></jsp:include>
 
-<form action="/sugang/findStudentByName" method="post">
-	<div class="scroll">
-	<div class="find">
-		<h4>이름 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="studentName"/>
-		<button type="submit">조회</button></h4>
-		</div>
+<br>
+<div class="scroll">
 		<table class="table">
 			<thead>
 				<tr>
@@ -68,10 +65,8 @@
 				</c:choose>
 			</tbody>
 		</table>
+		</div>
 	
-	</div>
-</form>
-
 
 
 </body>

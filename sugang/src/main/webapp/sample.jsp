@@ -1,28 +1,15 @@
 <%@ page contentType="text/html;charset=utf-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css"
-	href="/sugang/css/framestyle2.css">
-<meta charset="UTF-8">
-<title>학생 조회</title>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-	<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
-
-	<section>
 			<p>
 			<center><h2>학생 정보 조회</h2></center>
 			</p>
 			<p>
-			<table>
+			<table class="find">
 				<tr>
-				<th><b>전체 학생</b></th>
-				<th><b>학번 조회</b></th>
-				<th><b>이름 조회</b></th>
+				<th><b>전체학생</b></th>
+				<th><b>학번조회</b></th>
+				<th><b>이름조회</b></th>
 				</tr>
 				<tr>
 			<th><form action="/sugang/findStudent" method="POST">
@@ -41,12 +28,3 @@
 				</th>
 				</tr>
 				</table>
-	</section>
-
-		<div class="footer">
-			<jsp:include page="/WEB-INF/foot.jsp"></jsp:include>
-		</div>
-</body>
-</html>
-
-

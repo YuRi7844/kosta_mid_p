@@ -7,19 +7,17 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
 <meta charset="UTF-8">
-<title>수강신청</title>
+<title>학생 조회</title>
 </head>
 <body>
+
 <jsp:include page="/WEB-INF/top.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
+<jsp:include page="/studentSearch.jsp"></jsp:include>
 
-<form action="/sugang/findStudentById" method="post">
-	<div class="scroll">
-	<div class="find">
-		<h4>학번 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="studentId"/>
-		<button type="submit">조회</button></h4>
-		</div>
+<br>
+<div class="scroll">
 		<table class="table">
 			<thead>
 				<tr>
