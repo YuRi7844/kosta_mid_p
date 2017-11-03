@@ -11,14 +11,14 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/sugangtop.jsp"/>
-<jsp:include page="/WEB-INF/menu.jsp"/>
-<jsp:include page="/WEB-INF/submenu(student).jsp"/>
 <jsp:include page="/subject/subget_enrollment_list.jsp"/>
+<form action="/sugang/getSubjectList">
+	<div class="find">
+		<h5>강좌 전체 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">조회</button></h5>
+	</div>
+</form>
 <form action="/sugang/getSubjectList" method="post">
 	<div class="scroll">
-	<div class="find">
-		<h4>강좌 전체 조회 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">조회</button></h4>
-	</div>
 		<table class="table">
 			<thead>
 				<tr>
