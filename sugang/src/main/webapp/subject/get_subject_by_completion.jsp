@@ -10,12 +10,9 @@
 <title>수강신청</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/top.jsp"/>
-<jsp:include page="/WEB-INF/menu.jsp"/>
-<jsp:include page="/WEB-INF/submenu(student).jsp"/>
+<jsp:include page="/WEB-INF/sugangtop.jsp"/>
 <jsp:include page="/subject/subget_enrollment_list.jsp"/>
-<form action="/sugang/findSubjectByCompletion" method="post">
-	<div class="scroll">
+<form action="/sugang/getSubjectList">
 	<div class="find">
 		<h4>신청강좌 전체 조회
 			<select  name="completion">
@@ -27,6 +24,10 @@
 			<button type="submit">조회</button>
 		</h4>
 	</div>
+</form>
+<form action="/sugang/findSubjectByCompletion" method="post">
+	<div class="scroll">
+	
 		<table class="table">
 			<thead>
 				<tr>

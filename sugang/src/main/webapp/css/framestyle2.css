@@ -27,7 +27,8 @@ footer{
 }
 /* <!-- --> */
 table {
-	border: 1px solid #bcbcbc;
+   border: 1px solid #bcbcbc;
+   margin-top: 20px;
     width: 80%;
     height: 4em;
     margin-left: auto;

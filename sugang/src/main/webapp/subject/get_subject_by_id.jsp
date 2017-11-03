@@ -16,12 +16,9 @@ function addEnrollment(subjectId){
 </script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/top.jsp"/>
-<jsp:include page="/WEB-INF/menu.jsp"/>
-<jsp:include page="/WEB-INF/submenu(student).jsp"/>
+<jsp:include page="/WEB-INF/sugangtop.jsp"/>
 <jsp:include page="/subject/subget_enrollment_list.jsp"/>
-<form action="/sugang/findSubjectById" method="post">
-	<div class="scroll">
+<form action="/sugang/getSubjectList">
 	<div class="find">
 		<h4>과목 코드별 조회
 		<button>과목코드</button> 
@@ -29,6 +26,10 @@ function addEnrollment(subjectId){
 		<button type="submit">조회</button>
 		</h4>
 	</div>
+</form>
+<form action="/sugang/findSubjectById" method="post">
+	<div class="scroll">
+	
 		<table class="table">
 			<thead>
 				<tr>
