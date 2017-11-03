@@ -9,6 +9,7 @@
 	href="/sugang/css/framestyle2.css">
 <meta charset="UTF-8">
 <title>수강신청</title>
+<jsp:include page="/subject/popup.jsp" />
 </head>
 <body>
 	<jsp:include page="/WEB-INF/sugangtop.jsp" />
@@ -60,8 +61,8 @@
 								<form action="/sugang/findSubjectByDay" method="post">
 									<input type="hidden" name="addSubjectId"
 										value="<%=subDay.get(i).getSubjectId()%>">
-									<button class="sugangbutton" type="submit">신청</button>
 								</form>
+								<button class="sugangbutton" onclick="getSubjectByDay(<%=subDay.get(i).getSubjectId()%>)">신청</button>
 							</td>
 						</tr>
 						<%

@@ -37,7 +37,12 @@ public class FindSubjectByIdServlet extends HttpServlet {
 		// 1. 요청파라미터 조회
 		HttpSession session = request.getSession();
 		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
-		int subjectId = Integer.parseInt(request.getParameter("subjectId"));
+		int subjectId = 0;
+		String findReg = request.getParameter("subjectId");
+		if(findReg != null) {
+			subjectId = Integer.parseInt(findReg);
+		}
+//		Integer.parseInt(request.getParameter("subjectId"));
 		int addSubjectId = 0;
 		String reg = request.getParameter("addSubjectId");
 		if(reg != null) {
