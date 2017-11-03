@@ -28,7 +28,7 @@ public class testEnrollment {
 			System.out.println(flag);*/
 	
 			System.out.println(dao.selectEnrollmentStudentByNowCredit(session, 20170001));
-/*			System.out.println("===== 학생 삭제 조회=====");
+/*			System.out.println("===== 학생 삭제 조회=====");10
 			int flag2 = dao.deleteEnrollmentByStudentId(session, 20120010);
 			System.out.println(flag2);
 			

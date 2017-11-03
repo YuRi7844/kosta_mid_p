@@ -63,12 +63,12 @@ table {
 .topscroll{
 	overflow-y: scroll;
 	overflow-x: scroll;
-	height: 15em
+	height: 10em
 }
 .scroll{
 	overflow-y: scroll;
 	overflow-x: scroll;
-	height: 22em
+	height: 15em
 }
 .subtitle{
 	font-size:2em;
