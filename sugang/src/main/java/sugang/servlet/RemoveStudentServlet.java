@@ -7,10 +7,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import sugang.dao.EnrollmentDao;
+import sugang.dao.impl.EnrollmentDaoImpl;
 import sugang.exception.StudentNotFoundException;
+import sugang.exception.SubjectNotFoundException;
+import sugang.service.EnrollmentService;
 import sugang.service.StudentService;
+import sugang.service.impl.EnrollmentServiceImpl;
 import sugang.service.impl.StudentServiceImpl;
+import sugang.util.SqlSessionFactoryManager;
 import sugang.vo.Student;
 
 /**
@@ -35,18 +45,24 @@ public class RemoveStudentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StudentService service = StudentServiceImpl.getInstance();
+		SqlSessionFactory factory = SqlSessionFactoryManager.getInstance().getSqlSessionFactory();
+		SqlSession session = null;
+		StudentService serviceSt = StudentServiceImpl.getInstance();
+		EnrollmentDao enDao = EnrollmentDaoImpl.getInstance();
 		int studentId = Integer.parseInt(request.getParameter("studentId"));
 		try {
-			service.removeStudentById(studentId);
+			session = factory.openSession();
+			enDao.deleteEnrollmentByStudentId(session, studentId);
+			serviceSt.removeStudentById(studentId);
 			String result = String.format("%d 학번 학생정보를 삭제했습니다.", studentId);
 			request.setAttribute("result", result);
-			request.getRequestDispatcher("/student/studentDeleteSuccess.jsp").forward(request, response);
-			
-
+			request.getRequestDispatcher("/student/student_delete_result(pop).jsp").forward(request, response);
+			session.commit();
 		} catch (StudentNotFoundException e) {
 			request.setAttribute("errorMessage", e.getMessage());
-			request.getRequestDispatcher("/student/testStudentDelete.jsp").forward(request, response);
+			request.getRequestDispatcher("/student/student_delete_result(pop).jsp").forward(request, response);
+		} catch (IOException e) {
+			
 		}
 	}
 

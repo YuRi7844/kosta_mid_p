@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import sugang.exception.DuplicatedSubjectException;
+import sugang.exception.StudentNotFoundException;
+import sugang.exception.SubjectNotFoundException;
 import sugang.service.impl.EnrollmentServiceImpl;
 
 /**
@@ -36,7 +38,7 @@ public class RemoveEnrollmentServletBySubjectId extends HttpServlet {
 		EnrollmentServiceImpl service = EnrollmentServiceImpl.getInstance();
 		try {
 			service.removeEnrollmentBySubjectId(subjectId);
-		} catch (DuplicatedSubjectException e) {
+		} catch (SubjectNotFoundException e) {
 			e.printStackTrace();
 			request.setAttribute("message", e.getMessage());
 		}

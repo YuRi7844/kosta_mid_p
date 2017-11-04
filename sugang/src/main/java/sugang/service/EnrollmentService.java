@@ -9,6 +9,8 @@ import javax.security.auth.login.LoginException;
 import sugang.exception.DuplicatedStudentException;
 import sugang.exception.DuplicatedSubjectException;
 import sugang.exception.MaxSubjectEnrollmentException;
+import sugang.exception.StudentNotFoundException;
+import sugang.exception.SubjectNotFoundException;
 import sugang.vo.Enrollment;
 
 public interface EnrollmentService {
@@ -38,7 +40,7 @@ public interface EnrollmentService {
    void removeEnrollmentByEnrollment(Enrollment enrollment);
    
    
-   void removeEnrollmentBySubjectId(int id) throws DuplicatedSubjectException;
+   void removeEnrollmentBySubjectId(int id) throws SubjectNotFoundException;
    
    
    /**
@@ -48,7 +50,7 @@ public interface EnrollmentService {
  * @throws DuplicatedStudentException 
     */
    
-   void removeEnrollmentByStudentId(int id) throws DuplicatedStudentException;
+   void removeEnrollmentByStudentId(int id) throws StudentNotFoundException;
    
    
    

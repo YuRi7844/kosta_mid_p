@@ -19,6 +19,8 @@ import sugang.dao.impl.SubjectDaoImpl;
 import sugang.exception.DuplicatedStudentException;
 import sugang.exception.DuplicatedSubjectException;
 import sugang.exception.MaxSubjectEnrollmentException;
+import sugang.exception.StudentNotFoundException;
+import sugang.exception.SubjectNotFoundException;
 import sugang.service.EnrollmentService;
 import sugang.util.SqlSessionFactoryManager;
 import sugang.vo.Enrollment;
@@ -97,12 +99,12 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	}
 
 	@Override
-	public void removeEnrollmentBySubjectId(int id) throws DuplicatedSubjectException {
+	public void removeEnrollmentBySubjectId(int id) throws SubjectNotFoundException {
 		SqlSession session = null;
 		try {
 			session = factory.openSession();
 			if (dao.selectEnrollmentBySubjectId(session, id).isEmpty()) {
-				throw new DuplicatedSubjectException("없는 강좌코드입니다 ", id);
+				throw new SubjectNotFoundException("없는 강좌코드입니다 ", id);
 			}
 			dao.deleteEnrollmentBySubjectId(session, id);
 			session.commit();
@@ -112,13 +114,13 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	}
 
 	@Override
-	public void removeEnrollmentByStudentId(int id) throws DuplicatedStudentException {
+	public void removeEnrollmentByStudentId(int id) throws StudentNotFoundException {
 		SqlSession session = null;
 		try {
 			session = factory.openSession();
 
 			if (dao.selectEnrollmentByStudentId(session, id).isEmpty()) {
-				throw new DuplicatedStudentException("없는 학생입니다.", id);
+				throw new StudentNotFoundException("없는 학생입니다.", id);
 			}
 			dao.deleteEnrollmentByStudentId(session, id);
 			session.commit();
