@@ -47,13 +47,12 @@ function moveToUpdate(id){
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${!empty requestScope.result }">
-						<%-- <c:forEach items="${requestScope.subAllList }" var="result"> --%>
+					<c:when test="${!empty requestScope.result }"> <!-- 조건문, requestScope에 접근 -->
 						<%
 							List<Student> list = (List<Student>) request.getAttribute("result");
 									for (int i = 0; i < list.size(); i++) {
 						%>
-						<tr class="tr">
+						<tr class="tr2">
 
 							<td class="td"><%=list.get(i).getStudentId()%></td>
 							<td class="td"><%=list.get(i).getStudentName()%></td>
@@ -89,8 +88,11 @@ function moveToUpdate(id){
 			</tbody>
 		</table>
 	</div>
+<<<<<<< HEAD
+=======
 	</form>
 
+>>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
 </body>
 </html>
 

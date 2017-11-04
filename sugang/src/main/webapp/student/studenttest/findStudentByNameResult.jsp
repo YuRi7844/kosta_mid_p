@@ -31,6 +31,7 @@ function moveToUpdate(id){
 <br>
 <div class="stScroll">
 <jsp:include page="/studentSearch.jsp"></jsp:include>
+
        <table class="table">
          <thead>
             <tr>
@@ -44,9 +45,10 @@ function moveToUpdate(id){
          <tbody>
             <c:choose>
                <c:when test="${!empty requestScope.result }">
-                  <c:forEach var="result" items="${requestScope.result }">
+                  <c:forEach var="result" items="${requestScope.result }"> 
+                  <!-- result → 처리할 변수 / requestScope.result ← Collection 지정 -->
                   
-               <tr class="tr">
+               <tr class="tr2">
                         <td class="td">
                            ${result.studentId }
                         </td>

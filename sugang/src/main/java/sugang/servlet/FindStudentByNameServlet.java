@@ -35,7 +35,7 @@ public class FindStudentByNameServlet extends HttpServlet {
 //		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
 		String studentName = request.getParameter("studentName");
 		
-		
+		//이름으로 학생정보 List 호출
 		List<Student> result = service.findStudentByName(studentName);
 		
 		//2. 응답

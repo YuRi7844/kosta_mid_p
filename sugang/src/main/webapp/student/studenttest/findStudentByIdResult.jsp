@@ -26,6 +26,7 @@ function moveToUpdate(id){
 	<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
 
+
 	<br>
 	<div class="stScroll">
 		<jsp:include page="/studentSearch.jsp"></jsp:include>
@@ -42,7 +43,7 @@ function moveToUpdate(id){
 			<tbody>
 				<c:choose>
 					<c:when test="${! empty requestScope.result }">
-						<tr class="tr">
+						<tr class="tr2">
 							<td class="td">${requestScope.result.studentId }</td>
 							<td class="td">${requestScope.result.studentName }</td>
 							<td class="td">${requestScope.result.major }</td>
