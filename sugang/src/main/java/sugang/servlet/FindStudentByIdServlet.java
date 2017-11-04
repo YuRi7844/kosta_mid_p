@@ -33,33 +33,22 @@ public class FindStudentByIdServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudentServiceImpl service = StudentServiceImpl.getInstance();
-		//1. 요청파라미터 조회
+		//1. 요청파라미터 조회 //studentId 조회
 //		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
 		
-		int studentId= 0;
-		String num = request.getParameter("studentId");
-		if(num != null) {
-			studentId = Integer.parseInt(num);
-			request.setAttribute("studentId", studentId);
-			System.out.println("num != null : "+studentId);
-		}
+		int studentId = Integer.parseInt(request.getParameter("studentId"));
 		
-		
-	    Student result = service.findStudentById(studentId);
 		//Student result = (Student)(service.findStudentById(Integer.parseInt(studentId)));
-		//2. 비즈니스 로직 처리
-		
+		//2. 비즈니스 로직 처리 //학번으로 학생정보 호출
+	    Student result = service.findStudentById(studentId);
+	    
 		//3. 응답
-		//처리결과를 requestScope에 저장
+		//처리결과를 requestScope에 저장 (String key, Object value)
 		request.setAttribute("result", result);
-		if(num == null ) {
-			request.setAttribute("Student", "findStudentId");
-			request.getRequestDispatcher("/student/studenttest/findStudentByIdResult.jsp").forward(request, response);
-		}else {
-			//요청디스패치방식
-			request.getRequestDispatcher("/student/studenttest/findStudentByIdResult.jsp").forward(request, response);
-		}
 		//요청디스패치방식
+		request.getRequestDispatcher("/student/studenttest/findStudentByIdResult.jsp").forward(request, response);
+		
+	
 	}
 
 }

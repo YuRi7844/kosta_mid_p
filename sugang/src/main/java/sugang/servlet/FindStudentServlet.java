@@ -34,10 +34,12 @@ public class FindStudentServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		StudentService service = StudentServiceImpl.getInstance();
-		//학생 전체리스트 조회
+		//학생 전체리스트 조회 
 		List<Student> list = service.getStudentList();
 		
 		//학생 리스트 속성으로 저장

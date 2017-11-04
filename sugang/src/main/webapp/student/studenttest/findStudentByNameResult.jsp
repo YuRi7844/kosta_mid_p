@@ -19,54 +19,7 @@
 <br>
 <div class="stScroll">
 <jsp:include page="/studentSearch.jsp"></jsp:include>
-<<<<<<< HEAD
-		<table class="table">
-			<thead>
-				<tr>
-					<th>학번</th>
-					<th>이름</th>
-					<th>전공</th>
-					<th>학년</th>
-					<th>최대수강학점</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:choose>
-					<c:when test="${!empty requestScope.result }">
-						<%
-							List<Student> result = (List<Student>)request.getAttribute("result");
-							for(int i =0; i < result.size(); i++)
-							{ 
-						%>
-						
-					<tr class="tr">
-								<td class="td">
-									<%=result.get(i).getStudentId() %>
-								</td>
-								<td class="td">
-									<%=result.get(i).getStudentName() %>
-								</td>
-								<td class="td">
-									<%=result.get(i).getMajor() %>
-								</td>
-								<td class="td">
-									<%=result.get(i).getGrade() %>
-								<td class="td">
-									<%=result.get(i).getMaxCredit() %>
-								</td>
-							</tr>
-							<%} %>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td class="td">조회된 학생이 없습니다.</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</tbody>
-		</table>
-		</div>
-=======
+
        <table class="table">
          <thead>
             <tr>
@@ -80,7 +33,8 @@
          <tbody>
             <c:choose>
                <c:when test="${!empty requestScope.result }">
-                  <c:forEach var="result" items="${requestScope.result }">
+                  <c:forEach var="result" items="${requestScope.result }"> 
+                  <!-- result → 처리할 변수 / requestScope.result ← Collection 지정 -->
                   
                <tr class="tr">
                         <td class="td">
@@ -109,6 +63,5 @@
          </tbody>
       </table> 
       </div>
->>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
 </body>
 </html>

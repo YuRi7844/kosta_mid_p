@@ -36,8 +36,7 @@
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${!empty requestScope.result }">
-						<%-- <c:forEach items="${requestScope.subAllList }" var="result"> --%>
+					<c:when test="${!empty requestScope.result }"> <!-- 조건문, requestScope에 접근 -->
 						<%
 								List<Student> list = (List<Student>)request.getAttribute("result");
 								for(int i = 0; i < list.size(); i++){
