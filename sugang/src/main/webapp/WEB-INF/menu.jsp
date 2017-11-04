@@ -6,10 +6,10 @@
 		<nav>
 			<ul class="mainmenu">
 				<li class="mainmenuList">
-				<a class="mainmenulink" href="/sugang/login_student.jsp">메인으로</a>
+				<a class="mainmenulink" href="/sugang/notice(student).jsp">메인으로</a>
 				</li>
 				<li class="mainmenuList">
-				<a class="mainmenulink" href="/sugang/notice.jsp">공지사항</a>
+				<a class="mainmenulink" href="/sugang/notice(student).jsp">공지사항</a>
 				</li>
 				<li class="mainmenuList">
 				<a class="mainmenulink" href="/sugang/subject/request_subject_list.jsp">수강신청</a>
@@ -28,7 +28,7 @@
 		<nav>
 			<ul class="mainmenu">
 				<li class="mainmenuList">
-					<a class="mainmenulink" href="/sugang/notice.jsp">공지사항</a>
+					<a class="mainmenulink" href="/sugang/notice(admin).jsp">공지사항</a>
 				</li>
 				<li class="mainmenuList">
 

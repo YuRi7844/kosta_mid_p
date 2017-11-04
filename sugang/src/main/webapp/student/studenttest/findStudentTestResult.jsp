@@ -6,6 +6,11 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
+<style>
+#studentinfo{
+	text-align: right;
+}
+</style>
 <meta charset="UTF-8">
 <title>학생 조회</title>
 </head>
