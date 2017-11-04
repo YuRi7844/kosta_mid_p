@@ -146,3 +146,21 @@ where ENROLLMENT.STUDENT_ID = 20170001
 	and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID;
 	
 
+/* 강의 Dummy Data */
+insert into subject values(0001,'강좌3',3,'전공선택', 5, '수', 2);
+insert into subject values(0002,'강좌3',3,'전공필수', 5, '수', 3);
+insert into subject values(0003,'강좌1',3,'전공선택', 5, '수', 8);
+insert into subject values(0004,'강좌3',3,'전공필수', 5, '수', 8);
+insert into subject values(0005,'강좌1',3,'교양필수', 5, '수', 2);
+insert into subject values(0006,'강좌3',3,'교양필수', 5, '목', 2);
+insert into subject values(0007,'강좌1',3,'전공선택', 5, '목', 2);
+insert into subject values(0008,'강좌2',3,'전공선택', 5, '목', 2);
+insert into subject values(0009,'강좌2',3,'전공필수', 5, '목', 5);
+insert into subject values(0010,'강좌2',3,'교양선택', 5, '목', 5);
+
+insert into subject values(0013,'강좌1',3,'전공필수', 3, '월', 1);
+insert into subject values(0014,'강좌2',3,'교양선택', 2, '금', 1);
+insert into subject values(0015,'강좌1',3,'전공필수', 3, '월', 1);
+insert into subject values(0016,'강좌2',3,'교양선택', 2, '금', 1);
+insert into subject values(0017,'강좌1',3,'전공필수', 3, '월', 1);
+insert into subject values(0018,'강좌2',3,'교양선택', 2, '금', 1);

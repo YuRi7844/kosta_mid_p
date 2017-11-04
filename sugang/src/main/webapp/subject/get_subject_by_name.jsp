@@ -15,13 +15,13 @@
 	<jsp:include page="/WEB-INF/sugangtop.jsp" />
 	<jsp:include page="/subject/subget_enrollment_list.jsp" />
 	<form action="/sugang/findSubjectByName">
-		<div class="find">
-			<h4>
+		<div class="find" style="height: 25px">
+			<h6 style="margin-top: 0px; margin-bottom: 0px;">
 				과목 이름별 조회
 				<button>과목이름</button>
-				<input type="text" name="subjectName" />
+				<input type="text" name="subjectName" autofocus="autofocus" required="required"/>
 				<button type="submit">조회</button>
-			</h4>
+			</h6>
 		</div>
 	</form>
 	<div class="scroll">

@@ -15,8 +15,8 @@
 	<jsp:include page="/WEB-INF/sugangtop.jsp" />
 	<jsp:include page="/subject/subget_enrollment_list.jsp" />
 	<form action="/sugang/findSubjectByCompletion">
-		<div class="find">
-			<h4>
+		<div class="find" style="height: 25px">
+			<h6 style="margin-top: 0px; margin-bottom: 0px;">
 				신청강좌 전체 조회 <select name="completion">
 					<option>전공필수</option>
 					<option>전공선택</option>
@@ -24,7 +24,7 @@
 					<option>교양선택</option>
 				</select>
 				<button type="submit">조회</button>
-			</h4>
+			</h6>
 		</div>
 	</form>
 	<div class="scroll">

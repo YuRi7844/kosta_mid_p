@@ -35,6 +35,7 @@ public interface StudentDao {
     * @return
     */
    int deleteStudentById(SqlSession session, int studentId);
+   int deleteEnrollmentByStudentId(SqlSession session, int studentId);
    
    /**
     * 전체 회원정보를 조회하는 메소드

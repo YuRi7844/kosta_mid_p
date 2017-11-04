@@ -1,6 +1,19 @@
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<style>
+.mainmenulink{
+	-webkit-transition:1s;
+	-webkit-transform:scale(1.0,1.0);
+	transition:1s;
+	transform:scale(1.0,1.0);
+}
+.mainmenulink:hover{
+	-webkit-transition:1s;
+	-webkit-transform:scale(1.1,1.1);
+	transition:1s;
+	transform:scale(1.1,1.1);
+}
+</style>
 <c:choose>
 	<c:when test="${sessionScope.loginStudent.studentPw != 'admin' }">
 		<nav>

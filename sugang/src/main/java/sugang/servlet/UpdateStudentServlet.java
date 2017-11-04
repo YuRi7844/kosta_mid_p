@@ -39,9 +39,9 @@ public class UpdateStudentServlet extends HttpServlet {
 			//Student 객체 생성 후 서비스 호출
 			Student student = new Student(studentId, studentName, major, studentPw, grade, maxCredit);
 			service.updateStudent(student);
-			String result = String.format("%d 학번 학생의 정보가 수정되었습니다.", studentId);
+			String result = String.format("%d 학번 학생의 정보가 수정되었습니다.", student.getStudentId());
 			request.setAttribute("result", result);
-			request.getRequestDispatcher("/student/updateStudentSuccess.jsp").forward(request, response);
+			request.getRequestDispatcher("/student/student_update_result.jsp").forward(request, response);
 		}catch(StudentNotFoundException e) {
 			request.setAttribute("errorMessage", e.getMessage());
 			request.getRequestDispatcher("/student/testStudentUpdate.jsp").forward(request, response);

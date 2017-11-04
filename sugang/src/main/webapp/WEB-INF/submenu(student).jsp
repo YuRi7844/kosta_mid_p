@@ -39,7 +39,7 @@ padding-top: 3.5px}
 					<li class="mainmenuList">
 						<a class="mainmenulink" href="/sugang/notice(student).jsp">공지사항</a></li>
 					<li class="mainmenuList">
-						<a class="mainmenulink" href="/sugang/subject/request_subject_list.jsp">수강신청</a></li>
+						<a class="mainmenulink" href="/sugang/subject/get_subject_list.jsp">수강신청</a></li>
 					<li class="mainmenuList">
 						<a class="mainmenulink" href="">수강신청조회</a>
 					</li>

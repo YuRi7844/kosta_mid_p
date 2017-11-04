@@ -73,25 +73,25 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 </script>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
-	
+	<%
+		int studentId= Integer.parseInt(request.getParameter("studentId"));
+		
+	%>
 	<span style="color:red;font-size: 25px;width: max-content;margin: 0 auto;"><h1> ${sessionScope.errorMessage}</h1></span>
 	<section id="student_add_form">
-		<form name="addForm" id="form" action="/sugang/addStudent" method="POST" onsubmit="return formCheck(this);">
+		<form name="addForm" id="form" action="/sugang/updateStudent" method="POST" onsubmit="return formCheck(this);">
 			<p class="form_item">
-				학번<input required class="form_list" type="number" name="studentId" autofocus >
+				학번<input readonly class="form_list" type="number" name="studentId" value="<%=studentId %>" >
 			</p>
 			<p class="form_item">
-				이름<input required class="form_list" type="text" name="studentName">
+				이름<input required class="form_list" type="text" name="studentName" autofocus>
 
 			</p>
 			<p class="form_item">
 				전공<input required class="form_list" type="text" name="major">
 			</p>
 			<p class="form_item">
-				초기비밀번호<input required class="form_list" type="password" name="studentPw" id="password">
+				비밀번호변경<input required class="form_list" type="password" name="studentPw" id="password">
 			</p>
 			<p class="form_item">
 				학년<input required class="form_list" type="number" name="grade" id="grade">
@@ -99,7 +99,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			<p class="form_item" style="margin-bottom: 50px;">
 				최대학점<input required class="form_list" type="number" name="maxCredit" id="credit">
 			</p>
-			<button id="add_button" type="submit">학생등록</button>
+			<button id="add_button" type="submit">학생정보수정</button>
 		</form>
 	</section>
 

@@ -38,6 +38,11 @@
       DELETE    FROM student
       WHERE   student_id = #{value}
    </delete>
+   <!-- deleteEnrollmentByStudentId -->
+	<delete id="deleteEnrollmentByStudentId" parameterType="_int">
+		delete from enrollment
+		where student_id = #{value}
+	</delete>
    
    <!-- 
       update SQl문 작성

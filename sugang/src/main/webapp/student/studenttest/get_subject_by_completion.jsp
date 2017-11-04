@@ -14,18 +14,17 @@
 <body>
 	<jsp:include page="/WEB-INF/sugangtop.jsp" />
 	<jsp:include page="/subject/subget_enrollment_list.jsp" />
-	<form action="/sugang/findSubjectByDay">
-		<div class="find" style="height: 25px">
-			<h6 style="margin-top: 0px; margin-bottom: 0px;">
-				요일별 조회 : ${requestScope.day }요일 &ensp; <select name="day">
-					<option value="월">월요일</option>
-					<option value="화">화요일</option>
-					<option value="수">수요일</option>
-					<option value="목">목요일</option>
-					<option value="금">금요일</option>
+	<form action="/sugang/findSubjectByCompletion">
+		<div class="find">
+			<h4>
+				신청강좌 전체 조회 <select name="completion">
+					<option>전공필수</option>
+					<option>전공선택</option>
+					<option>교양필수</option>
+					<option>교양선택</option>
 				</select>
 				<button type="submit">조회</button>
-			</h6>
+			</h4>
 		</div>
 	</form>
 	<div class="scroll">
@@ -44,25 +43,26 @@
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${!empty requestScope.subDay }">
+					<c:when test="${!empty requestScope.subCompletion }">
 						<%
-							List<Subject> subDay = (List<Subject>) request.getAttribute("subDay");
-									for (int i = 0; i < subDay.size(); i++) {
+							List<Subject> subCompletion = (List<Subject>) request.getAttribute("subCompletion");
+									for (int i = 0; i < subCompletion.size(); i++) {
 						%>
 						<tr>
-							<td class="td"><%=subDay.get(i).getSubjectId()%></td>
-							<td class="td"><%=subDay.get(i).getSubjectName()%></td>
-							<td class="td"><%=subDay.get(i).getSubjectCredit()%></td>
-							<td class="td"><%=subDay.get(i).getCompletion()%></td>
-							<td class="td"><%=subDay.get(i).getMaxStudent()%></td>
-							<td class="td"><%=subDay.get(i).getDay()%></td>
-							<td class="td"><%=subDay.get(i).getSubjectTime()%></td>
+							<td class="td"><%=subCompletion.get(i).getSubjectId()%></td>
+							<td class="td"><%=subCompletion.get(i).getSubjectName()%></td>
+							<td class="td"><%=subCompletion.get(i).getSubjectCredit()%>
+							</td>
+							<td class="td"><%=subCompletion.get(i).getCompletion()%></td>
+							<td class="td"><%=subCompletion.get(i).getMaxStudent()%></td>
+							<td class="td"><%=subCompletion.get(i).getDay()%></td>
+							<td class="td"><%=subCompletion.get(i).getSubjectTime()%></td>
 							<td>
-								<form action="/sugang/findSubjectByDay" method="post">
+								<form action="/sugang/findSubjectByCompletion" method="post">
 									<input type="hidden" name="addSubjectId"
-										value="<%=subDay.get(i).getSubjectId()%>">
+										value="<%=subCompletion.get(i).getSubjectId()%>">
 								</form>
-								<button class="sugangbutton" onclick="getSubjectByDay(<%=subDay.get(i).getSubjectId()%>)">신청</button>
+								<button class="sugangbutton" onclick="getSubjectByCompletion(<%=subCompletion.get(i).getSubjectId()%>)">신청</button>
 							</td>
 						</tr>
 						<%

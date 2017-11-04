@@ -37,18 +37,12 @@ public class FindSubjectByIdServlet extends HttpServlet {
 		// 1. 요청파라미터 조회
 		HttpSession session = request.getSession();
 		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
-		int subjectId = 0;
-		String findReg = request.getParameter("subjectId");
-		if(findReg != null) {
-			subjectId = Integer.parseInt(findReg);
-		}
-//		Integer.parseInt(request.getParameter("subjectId"));
+		int subjectId = Integer.parseInt(request.getParameter("subjectId"));
 		int addSubjectId = 0;
 		String reg = request.getParameter("addSubjectId");
 		if(reg != null) {
 				addSubjectId = Integer.parseInt(reg);
 				request.setAttribute("addSubjectId", addSubjectId);
-				System.out.println("add 0 아님  "+addSubjectId);
 		}
 
 		// 2. Business Service 호출
@@ -60,7 +54,6 @@ public class FindSubjectByIdServlet extends HttpServlet {
 		request.setAttribute("subId", subId);
 		request.setAttribute("enoList", enoList);
 		if(addSubjectId != 0) {
-			request.setAttribute("sub","findSubId");
 			request.getRequestDispatcher("/addEnrollment").forward(request, response);
 		}else {
 			request.getRequestDispatcher("/subject/get_subject_by_id.jsp").forward(request, response);
