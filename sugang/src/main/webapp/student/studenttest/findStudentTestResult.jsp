@@ -52,7 +52,7 @@ function moveToUpdate(id){
 							List<Student> list = (List<Student>) request.getAttribute("result");
 									for (int i = 0; i < list.size(); i++) {
 						%>
-						<tr class="tr">
+						<tr class="tr2">
 
 							<td class="td"><%=list.get(i).getStudentId()%></td>
 							<td class="td"><%=list.get(i).getStudentName()%></td>

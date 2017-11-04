@@ -46,7 +46,7 @@ function moveToUpdate(id){
                   <c:forEach var="result" items="${requestScope.result }"> 
                   <!-- result → 처리할 변수 / requestScope.result ← Collection 지정 -->
                   
-               <tr class="tr">
+               <tr class="tr2">
                         <td class="td">
                            ${result.studentId }
                         </td>
