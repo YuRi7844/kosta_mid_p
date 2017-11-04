@@ -15,8 +15,8 @@
 	<jsp:include page="/WEB-INF/sugangtop.jsp" />
 	<jsp:include page="/subject/subget_enrollment_list.jsp" />
 	<form action="/sugang/findSubjectByDay">
-		<div class="find">
-			<h4>
+		<div class="find" style="height: 25px">
+			<h6 style="margin-top: 0px; margin-bottom: 0px;">
 				요일별 조회 : ${requestScope.day }요일 &ensp; <select name="day">
 					<option value="월">월요일</option>
 					<option value="화">화요일</option>
@@ -25,7 +25,7 @@
 					<option value="금">금요일</option>
 				</select>
 				<button type="submit">조회</button>
-			</h4>
+			</h6>
 		</div>
 	</form>
 	<div class="scroll">

@@ -6,7 +6,6 @@
 	<div class="find" style="height: 25px">
 		<h6 style="margin-top: 0px; margin-bottom: 0px;">현재 수강 강좌 보기</h6>
 	</div>
-
 	<table class="table">
 		<thead>
 			<tr>

@@ -12,16 +12,16 @@
 <jsp:include page="/subject/popup.jsp" />
 </head>
 <body>
-	<div class="title">
+	<div class="poptitle">
 		<c:choose>
 			<c:when test="${requestScope.message == null}"> 
-					수강신청 완료!
+					수강신청 완료!<br>
 			</c:when>
 			<c:otherwise>
-					${requestScope.message}
-				</c:otherwise>
+					${requestScope.message}<br>
+			</c:otherwise>
 		</c:choose>
-		<button onclick="Ev_onbeforeunload();">닫기</button>
+		<button class="popbutton" onclick="Ev_onbeforeunload();">닫기</button>
 	</div>
 </body>
 </html>

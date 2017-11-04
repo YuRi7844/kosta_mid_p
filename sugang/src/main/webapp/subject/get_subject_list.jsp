@@ -55,7 +55,8 @@
 									<input type="hidden" name="addSubjectId"
 										value="<%=subList.get(i).getSubjectId()%>">
 								</form>
-								<button class="sugangbutton" onclick="getSubjectList(<%=subList.get(i).getSubjectId()%>)">신청</button>
+								<button class="sugangbutton"
+									onclick="getSubjectList(<%=subList.get(i).getSubjectId()%>)">신청</button>
 							</td>
 						</tr>
 						<%

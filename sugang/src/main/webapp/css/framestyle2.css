@@ -59,20 +59,12 @@ table {
    border: 1px solid #bcbcbc;
    text-align: center;
    font-size: 1em;
-	border: 1px solid #bcbcbc;
-	text-align: center;
-	font-size: 15px;
 	height: 10px;
 }
-
 .find{
    border: 1px solid white;
    width: 30em;
    height: 3em;
-   margin-left: auto;
-	border: 1px solid white;
-	width: 30em;
-	height: 2em;
 	margin-left: auto;
     margin-right: auto;
    border-radius: 0.2em;
@@ -81,33 +73,54 @@ table {
 }
 .title{
 	border: 1px solid white;
-	width: 10em;
+	width: 13em;
 	height: 2em;
+	margin-top : 1.5em;
 	margin-left: auto;
     margin-right: auto;
 	border-radius: 0.2em;
 	font-size:2em;
 	text-align: center;
 }
+.poptitle{
+	border: 1px solid white;
+	width: 13em;
+	height: 2em;
+	margin-top : 1.5em;
+	margin-left: auto;
+    margin-right: auto;
+	border-radius: 0.2em;
+	font-size:2em;
+	text-align: center;
+}
+.popbutton{
+	width: 10em;
+	hight: 1.4em;
+	margin-top : 0.7em;
+	background-color: #768d87;
+	border-radius: 5px;
+	border: 1px solid #566963;
+	font-size: 0.6em;
+	color: #ffffff;
+	font-family: sans-serif;
+}
 .topscroll{
    overflow-y: scroll;
    overflow-x: scroll;
-   height: 15em
-
+   height: 15em;
 }
 .scroll{
    overflow-y: scroll;
    overflow-x: scroll;
    height: 22em;
-
+   margin-left: auto;
+    margin-right: auto;
 }
 	
 .stScroll{
    overflow-y: scroll;
    overflow-x: scroll;
    height: 30em;
-
-	
 }
 .subtitle{
    font-size:2em;
