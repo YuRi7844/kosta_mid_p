@@ -38,6 +38,10 @@ public class StudentDaoImpl implements StudentDao {
    public int deleteStudentById(SqlSession session, int studentId) {
       return session.delete(makeSqlId("deleteStudentById"), studentId);
    }
+   @Override
+   public int deleteEnrollmentByStudentId(SqlSession session, int studentId) {
+	      return session.delete(makeSqlId("deleteEnrollmentByStudentId"), studentId);
+   }
 
    @Override
    public List<Student> selectAllStudent(SqlSession session) {

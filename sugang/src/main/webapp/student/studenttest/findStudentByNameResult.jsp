@@ -6,6 +6,16 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/sugang/css/framestyle2.css">
+<script type="text/javascript">
+function moveToRemove(id){
+	var address = "/sugang/removeStudent?studentId="+id;
+	window.open(address, "newWin","width=600, height=400");
+}
+function moveToUpdate(id){
+	var address = "/sugang/student/student_update_form.jsp?studentId="+id;
+	window.open(address, "newWin","width=600, height=400");
+}
+</script>
 <meta charset="UTF-8">
 <title>학생 조회</title>
 </head>
@@ -49,6 +59,16 @@
                         <td class="td">
                            ${result.maxCredit }
                         </td>
+                        <td>
+							<form action="/sugang/student/student_update_form.jsp" method="POST">
+								<input type="hidden" name="studentId" value="${result.studentId }">
+							</form>
+								<button onclick="moveToUpdate(${result.studentId })">수정</button>
+							<form action="/sugang/removeStudent" method="POST">
+										<input type="hidden" name="studentId" value="${result.studentId }">									
+									</form>	
+										<button onclick="moveToRemove(${result.studentId })">삭제</button>
+						</td>
                      </tr>
                      </c:forEach>
                </c:when>
