@@ -9,7 +9,9 @@
 <script type="text/javascript">
 function moveToRemove(id){
 	var address = "/sugang/removeStudent?studentId="+id;
+	location.reload();
 	window.open(address, "newWin","width=600, height=400");
+	
 }
 function moveToUpdate(id){
 	var address = "/sugang/student/student_update_form.jsp?studentId="+id;

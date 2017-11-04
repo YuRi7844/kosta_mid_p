@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" type="text/css"
 	href="/sugang/css/framestyle2.css">
-<style>
+<style type="text/css">
 #studentinfo {
 	text-align: right;
 }
@@ -17,6 +17,7 @@
 <script type="text/javascript">
 function moveToRemove(id){
 	var address = "/sugang/removeStudent?studentId="+id;
+	location.reload();
 	window.open(address, "newWin","width=600, height=400");
 }
 function moveToUpdate(id){
