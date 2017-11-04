@@ -54,7 +54,7 @@ padding-top: 3.5px}
 			<li class="mainmenuList">
 				<a class="mainmenulink" href="/sugang/getSubjectList">수강신청</a></li>
 			<li class="mainmenuList">
-				<a class="mainmenulink" href="">수강신청조회</a>
+				<a class="mainmenulink" href="/sugang/subject/timeTable.jsp">수강신청조회</a>
 			</li>
 		</ul>
 	</nav>
