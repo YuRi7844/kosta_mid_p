@@ -32,7 +32,6 @@
 			<tbody>
 				<c:choose>
 					<c:when test="${!empty requestScope.result }">
-						<c:forEach var="result" items="${requestScope.result }">
 						<%
 							List<Student> result = (List<Student>)request.getAttribute("result");
 							for(int i =0; i < result.size(); i++)
@@ -56,7 +55,6 @@
 								</td>
 							</tr>
 							<%} %>
-							</c:forEach>
 					</c:when>
 					<c:otherwise>
 						<tr>
@@ -67,8 +65,5 @@
 			</tbody>
 		</table>
 		</div>
-	
-
-
 </body>
 </html>

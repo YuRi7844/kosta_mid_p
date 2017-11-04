@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sugang.service.StudentService;
 import sugang.service.impl.StudentServiceImpl;
+import sugang.service.impl.SubjectServiceImpl;
 import sugang.vo.Student;
+import sugang.vo.Subject;
 
 /**
  * Servlet implementation class StudentFindServlet
@@ -35,26 +36,30 @@ public class FindStudentByIdServlet extends HttpServlet {
 		//1. 요청파라미터 조회
 //		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
 		
-		String studentId = request.getParameter("studentId");
-		if(studentId == "") {
-			studentId = "1000000";
-			List<Student> result = (List<Student>)(service.getStudentList());
-			System.out.println(studentId);
-			request.setAttribute("result", result);
-			//요청디스패치방식
-			request.getRequestDispatcher("/student/studenttest/findStudentByIdResult.jsp").forward(request, response);
+		int studentId= 0;
+		String num = request.getParameter("studentId");
+		if(num != null) {
+			studentId = Integer.parseInt(num);
+			request.setAttribute("studentId", studentId);
+			System.out.println("num != null : "+studentId);
 		}
 		
 		
-		System.out.println(studentId);
-		Student result = (Student)(service.findStudentById(Integer.parseInt(studentId)));
+	    Student result = service.findStudentById(studentId);
+		//Student result = (Student)(service.findStudentById(Integer.parseInt(studentId)));
 		//2. 비즈니스 로직 처리
 		
 		//3. 응답
 		//처리결과를 requestScope에 저장
 		request.setAttribute("result", result);
+		if(num == null ) {
+			request.setAttribute("Student", "findStudentId");
+			request.getRequestDispatcher("/student/studenttest/findStudentByIdResult.jsp").forward(request, response);
+		}else {
+			//요청디스패치방식
+			request.getRequestDispatcher("/student/studenttest/findStudentByIdResult.jsp").forward(request, response);
+		}
 		//요청디스패치방식
-		request.getRequestDispatcher("/student/studenttest/findStudentByIdResult.jsp").forward(request, response);
 	}
 
 }

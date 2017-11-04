@@ -31,7 +31,7 @@
 			<tbody>
 				<c:choose>
 					<c:when test="${!empty requestScope.result }">
-						<c:forEach var="result" items="${requestScope.result }" >
+						<%-- <c:forEach var="result" items="${requestScope.result }" > --%>
 					<tr class="tr">
 								<td class="td">
 									${result.studentId }
@@ -48,7 +48,7 @@
 								${result.maxCredit }
 								</td>
 							</tr>
-							</c:forEach>
+							<%-- </c:forEach> --%>
 					</c:when>
 					<c:otherwise>
 						<tr>
