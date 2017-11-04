@@ -53,8 +53,8 @@ public class StudentServiceImpl implements StudentService {
 			if (dao.selectStudentById(session, studentId) == null) {
 				throw new StudentNotFoundException("해당 학번의 학생은 존재하지 않습니다.");
 			}
-			dao.deleteStudentById(session, studentId);
 			dao.deleteEnrollmentByStudentId(session, studentId);
+			dao.deleteStudentById(session, studentId);
 			session.commit();
 		} finally {
 			session.close();

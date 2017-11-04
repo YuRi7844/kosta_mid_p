@@ -24,8 +24,6 @@
 <title>학생 등록</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/top.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
 
 <div id="add_result">
 ${requestScope.result }
