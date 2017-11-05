@@ -82,18 +82,16 @@ function moveToUpdate(id){
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td class="td">학생이 없습니다.</td>
+							<td class="td" colspan="5" style="height: 7em;"> 
+								<a style="font-size: 1em; color: red">학생이 없습니다. <br><strong style="font-size: 2em;">조회</strong> 버튼을 누르세요.</a></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
 			</tbody>
 		</table>
 	</div>
-<<<<<<< HEAD
-=======
 	</form>
 
->>>>>>> branch 'master' of https://github.com/YuRi7844/kosta_mid_p.git
 </body>
 </html>
 
