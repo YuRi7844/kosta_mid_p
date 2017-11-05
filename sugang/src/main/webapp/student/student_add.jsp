@@ -77,7 +77,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<jsp:include page="/WEB-INF/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/submenu(admin).jsp"></jsp:include>
 	
-	<span style="color:red;font-size: 25px;width: max-content;margin: 0 auto;"><h1> ${sessionScope.errorMessage}</h1></span>
+	<span style="text-align:center;color:red;font-size: 25px;width: max-content;margin: 0 auto;"><h1> ${sessionScope.errorMessage}</h1></span>
 	<section id="student_add_form">
 		<form name="addForm" id="form" action="/sugang/addStudent" method="POST" onsubmit="return formCheck(this);">
 			<p class="form_item">

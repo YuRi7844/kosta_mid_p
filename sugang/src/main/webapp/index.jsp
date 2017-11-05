@@ -10,6 +10,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	-webkit-appearance: none;
 	margin: 0;
 }
+#studentinfo{
+	float: right;
+}
 </style>
 <meta charset="UTF-8">
 
@@ -25,9 +28,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<c:if test="${sessionScope.loginStudent == null }">
 		<section>
 		<p>
-			<c:if test="">
-				${requestScope.errorMessage }
-			</c:if>
+			${requestScope.errorMessage }
 		</p>
 			<div
 				style="width: 400px; margin: 0 auto; margin-top: 100px; margin-bottom: 100px;">

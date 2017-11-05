@@ -20,6 +20,11 @@ function moveToUpdate(id){
 	window.open(address, "newWin", "width=600, height=400");
 }
 </script>
+<style type="text/css">
+#studentinfo{
+	text-align: right;
+}
+</style>
 </head>
 <body>
 

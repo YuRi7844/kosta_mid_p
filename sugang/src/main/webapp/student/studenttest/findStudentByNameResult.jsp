@@ -18,6 +18,11 @@ function moveToUpdate(id){
 	window.open(address, "newWin","width=600, height=400");
 }
 </script>
+<style type="text/css">
+#studentinfo{
+	text-align: right;
+}
+</style>	
 <meta charset="UTF-8">
 <title>학생 조회</title>
 </head>
