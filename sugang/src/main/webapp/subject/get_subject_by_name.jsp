@@ -6,78 +6,85 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css"
-	href="/sugang/css/framestyle2.css">
+	href="/sugang/css/framestyle_subject.css">
 <meta charset="UTF-8">
 <title>수강신청</title>
 <jsp:include page="/subject/popup.jsp" />
 </head>
-<body>
-	<jsp:include page="/WEB-INF/sugangtop.jsp" />
-	<jsp:include page="/subject/subget_enrollment_list.jsp" />
-	<form action="/sugang/findSubjectByName">
-		<div class="find" style="height: 25px">
-			<h6 style="margin-top: 0px; margin-bottom: 0px;">
-				과목 이름별 조회
-				<button>과목이름</button>
-				<input type="text" name="subjectName" autofocus="autofocus" required="required"/>
-				<button type="submit">조회</button>
-			</h6>
+<body class="wrap">
+	<div class="row_wrqp">
+		<jsp:include page="/WEB-INF/sugangtop.jsp" />
+	</div>
+	<div class="row_container">
+		<jsp:include page="/subject/subget_enrollment_list.jsp" />
+		<form action="/sugang/findSubjectByName">
+			<div class="find" style="height: 25px">
+				<strong>
+					과목 이름별 조회
+					<button>과목이름</button>
+					<input type="text" name="subjectName" autofocus="autofocus"
+						required="required" />
+					<button type="submit">조회</button>
+				</strong>
+			</div>
+		</form>
+		<div class="scroll">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>과목코드</th>
+						<th>과목이름</th>
+						<th>학점수</th>
+						<th>이수구분</th>
+						<th>수강최대인원</th>
+						<th>요일</th>
+						<th>시간</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:choose>
+						<c:when test="${!empty requestScope.subName }">
+							<%
+								List<Subject> subName = (List<Subject>) request.getAttribute("subName");
+										for (int i = 0; i < subName.size(); i++) {
+							%>
+							<tr>
+								<td class="td"><%=subName.get(i).getSubjectId()%></td>
+								<td class="td"><%=subName.get(i).getSubjectName()%></td>
+								<td class="td"><%=subName.get(i).getSubjectCredit()%></td>
+								<td class="td"><%=subName.get(i).getCompletion()%></td>
+								<td class="td"><%=subName.get(i).getMaxStudent()%></td>
+								<td class="td"><%=subName.get(i).getDay()%></td>
+								<td class="td"><%=subName.get(i).getSubjectTime()%></td>
+								<td>
+									<form action="/sugang/findSubjectByName" method="post">
+										<input type="hidden" name="addSubjectId"
+											value="<%=subName.get(i).getSubjectId()%>">
+									</form>
+									<button class="sugangbutton"
+										onclick="getSubjectByName(<%=subName.get(i).getSubjectId()%>)">신청</button>
+								</td>
+							</tr>
+							<%
+								}
+							%>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>조회된 과목이 없습니다.</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
 		</div>
-	</form>
-	<div class="scroll">
-		<table class="table">
-			<thead>
-				<tr>
-					<th>과목코드</th>
-					<th>과목이름</th>
-					<th>학점수</th>
-					<th>이수구분</th>
-					<th>수강최대인원</th>
-					<th>요일</th>
-					<th>시간</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:choose>
-					<c:when test="${!empty requestScope.subName }">
-						<%
-							List<Subject> subName = (List<Subject>) request.getAttribute("subName");
-									for (int i = 0; i < subName.size(); i++) {
-						%>
-						<tr>
-							<td class="td"><%=subName.get(i).getSubjectId()%></td>
-							<td class="td"><%=subName.get(i).getSubjectName()%></td>
-							<td class="td"><%=subName.get(i).getSubjectCredit()%></td>
-							<td class="td"><%=subName.get(i).getCompletion()%></td>
-							<td class="td"><%=subName.get(i).getMaxStudent()%></td>
-							<td class="td"><%=subName.get(i).getDay()%></td>
-							<td class="td"><%=subName.get(i).getSubjectTime()%></td>
-							<td>
-								<form action="/sugang/findSubjectByName" method="post">
-									<input type="hidden" name="addSubjectId"
-										value="<%=subName.get(i).getSubjectId()%>">
-								</form>
-								<button class="sugangbutton" onclick="getSubjectByName(<%=subName.get(i).getSubjectId()%>)">신청</button>
-							</td>
-						</tr>
-						<%
-							}
-						%>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>조회된 과목이 없습니다.</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</tbody>
-		</table>
 	</div>
 </body>
+<footer></footer>
 </html>

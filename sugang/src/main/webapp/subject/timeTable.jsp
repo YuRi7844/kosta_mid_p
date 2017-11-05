@@ -6,7 +6,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css"
-	href="/sugang/css/framestyle2.css">
+	href="/sugang/css/framestyle_subject.css">
 <meta charset="UTF-8">
 <title>수강신청</title>
 <jsp:include page="/subject/popup.jsp" />
