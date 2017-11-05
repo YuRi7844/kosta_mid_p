@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sugang.service.EnrollmentService;
 import sugang.service.impl.EnrollmentServiceImpl;
 import sugang.vo.Enrollment;
+import sugang.vo.Student;
 
 /**
  * Servlet implementation class EnrollmentFindServlet
@@ -31,19 +33,18 @@ public class FindEnrollmentServletByStudentId extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");// 요청 파라미터 한글처리. - TODO 나중에 필터처리
-		String studentId = request.getParameter("studentId");
-		int studentid = Integer.parseInt(studentId);
+		HttpSession session = request.getSession();
+		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
 		
 		EnrollmentServiceImpl service = EnrollmentServiceImpl.getInstance();
-		List<Enrollment> list = service.findEnrollmentByStudentId(studentid);
+		List<Enrollment> list = service.findEnrollmentByStudentId(studentId);
 		
 		//2. 응답
 		//처리결과를 requestScope에 저장
-		request.setAttribute("result", list);
+		request.setAttribute("enoList", list);
 		
 		//요청디스패치방식 - /enrollment/findbystudentId.jsp
-		request.getRequestDispatcher("/enrollment/findEnrollmentbyStudentId.jsp").forward(request, response);
+		request.getRequestDispatcher("/subject/time_table.jsp").forward(request, response);
 	}
 
 }

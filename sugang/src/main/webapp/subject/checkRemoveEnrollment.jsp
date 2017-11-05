@@ -14,7 +14,7 @@
 <body>
 	<div class="title">
 		신청취소 완료! <br>
-		<button onclick="Ev_onbeforeunload();">닫기</button>
+		<button class="popbutton" onclick="Ev_onbeforeunload();">닫기</button>
 	</div>
 
 </body>
