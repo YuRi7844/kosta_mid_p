@@ -30,6 +30,7 @@
 
 <div id="add_result">
 ${sessionScope.result }
+<%session.removeAttribute("result"); %>
 </div>
 
 </body>
