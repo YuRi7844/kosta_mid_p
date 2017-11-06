@@ -7,7 +7,7 @@
 
 #notice-content{
 	margin: 0 auto;
-    width: 60%;
+    width: 80%;
     height: auto;
     left: 300px;
 }
@@ -23,9 +23,7 @@
 	<div id="notice-content">
 		<p style="text-align: center; font-weight: bold; font-size:30px;">※공지사항※</p>
 		<hr>
-		<p style="text-align: left; font-size:20px;">
-			공지야
-		</p>
+		<img src="notice(admin).png" width="1078" height="580" border="0" alt="">
 	</div>
 	
 	
