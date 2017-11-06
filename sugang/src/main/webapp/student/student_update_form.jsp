@@ -44,6 +44,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	-webkit-appearance: none;
 	margin: 0;
 }
+#studentId_input{
+	background-color: light grey;
+}
 </style>
 <meta charset="UTF-8">
 <title>학생 등록</title>
@@ -77,10 +80,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		int studentId= Integer.parseInt(request.getParameter("studentId"));
 		
 	%>
-	<span style="color:red;font-size: 25px;width: max-content;margin: 0 auto;"><h1> ${sessionScope.errorMessage}</h1></span>
+	<span style="color:red;font-size: 25px;width: max-content;margin: 0 auto;"><h1> ${requestScope.errorMessage}</h1></span>
 	<section id="student_add_form">
 		<form name="addForm" id="form" action="/sugang/updateStudent" method="POST" onsubmit="return formCheck(this);">
-			<p class="form_item">
+			<p class="form_item" id="studentId_input">
 				학번<input readonly class="form_list" type="number" name="studentId" value="<%=studentId %>" >
 			</p>
 			<p class="form_item">
