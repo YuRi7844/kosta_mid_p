@@ -83,7 +83,7 @@ function moveToUpdate(id){
                </c:when>
                <c:otherwise>
                   <tr>
-                     <td class="td">조회된 학생이 없습니다.</td>
+                     <td class="td" colspan="5">조회된 학생이 없습니다.</td>
                   </tr>
                </c:otherwise>
             </c:choose>
