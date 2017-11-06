@@ -69,7 +69,6 @@
    <select id="selectStudentById" parameterType="_int" resultMap="student-resultmap">
       <include refid="select-sql"></include>
       WHERE student_id = #{value}
-            and not student_id = 1000
    </select>
    
    
