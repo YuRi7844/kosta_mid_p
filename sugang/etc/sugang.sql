@@ -56,7 +56,7 @@ ALTER TABLE ENROLLMENT
       )
       REFERENCES STUDENT (
          STUDENT_ID
-      );
+      )on delete cascade;
 
 --create sequence student_class_id_seq;
 
@@ -75,7 +75,7 @@ where ENROLLMENT.SUBJECT_ID = 0001
 delete from ENROLLMENT
 where ENROLLMENT.STUDENT_ID='20120008';
 delete from STUDENT
-where STUDENT.STUDENT_ID='20120008';
+where STUDENT.STUDENT_ID='20170011';
 
 -- 과목명이 '자바'인 강좌 조회
 select *
@@ -133,29 +133,7 @@ where ENROLLMENT.STUDENT_ID = '20140001'
       and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID;
       
       
-insert into student values(20140001,'김호규','경영학과','20140001',4,4);
-insert into student values(20170002,'김호현','사회학과','20170002',3,19);
-insert into student values(20170003,'박현준','신소재공학과','20170003',2,19);
-insert into student values(20170004,'정수찬','컴퓨터공학과','20170004',1,19);
-insert into student values(20170005,'장길웅','소프트웨어','20170005',4,19);
-insert into student values(20170006,'손경심','조선해양학과','20170006',3,19);
-insert into student values(20170007,'이수정','컴퓨터공학과','20170007',2,19);
-insert into student values(20170008,'최태은','컴퓨터공학과','20170008',1,19);
-insert into student values(20170009,'이효주','정보통신공학과','20170009',4,19);
-insert into student values(20170010,'엄태경','컴퓨터공학과','20170010',3,19);
-insert into student values(20170011,'윤규석','경영학과','20170011',2,19);
-insert into student values(20170012,'최윤규','컴퓨터공학과','20170012',1,19);
-insert into student values(20170013,'윤동웅','관광학과','20170013',4,19);
-insert into student values(20170014,'이유리','정보통신공학과','20170014',3,19);
-insert into student values(20170015,'이동엽','컴퓨터공학과','20170015',2,19);
-insert into student values(20170016,'윤한울','심리학과','20170016',1,19);
-insert into student values(20170017,'이수일','컴퓨터공학과','20170017',4,19);
-insert into student values(20170018,'장은정','정보통신공학과','20170018',3,19);
-insert into student values(20170019,'이지수','정보통신공학과','20170019',2,19);
-insert into student values(20170020,'이예진','컴퓨터공학과','20170020',1,19);
 insert into student values(1000,'관리자','행정','admin',4,2);
-
-
 
 select 	SUBJECT.SUBJECT_ID, SUBJECT.SUBJECT_NAME,
 		SUBJECT.SUBJECT_CREDIT, SUBJECT.MAX_STUDENT, 
@@ -163,23 +141,3 @@ select 	SUBJECT.SUBJECT_ID, SUBJECT.SUBJECT_NAME,
 from SUBJECT,ENROLLMENT
 where ENROLLMENT.STUDENT_ID = 20170001 
 	and ENROLLMENT.SUBJECT_ID = SUBJECT.SUBJECT_ID;
-	
-
-/* 강의 Dummy Data */
-insert into subject values(0001,'강좌3',3,'전공선택', 5, '수', 2);
-insert into subject values(0002,'강좌3',3,'전공필수', 5, '수', 3);
-insert into subject values(0003,'강좌1',3,'전공선택', 5, '수', 8);
-insert into subject values(0004,'강좌3',3,'전공필수', 5, '수', 8);
-insert into subject values(0005,'강좌1',3,'교양필수', 5, '수', 2);
-insert into subject values(0006,'강좌3',3,'교양필수', 5, '목', 2);
-insert into subject values(0007,'강좌1',3,'전공선택', 5, '목', 2);
-insert into subject values(0008,'강좌2',3,'전공선택', 5, '목', 2);
-insert into subject values(0009,'강좌2',3,'전공필수', 5, '목', 5);
-insert into subject values(0010,'강좌2',3,'교양선택', 5, '목', 5);
-
-insert into subject values(0013,'강좌1',3,'전공필수', 3, '월', 1);
-insert into subject values(0014,'강좌2',3,'교양선택', 2, '금', 1);
-insert into subject values(0015,'강좌1',3,'전공필수', 3, '월', 1);
-insert into subject values(0016,'강좌2',3,'교양선택', 2, '금', 1);
-insert into subject values(0017,'강좌1',3,'전공필수', 3, '월', 1);
-insert into subject values(0018,'강좌2',3,'교양선택', 2, '금', 1);
