@@ -69,6 +69,7 @@
    <select id="selectStudentById" parameterType="_int" resultMap="student-resultmap">
       <include refid="select-sql"></include>
       WHERE student_id = #{value}
+      		and not max_credit = 0
    </select>
    
    
