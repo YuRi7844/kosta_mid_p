@@ -14,11 +14,13 @@
 <body>
 	<div class="poptitle">
 		<c:choose>
-			<c:when test="${requestScope.message == null}"> 
+			<c:when test="${sessionScope.message == null}"> 
+				<% session.removeAttribute("message"); %>
 					수강신청 완료!<br>
 			</c:when>
 			<c:otherwise>
-					${requestScope.message}<br>
+					${sessionScope.message}<br>
+					<% session.removeAttribute("message"); %>
 			</c:otherwise>
 		</c:choose>
 		<button class="popbutton" onclick="Ev_onbeforeunload();">닫기</button>

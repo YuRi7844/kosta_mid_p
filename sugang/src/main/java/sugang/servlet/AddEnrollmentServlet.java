@@ -53,15 +53,17 @@ public class AddEnrollmentServlet extends HttpServlet {
 		
 		} catch (DuplicatedSubjectException e) {
 			e.printStackTrace();
-			request.setAttribute("message", e.getMessage());
+			session.setAttribute("message", e.getMessage());
 		} catch (MaxSubjectEnrollmentException e) {
 			e.printStackTrace();
-			request.setAttribute("message", e.getMessage());
+			session.setAttribute("message", e.getMessage());
 		} catch (TimeLimitExceededException e) {
-			request.setAttribute("message", e.getMessage());
+			session.setAttribute("message", e.getMessage());
 			e.printStackTrace();
-		} 
-		request.getRequestDispatcher("/subject/checkEnrollment.jsp").forward(request, response);
+		}  
+		
+		response.sendRedirect("/sugang/subject/checkEnrollment.jsp");
+		//request.getRequestDispatcher("/subject/checkEnrollment.jsp").forward(request, response);
 	}
 
 }
