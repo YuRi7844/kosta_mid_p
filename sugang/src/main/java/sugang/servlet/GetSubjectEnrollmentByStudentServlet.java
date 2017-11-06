@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sugang.service.impl.SubjectServiceImpl;
+import sugang.vo.Student;
 import sugang.vo.Subject;
 
 /**
@@ -31,15 +33,15 @@ public class GetSubjectEnrollmentByStudentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1. Business Service 호출
-		String studentId = request.getParameter("studentId");
-		int studentid = Integer.parseInt(studentId);
+		HttpSession session = request.getSession();
+		int studentId = ((Student)session.getAttribute("loginStudent")).getStudentId();
 		
 		SubjectServiceImpl service = SubjectServiceImpl.getInstance();
-		List<Subject> list = service.getStudentByEnrollmentSubjectList(studentid);
+		List<Subject> list = service.getStudentByEnrollmentSubjectList(studentId);
 		
 		//2. 응답
-		request.setAttribute("result", list);
-		request.getRequestDispatcher("/subject/get_subject_list.jsp").forward(request, response);
+		request.setAttribute("enoList", list);
+		request.getRequestDispatcher("/subject/time_table.jsp").forward(request, response);
 	}
 
 }

@@ -12,14 +12,13 @@
 <jsp:include page="/subject/popup.jsp" />
 </head>
 <body>
-	<jsp:include page="/WEB-INF/sugangtop.jsp" />
-
-	<div class="topscroll">
-		<form action="/sugang/findEnrollmentByStudent" method="post">
+	<jsp:include page="/WEB-INF/time_table_top.jsp" />
+	<div class="timescroll">
+		<form action="/sugang/getSubjectEnrollmentList" method="post">
 			<div class="find">
 				<strong>현재 수강 강좌 보기
 
-					<button>신청</button>
+					<button>조회</button>
 
 				</strong>
 			</div>

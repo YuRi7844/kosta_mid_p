@@ -6,8 +6,8 @@ html, body{
 .wrap{
 	display: table;
 	height: 90%;
-	width: 99.8%;
-	margin: 1px 1px 1px 1px;
+	width: 100%;
+	margin: 8px 0px 0px 8px;
 }
 .row_wrap{
 	display: table-row;
@@ -89,14 +89,17 @@ table {
 }
 .topscroll{
    overflow-y: scroll;
-   overflow-x: scroll;
    height: 15em;
    margin-bottom: 1em;
+}
+.timescroll{
+   height: 100%;
+   margin-bottom: 1em;
+   margin-top: 2em
 }
 /* get_subject_by_completion */
 .scroll{
    overflow-y: scroll;
-   overflow-x: scroll;
    height: 100%;
    margin-left: auto;
     margin-right: auto;

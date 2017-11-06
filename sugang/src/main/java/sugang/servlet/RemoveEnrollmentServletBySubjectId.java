@@ -43,8 +43,8 @@ public class RemoveEnrollmentServletBySubjectId extends HttpServlet {
 			request.setAttribute("message", e.getMessage());
 		}
 
-		
-		request.getRequestDispatcher("/subject/checkRemoveEnrollment.jsp").forward(request, response);
+		response.sendRedirect("/sugang/subject/checkRemoveEnrollment.jsp");
+//		request.getRequestDispatcher("/subject/checkRemoveEnrollment.jsp").forward(request, response);
 	
 	}
 

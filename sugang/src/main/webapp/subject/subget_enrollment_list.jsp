@@ -34,11 +34,12 @@
 						<td class="td"><%=enoList.get(i).getDay()%></td>
 						<td class="td"><%=enoList.get(i).getSubjectTime()%></td>
 						<td>
-							<form action="/sugang/removeEnrollmentbySubject" >
+							<form action="/sugang/removeEnrollmentbySubject" method="post">
 								<input type="hidden" name="removeSubjectId"
 									value="<%=enoList.get(i).getSubjectId()%>">
 							</form>
-							<button class="sugangbutton" onclick="removeEnrollment(<%=enoList.get(i).getSubjectId()%>)">삭제</button>
+							<button class="sugangbutton"
+								onclick="removeEnrollment(<%=enoList.get(i).getSubjectId()%>)">삭제</button>
 						</td>
 					</tr>
 					<%
@@ -60,4 +61,5 @@
 		</tbody>
 	</table>
 </div>
-
+<p>
+<hr>
