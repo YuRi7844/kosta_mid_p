@@ -62,12 +62,14 @@
    <!-- 모든 학생을 조회하는 sql묹 -->
    <select id="selectAllStudent" resultMap="student-resultmap">
       <include refid="select-sql"></include>
+      where not student_id = 1000
    </select>
    
    <!-- 매개변수로 받은 학번과 일치하는 학생을 조회하는 sql -->
    <select id="selectStudentById" parameterType="_int" resultMap="student-resultmap">
       <include refid="select-sql"></include>
       WHERE student_id = #{value}
+            and not student_id = 1000
    </select>
    
    
@@ -76,6 +78,7 @@
    <select id="selectStudentByName" parameterType="string" resultMap="student-resultmap">
       <include refid="select-sql"/>
       WHERE   student_name LIKE '%'||#{value}||'%'
+      	      and not student_id = 1000
    </select>
 </mapper>
 
