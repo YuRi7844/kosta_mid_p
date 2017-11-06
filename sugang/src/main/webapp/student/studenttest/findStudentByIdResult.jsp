@@ -48,7 +48,7 @@ function moveToUpdate(id){
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${! empty requestScope.result }">
+					<c:when test="${! empty requestScope.result } && ${requestScope.result.studentId != 1000 }">
 						<tr class="tr2">
 							<td class="td">${requestScope.result.studentId }</td>
 							<td class="td">${requestScope.result.studentName }</td>

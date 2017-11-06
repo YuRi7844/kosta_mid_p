@@ -81,23 +81,23 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<section id="student_add_form">
 		<form name="addForm" id="form" action="/sugang/addStudent" method="POST" onsubmit="return formCheck(this);">
 			<p class="form_item">
-				학번<input required class="form_list" type="number" name="studentId" autofocus >
+				학번<input required class="form_list" type="number" name="studentId" placeholder="8자리의 학번을 입력하세요" autofocus >
 			</p>
 			<p class="form_item">
-				이름<input required class="form_list" type="text" name="studentName">
+				이름<input required class="form_list" type="text" name="studentName" placeholder="이름을 입력하세요">
 
 			</p>
 			<p class="form_item">
-				전공<input required class="form_list" type="text" name="major">
+				전공<input required class="form_list" type="text" name="major" placeholder="전공을 입력하세요">
 			</p>
 			<p class="form_item">
-				초기비밀번호<input required class="form_list" type="password" name="studentPw" id="password">
+				초기비밀번호<input required class="form_list" type="password" name="studentPw" id="password" placeholder="비밀번호를 입력하세요.">
 			</p>
 			<p class="form_item">
-				학년<input required class="form_list" type="number" name="grade" id="grade">
+				학년<input required class="form_list" type="number" name="grade" id="grade" placeholder="1-4의 학년을 입력하세요.">
 			</p>
 			<p class="form_item" style="margin-bottom: 50px;">
-				최대학점<input required class="form_list" type="number" name="maxCredit" id="credit">
+				최대학점<input required class="form_list" type="number" name="maxCredit" id="credit" placeholder="30 이하의 최대학점을 입력하세요.">
 			</p>
 			<button id="add_button" type="submit">학생등록</button>
 		</form>
