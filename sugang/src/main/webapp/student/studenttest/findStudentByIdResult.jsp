@@ -48,27 +48,29 @@ function moveToUpdate(id){
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${! empty requestScope.result } && ${requestScope.result.studentId != 1000 }">
-						<tr class="tr2">
-							<td class="td">${requestScope.result.studentId }</td>
-							<td class="td">${requestScope.result.studentName }</td>
-							<td class="td">${requestScope.result.major }</td>
-							<td class="td">${requestScope.result.grade }
-							<td class="td">${requestScope.result.maxCredit }</td>
-							<td>
-								<form action="/sugang/student/student_update_form.jsp"
-									method="POST">
-									<input type="hidden" name="studentId"
-										value="${result.studentId }">
-								</form>
-								<button onclick="moveToUpdate(${result.studentId })">수정</button>
-								<form action="/sugang/removeStudent" method="POST">
-									<input type="hidden" name="studentId"
-										value="${result.studentId }">
-								</form>
-								<button onclick="moveToRemove(${result.studentId })">삭제</button>
-							</td>
-						</tr>
+					<c:when test="${!empty requestScope.result}">
+						<c:if test="${requestScope.result.studentId != 1000}">
+							<tr class="tr2">
+								<td class="td">${requestScope.result.studentId }</td>
+								<td class="td">${requestScope.result.studentName }</td>
+								<td class="td">${requestScope.result.major }</td>
+								<td class="td">${requestScope.result.grade }
+								<td class="td">${requestScope.result.maxCredit }</td>
+								<td>
+									<form action="/sugang/student/student_update_form.jsp"
+										method="POST">
+										<input type="hidden" name="studentId"
+											value="${result.studentId }">
+									</form>
+									<button onclick="moveToUpdate(${result.studentId })">수정</button>
+									<form action="/sugang/removeStudent" method="POST">
+										<input type="hidden" name="studentId"
+											value="${result.studentId }">
+									</form>
+									<button onclick="moveToRemove(${result.studentId })">삭제</button>
+								</td>
+							</tr>
+						</c:if>
 					</c:when>
 					<c:otherwise>
 						<tr>
